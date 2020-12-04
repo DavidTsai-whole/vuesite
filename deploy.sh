@@ -16,4 +16,4 @@ git commit -m 'deploy'
 # 部署到 https://<USERNAME>.github.io/<REPO>
 git push -f git@github.com:DavidTsai-whole/vuesite.git master:gh-pages
 
-cd -
+cd - 
