@@ -2,5 +2,5 @@
 module.exports = {
   NODE_ENV: '"production"',
   APIPATH:'"https://vue-course-api.hexschool.io"',
-  MEPATH:'"tsaidavid"',
+  MEPATH:'"asdsadas"',
 }
