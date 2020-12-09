@@ -6,7 +6,7 @@
 <div class="header bg-primary mb-5"style="">
 <div class="container d-flex p-4 justify-content-between align-items-center">
 
-<a class="h2" href="#/home">滿漢全雞</a>
+<a class="h2" href="#/">滿漢全雞</a>
 
   <ul class=" list-unstyled d-flex  menu"style="">
   <li class="">

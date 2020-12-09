@@ -32,7 +32,7 @@ export default new VueRouter({
            [
               {
                 
-                path:'home',
+                path:'',
                 component:newHome,
                
               },
