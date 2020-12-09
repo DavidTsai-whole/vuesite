@@ -131,7 +131,7 @@ export default {
           });
         },
         Home(){
-          this.$router.push('/home');
+          this.$router.push('/');
         }
        
          
