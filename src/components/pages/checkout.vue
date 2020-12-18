@@ -10,9 +10,9 @@
         <div class="col-md-8">
         <ul class=" list-unstyled d-flex justify-content-around">
           <li class="toplogo1 d-flex align-items-center justify-content-center h3 ">購物車</li>
-          <li><i class="fas fa-arrow-right fa-4x text-danger ml-3"></i></li>
-          <li class="toplogo1 d-flex align-items-center justify-content-center h3 text-white" style="background:#009393;">結帳</li>
-          <li><i class="fas fa-arrow-right fa-4x text-danger ml-3"></i></li>
+          <li><i class="fas fa-arrow-right fa-4x text-danger ml-2 mr-2"></i></li>
+          <li class="toplogo1 d-flex align-items-center justify-content-center h3 text-white" style="background:#21232d;">結帳</li>
+          <li><i class="fas fa-arrow-right fa-4x text-danger ml-2 mr-2"></i></li>
           <li class="toplogo1 d-flex align-items-center justify-content-center h3 ">訂單完成</li>
         </ul>
         <div class="mt-5">
@@ -30,7 +30,7 @@
      </div>
  
 </div>
-        <table class="table mt-5 table-borderless":class="{'d-none':hide}"v-if="allcart.total !==0">
+        <table class="table mt-5 table-borderless"style="color:#dcd9cb;background:#21232d":class="{'d-none':hide}"v-if="allcart.total !==0">
 <thead class="thead-dark">
 
 <th class="text-center">品名</th>
@@ -55,7 +55,7 @@
 </tbody>
 <tfoot>
 <tr>
-<td colspan="4" v-if="allcart.total >=1000" class="text-right h5 text-warning" style="">滿1000免運</td>
+<td colspan="4" v-if="allcart.total >=1000" class="text-right h5 text-warning" style="font-weight:bold">滿1000免運</td>
 </tr>
 
 <tr>
@@ -65,8 +65,8 @@
 
 <tr style="border-bottom:1px solid #E0E0E0">
 <td colspan="3" class="text-right h3" style="font-weight:bold">運費:</td>
-<td v-if="allcart.total >=1000 || allcart.total===0" class="h3 text-right text-danger"style="font-weight:bold">0元</td>
-<td v-else class="h3 text-right text-danger"style="font-weight:bold">60元</td>
+<td v-if="allcart.total >=1000 || allcart.total===0" class="h3 text-right text-warning"style="font-weight:bold">0元</td>
+<td v-else class="h3 text-right text-warning"style="font-weight:bold">60元</td>
 </tr>
 
 <tr>
@@ -77,12 +77,12 @@
 
 <tr v-if="allcart.total !== allcart.final_total && allcart.total<1000">
 <td colspan="3" class="text-right h3 text-success" style="font-weight:bold">優惠價:</td>
-<td class="h3 text-right text-success"style="font-weight:bold">{{Math.round(allcart.final_total+60)}}元</td>
+<td class="h3 text-right text-white"style="font-weight:bold">{{Math.round(allcart.final_total+60)}}元</td>
 </tr>
 
 <tr v-if="allcart.total !== allcart.final_total && allcart.total>=1000">
 <td colspan="3" class="text-right h3 text-success" style="font-weight:bold">優惠價:</td>
-<td class="h3 text-right text-success"style="font-weight:bold">{{Math.round(allcart.final_total)}}元</td>
+<td class="h3 text-right text-white"style="font-weight:bold">{{Math.round(allcart.final_total)}}元</td>
 </tr>
 </tfoot>
 </table>
@@ -91,7 +91,7 @@
 
        
 
-<div class="my-5 row justify-content-center"style="background:	#E0E0E0" v-if="allcart.total !==0">
+<div class="my-5 row justify-content-center"style="background:	#21232d;color:#dcd9cb" v-if="allcart.total !==0">
 <validation-observer class="col-md-10" v-slot="{ invalid }">
   <form class="pt-3"@submit.prevent="submitorder">
     <validation-provider class="form-group" rules="required|email" v-slot="{ errors, classes }">
@@ -168,7 +168,7 @@
   width:200px;
   border-radius:15px ;
  font-weight:bold;
-  border:3px solid 	#009393;
+  border:3px solid 	#21232d;
   
 }
 

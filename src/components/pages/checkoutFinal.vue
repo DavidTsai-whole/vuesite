@@ -8,16 +8,16 @@
         <div class="col-md-8 ">
         <ul class=" list-unstyled d-flex justify-content-around">
           <li class="toplogo1 d-flex align-items-center justify-content-center h3 ">購物車</li>
-          <li><i class="fas fa-arrow-right fa-4x text-danger ml-3"></i></li>
+          <li><i class="fas fa-arrow-right fa-4x text-danger ml-2 mr-2"></i></li>
           <li class="toplogo1 d-flex align-items-center justify-content-center h3 " >結帳</li>
-          <li><i class="fas fa-arrow-right fa-4x text-danger ml-3"></i></li>
-          <li class="toplogo1 d-flex align-items-center justify-content-center h3 text-white"style="background:#009393;">訂單完成</li>
+          <li><i class="fas fa-arrow-right fa-4x text-danger ml-2 mr-2"></i></li>
+          <li class="toplogo1 d-flex align-items-center justify-content-center h3 text-white"style="background:#21232d;">訂單完成</li>
         </ul>
-        <table class="table table-borderless mt-5">
+        <table class="table table-borderless mt-5"style="color:#dcd9cb;background:#21232d">
        
         <tbody>
         <tr style="border:1px solid #BEBEBE">
-        <td colspan="5" class="text-center">客戶資訊</td>
+        <td colspan="5" class="text-center bg-dark">客戶資訊</td>
         </tr>
          <tr style="border:1px solid #BEBEBE">
         <td colspan="4" style="width:15%">姓名</td>
@@ -57,7 +57,7 @@
         </table>
       
          <div class="text-center">
-         <button v-if="!order.is_paid" class="btn btn-primary "@click="paid">確認付款</button>
+         <button v-if="!order.is_paid" class="btn btn-danger "@click="paid">確認付款</button>
          <button v-else class="btn btn-success "@click.prevent="Home">回首頁</button>
          </div>
          
@@ -78,7 +78,7 @@
   width:200px;
   border-radius:15px ;
  font-weight:bold;
-  border:3px solid 	#009393;
+  border:3px solid 	#21232d;
   
 }
 </style>

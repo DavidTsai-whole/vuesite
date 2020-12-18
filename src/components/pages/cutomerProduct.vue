@@ -8,8 +8,8 @@
 <div class="col-md-2">
 <ul class="list-group sticky-top">
   <a href="#" class="list-group-item  text-center" :class="{'active':visibilty == 'all'}" @click.prevent="visibilty = 'all'">所有商品</a>
-  <a href="#" class="list-group-item text-center" :class="{'active':visibilty == 'mainmeal'}" @click.prevent="visibilty = 'mainmeal'">主餐</a>
-  <a href="#" class="list-group-item text-center" :class="{'active':visibilty == 'dessert'}" @click.prevent="visibilty = 'dessert'">點心</a>
+  <a href="#" class="list-group-item text-center" :class="{'active':visibilty == 'burger'}" @click.prevent="visibilty = 'burger'">漢堡</a>
+  <a href="#" class="list-group-item text-center" :class="{'active':visibilty == 'dessert'}" @click.prevent="visibilty = 'dessert'">配菜</a>
   <a href="#" class="list-group-item text-center" :class="{'active':visibilty == 'drink'}" @click.prevent="visibilty = 'drink'">飲品</a>
 
 </ul>
@@ -209,10 +209,10 @@ export default {
         
           
         });
-        }else if(vm.visibilty == 'mainmeal'){
+        }else if(vm.visibilty == 'burger'){
            var newTodo =[];
            vm.products.forEach(function (item){
-          if(item.category == '主餐'){
+          if(item.category == '漢堡'){
           newTodo.push(item);
 
           }
@@ -235,7 +235,7 @@ export default {
         }else if(vm.visibilty == 'dessert'){
            var newTodo =[];
            vm.products.forEach(function (item){
-          if(item.category == '點心'){
+          if(item.category == '配菜'){
           newTodo.push(item);
 
           }
@@ -259,7 +259,7 @@ export default {
         else if(vm.visibilty == 'drink'){
            var newTodo= [];
            vm.products.forEach(function (item){
-          if(item.category == '喝的'){
+          if(item.category == '飲品'){
           newTodo.push(item);
 
           }

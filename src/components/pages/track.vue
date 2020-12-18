@@ -6,24 +6,24 @@
 
 <div class="row justify-content-center">
 <div class="col-md-8"v-if="FollowProduct.length !==0">
-<h2 class="text-center mb-5"><i class="far fa-grin-hearts text-danger"></i>追蹤名單</h2>
-<table class="table table-borderless" >
-<thead>
+<h2 class="text-center mb-5"style="font-weight:bold"><i class="far fa-grin-hearts text-danger"></i>追蹤名單</h2>
+<table class="table table-borderless  "style="color:#dcd9cb;background:#21232d" >
+<thead class="bg-dark">
 <tr>
 <th>商品名稱</th>
 <th>商品種類</th>
 <th>商品價錢</th>
-<th class="">加入購物車</th>
+<th >加入購物車</th>
 <th>刪除</th>
 </tr>
 
 </thead>
 <tbody>
-<tr v-for="item in FollowProduct"style="border-bottom:1px solid black" >
+<tr v-for="item in FollowProduct"style="border:2px solid #dcd9cb  "class="" >
 <td>{{item.title}}</td>
 <td>{{item.category}}</td>
 <td>NT$ {{item.price}}</td>
-<td @click="addcart(item.id)"><i class="fas fa-shopping-cart text-info fa-2x"style="cursor:pointer"></i></td>
+<td @click="addcart(item.id)"><i class="fas fa-shopping-cart  fa-2x"style="cursor:pointer;color:#01814A"></i></td>
 <td  ><i class="fas fa-trash text-danger fa-2x"style="cursor:pointer"@click="deletee(item.id)"></i></td>
 </tr>
 
@@ -36,50 +36,58 @@
 </div>
 <div class="col-md-8" v-else>
 
-<h1 class="text-center text-dark mb-5"><i class="far fa-sad-tear text-danger"></i>目前還沒有追蹤任何商品哦,快去逛逛吧</h1>
-<div class="text-center mb-5">
-<a class="h3 cartin " style="font-weight:bold;"href="#/product"><i class="fas fa-arrow-circle-left text-success"></i>前往購物</a> 
+<h1 class="text-center text-dark mb-5"style="font-weight:bold"><i class="far fa-sad-tear text-danger"></i>目前還沒有追蹤任何商品哦,快去逛逛吧</h1>
+<div class="text-center mb-5 pt-5">
+<a class="h3 cartin" style="font-weight:bold;"href="#/product"><i class="fas fa-arrow-circle-left"></i>前往購物</a> 
 </div>
 
 
 </div>
 </div>
 
-<h1 class="text-center pt-5 pb-5" style="color:#ab4800;font-weight:bold"><i class="fas fa-utensils"></i>餐點介紹</h1>
-<div class="row">
-<div class="col-md-4 text-center">
-<a href="#"@click.prevent="toCategory('mainmeal')">
-<div class="circle mb-4"  style="height: 300px; background-size: cover; background-position: center;background-image:url('https://upload.cc/i1/2020/11/04/i9FXsT.jpg')">
+<div class="container">
+<h2 class="text-center text-danger p-5"style="font-weight:bold"><i class="fas fa-utensils"></i>餐點介紹</h2>
+<div class="row ">
+
+<div class="col-md-4 text-center  mb-3">
+<a href="#"@click.prevent="toCategory('burger')">
+<div class="circle mb-4"  style="height: 300px; background-size: cover; background-position: center;background-image:url('https://upload.cc/i1/2020/12/16/ULuyja.jpg')">
 
 </div>
 </a>
-
-
-
-<h2 style="font-weight:bold" >主餐</h2>
-<p style="font-weight:bold">肚子餓時來份有飽足感的餐點吧!</p>
+<h2 style="font-weight:bold">漢堡</h2>
+<p style=" font-weight:bold; margin-top:10px;font-size:20px;border-bottom:2px solid 	#01814A;color:	#01814A">不可錯過的正宗美式漢堡!</p>
+<p style=" font-weight:bold; margin-top:20px;">會不定期的推出新口味，敬請期待</p>
+<p style=" font-weight:bold; margin-top:20px;">有豬肉、牛肉、雞肉、菇類等多樣選擇</p>
+<button class="btn btn-outline-dark"@click.prevent="toCategory('burger')">查看更多</button>
 </div> 
-<div class="col-md-4 text-center">
-<a href="#"@click.prevent="toCategory('dessert')">
-<div class="circle mb-4" style="height: 300px; background-size: cover; background-position: center;background-image:url('https://upload.cc/i1/2020/11/04/hrLP5k.jpg')">
 
+<div class="col-md-4 text-center mb-3"style="">
+<a href="#"@click.prevent="toCategory('dessert')">
+<div class="circle mb-4 " style="height: 300px; background-size: cover; background-position: center;background-image:url('https://upload.cc/i1/2020/12/16/Zi9GVn.jpg');">
 </div>
 </a>
-
-<h2 style="font-weight:bold">點心</h2>
-<p style="font-weight:bold">不想吃太多又想品嘗美食嗎?來參考我們各式各樣的點心吧!</p>
+<h2 style="font-weight:bold">配菜</h2>
+<p style=" font-weight:bold; margin-top:10px;font-size:20px;border-bottom:2px solid 	#01814A;color:	#01814A">好看的劇一定是有好的配角!</p>
+<p style=" font-weight:bold; margin-top:20px;">配菜類的商品只要續點通通9折(限內用)</p>
+<p style=" font-weight:bold; margin-top:20px;">沙拉、炸物、烤類等多種配菜</p>
+<button class="btn btn-outline-dark"@click.prevent="toCategory('dessert')">查看更多</button>
 </div>
-<div class="col-md-4 text-center">
+
+<div class="col-md-4 text-center ">
 <a href="#"@click.prevent="toCategory('drink')">
-<div class="circle mb-4"  style="height: 300px; background-size: cover; background-position: center;background-image:url('https://upload.cc/i1/2020/11/04/MQEL5a.jpg')">
+<div class="circle mb-4"  style="height: 300px; background-size: cover; background-position: center;background-image:url('https://upload.cc/i1/2020/12/16/eiLXZl.jpg')">
 
 </div>
 </a>
 
 <h2 style="font-weight:bold">飲品</h2>
-<p style="font-weight:bold">吃東西當然要配好喝的啊,這時可以參考我們好喝的飲品哦!</p>
-
+<p style=" font-weight:bold; margin-top:10px;font-size:20px;border-bottom:2px solid 	#01814A;color:	#01814A">無論此刻甚麼心情我們都能滿足!</p>
+<p style=" font-weight:bold; margin-top:20px;">Bottomless Beverages 無限續杯飲料 (限內用)</p>
+<p style=" font-weight:bold; margin-top:20px;">百事可樂、柳橙汁、咖啡、湯品類</p>
+<button class="btn btn-outline-dark"@click.prevent="toCategory('drink')">查看更多</button>
 </div>
+
 </div>
 </div>
 </div>
@@ -90,13 +98,16 @@
 .circle{
    
    border-radius:50%;
-   -webkit-filter:sepia(1);
+   
 }
 .circle:hover{
   
--webkit-filter:saturate(1);
+
   cursor:pointer;
  
+}
+.cartin:hover{
+  border-bottom:4px solid black;
 }
 </style>
 <script>

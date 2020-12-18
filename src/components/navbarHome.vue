@@ -3,38 +3,106 @@
 
 
 
-<div class="header bg-primary mb-5"style="">
-<div class="container d-flex p-4 justify-content-between align-items-center">
+<div class="header bg-primary  d-flex  justify-content-around align-items-center "style="">
 
-<a class="h2" href="#/">滿漢全雞</a>
+<a class="h1 p-2"style="font-weight:bold;background:#dcd9cb;color:#21232d;font-family: Tangerine" href="#/">ChillBurger</a>
 
-  <ul class=" list-unstyled d-flex  menu"style="">
-  <li class="">
-  <a style="font-size:20px" class="  text-white " href="#/product"><i class="fas fa-book-open"></i>美味菜單</a>
+
+  
+  <ul class=" list-unstyled d-flex menu pt-3"style="">
+  <li>
+  <a style="font-size:20px;" href="#/product"><i class="fas fa-book-open"></i>美味菜單</a>
   </li>
-    <li class="">
-  <a href="#/coustomerCoupon"style="font-size:20px"class=" text-white"><i class="fas fa-ticket-alt"></i>優惠卷</a>
-  </li>
-  <li class="">
-  <a href="#/track"style="font-size:20px"class=" text-white"><i class="far fa-grin-hearts"></i>我的收藏</a>
+    <li>
+  <a href="#/coustomerCoupon"style="font-size:20px;"><i class="fas fa-ticket-alt"></i>優惠卷</a>
   </li>
   <li>
-  <a href="#/login"style="font-size:20px"class=" text-white"><i class="fas fa-sign-in-alt"></i>後台管理</a>
+  <a href="#/track"style="font-size:20px;"><i class="far fa-grin-hearts"></i>我的收藏</a>
+  </li>
+  <li>
+  <a href="#/login"style="font-size:20px;"><i class="fas fa-sign-in-alt"></i>後台管理</a>
   </li>
     </ul>
-    <a href=""class="rwdmenu"@click.prevent="showmenu">menu</a>
+
+  
+
+
+
+    <a href=""class="rwdmenu"@click.prevent="showmenu"><i class="fas fa-bars fa-3x"style="color:#dcd9cb"></i></a>
 
 
 </div>
 
    
-</div>
+
 
 
 </div>
 </template>
 <style>
 
+.header{
+  position:fixed;
+  width:100%;
+  z-index:10000000;
+  height:100px;
+  
+  
+}
+.menu a{
+ display:block;
+ padding:10px;
+ 
+ color:#dcd9cb
+
+}
+.menu a:hover{
+  transform:scale(1.2);
+}
+
+
+.rwdmenu{
+  display:none
+}
+@media (max-width:767px){
+  .menu{
+    flex-direction: column;
+    
+    max-height:0px;
+    overflow:hidden;
+    position:absolute;
+    z-index:10000000000;
+    transition:1.5s;
+    top:85px;
+    left:0;
+    right:0;
+    background:#21232d;
+    
+  }
+  .menu li{
+    border-bottom:2px dashed white;
+    text-align:center;
+  }
+  .menu-show .menu{
+    max-height:300px;
+    
+  }
+  .menu a:hover{
+    color:#21232d;
+    transform:none;
+    
+    
+  }
+  .rwdmenu{
+    display:block;
+  }
+  .menu li:hover{
+   background:white;
+   
+   
+  }
+ 
+}
 
 
 
@@ -65,55 +133,3 @@ export default {
   },
 }
 </script>
-<style>
-
-.menu a{
-  display:block;
-  transition: .2s  ;
-padding:10px;
-
-}
-.menu a:hover{
- background:black;
-  
-}
-
-.rwdmenu{
-  display:none
-}
-@media (max-width:767px){
-  .menu{
-    flex-direction: column;
-    
-    max-height:0px;
-    overflow:hidden;
-    position:absolute;
-    z-index:10000000000;
-    transition:1.5s;
-    top:94px;
-    left:0;
-    right:0;
-    background:#7D7DFF;
-    
-  }
-  .menu li{
-    border-bottom:2px dashed white;
-    text-align:center;
-  }
-  .menu-show .menu{
-    max-height:300px;
-    
-  }
-  .menu a:hover{
-    transition:1s;
-  }
-  .rwdmenu{
-    display:block;
-  }
-  .menu li:hover{
-   background:black;
-   
-  }
- 
-}
-</style>

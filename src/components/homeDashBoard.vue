@@ -3,13 +3,13 @@
 <Navbar2></Navbar2>
 <Alert></Alert>
 <div class="cartlogo "style="">
-<a class="logocart bg-dark d-flex align-items-center justify-content-center" href="#/cart"style=""><i class="fas fa-shopping-cart fa-2x  text-success"></i></a>
+<a class="logocart  d-flex align-items-center justify-content-center" href="#/cart"style=""><i class="fas fa-shopping-cart fa-2x text-secondary"></i></a>
 <span class="number d-flex align-items-center justify-content-center text-white">{{cartnum}}</span>
 
 
 </div>
-<div class="top "@click.prevent="scrollTop"style="position:fixed;right:47px;bottom:20px"><i class="fas fa-arrow-alt-circle-up fa-4x"></i></div>
-<div class="wrap">
+<div class="top "@click.prevent="scrollTop"style="position:fixed;right:47px;bottom:20px"><i class="far fa-arrow-alt-circle-up fa-4x text-success"></i></div>
+<div class="wrap"style="padding-top:150px;">
 
 <router-view></router-view>
 
@@ -67,10 +67,7 @@ export default {
 </script>
 <style>
 @media (max-width:768px){
-    .cartlogo{
-        display:none;
-       
-    }
+   
     .top{
         display:none;
     }
@@ -85,6 +82,7 @@ export default {
    
 
 }
+
 .top:hover{
 cursor:pointer;
 }
@@ -93,6 +91,7 @@ width:80px;
 height:80px;
 display:block;
 border-radius:50%;
+background:#5E005E;
 }
 .number{
     position:absolute;

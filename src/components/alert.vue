@@ -62,12 +62,12 @@ export default {
   position: fixed;
  top:10%;
   left:40%;
-  z-index: 1100;
+  z-index: 22231100;
 }
 @media(max-width:768px){
   .message-alert{
    top:10%;
-  left:20%;
+  left:30%;
   }
 
 }

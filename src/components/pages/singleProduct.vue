@@ -15,11 +15,10 @@
 </div>
 </div>
 <div class="col-lg-6 text-center">
-<h2>{{singleProduct.title}}</h2>
-<h5>產品描述</h5>
-<p>{{singleProduct.description}}</p>
-<h5>產品說明</h5>
-<p>{{singleProduct.content}}</p>
+<h2 class="text-success"style="font-weight:bold;">{{singleProduct.title}}</h2>
+
+<h4 class=" mt-4 mb-3"style="font-weight:bold">產品說明</h4>
+<p style="font-weight:bold"class="mb-4 mt-4">{{singleProduct.content}}</p>
 <div class="d-flex justify-content-around">
 <select style="width:50%"id="exampleFormControlSelect1" class="form-control"v-model="singleProduct.num">
 <option :value="num" v-for="num in 10" :key="num">
@@ -35,7 +34,7 @@
 
 
 <hr>
-<button class="btn btn-warning btn-block"@click="addcart(singleProduct.id,singleProduct.num)">加入購物車</button>
+<button class="btn btn-success btn-block"@click="addcart(singleProduct.id,singleProduct.num)">加入購物車</button>
 <button class="btn btn-outline-secondary btn-block"@click="gomenu">回菜單</button>
 </div>
 </div>
@@ -51,8 +50,8 @@
       </div>
 
   <div class="card-body">
-    <h5 class="card-title">{{item.title}}</h5>
-    <p class="card-text">{{item.content}}</p>
+    <h5 class="card-title"style="font-weight:bold">{{item.title}}</h5>
+    <p class="card-text"style="font-weight:bold">{{item.content}}</p>
   
   </div>
       </div>
@@ -66,14 +65,8 @@
 </div>
 </template>
 <style scoped>
-h2{
-    font-weight:bold;
-    color:#ffc102;
-    margin-bottom:15px;
-}
-h5{
-    font-weight:bold;
-}
+
+
 .imgto{
   cursor:pointer;
 }

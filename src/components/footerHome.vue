@@ -1,7 +1,7 @@
 <template> 
 <div> 
 <div class="footer bg-primary pt-4">
-<h2 class="text-center text-white">滿漢全雞</h2>
+<h2 class="text-center"style="color:#dcd9cb;font-family: Tangerine">ChillBurger</h2>
 
 <ul class="list-unstyled foo justify-content-center d-flex">
 <li><a href=""><i class="fab fa-instagram fa-2x text-danger"></i></a></li>
@@ -9,8 +9,8 @@
 <li><a href=""><i class="fab fa-facebook fa-2x text-info"></i></a></li>
 </ul>
 <div class="div text-center">
-<p class="text-white">地址:新北市土城區雞腿街999號<br>電話:0912345678</p>
-<a class="h5"style="font-weight:bold" href="#/question">還有其他問題?</a>
+<p style="color:#dcd9cb">地址:新北市土城區雞腿街999號<br>電話:0912345678</p>
+<a class="h5 text-danger"style="font-weight:bold" href="#/question">還有其他問題?</a>
 
 </div>
 
@@ -20,8 +20,9 @@
 </template>
 <style>
  .wrap{
-    max-width: 1150px;
+    max-width: 1250px;
     margin: 0 auto;
+    
   }
 
 
