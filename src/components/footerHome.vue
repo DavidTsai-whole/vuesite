@@ -1,7 +1,7 @@
 <template> 
 <div> 
 <div class="footer bg-primary pt-4">
-<h2 class="text-center"style="color:#dcd9cb;font-family: Tangerine">ChillBurger</h2>
+<h2 class="text-center"style="color:#dcd9cb;font-family: 'Indie Flower', cursive;">ChillBurger</h2>
 
 <ul class="list-unstyled foo justify-content-center d-flex">
 <li><a href=""><i class="fab fa-instagram fa-2x text-danger"></i></a></li>

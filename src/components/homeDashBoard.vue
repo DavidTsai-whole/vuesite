@@ -3,7 +3,7 @@
 <Navbar2></Navbar2>
 <Alert></Alert>
 <div class="cartlogo "style="">
-<a class="logocart  d-flex align-items-center justify-content-center" href="#/cart"style=""><i class="fas fa-shopping-cart fa-2x text-secondary"></i></a>
+<a class="logocart  d-flex align-items-center justify-content-center" href="#/cart"style=""><i class="fas fa-shopping-cart fa-2x text-white"></i></a>
 <span class="number d-flex align-items-center justify-content-center text-white">{{cartnum}}</span>
 
 

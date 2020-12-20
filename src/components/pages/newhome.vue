@@ -161,6 +161,7 @@ background:black;
   cursor:pointer;
   
 }
+
 @media(max-width:1000px){
   .banner{
 top:10%;

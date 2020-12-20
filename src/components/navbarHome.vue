@@ -5,7 +5,7 @@
 
 <div class="header bg-primary  d-flex  justify-content-around align-items-center "style="">
 
-<a class="h1 p-2"style="font-weight:bold;background:#dcd9cb;color:#21232d;font-family: Tangerine" href="#/">ChillBurger</a>
+<a class="h1 p-2"style="font-weight:bold;color:#dcd9cb;font-family: 'Indie Flower', cursive;" href="#/">ChillBurger</a>
 
 
   

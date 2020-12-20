@@ -1,7 +1,7 @@
 <template>
   <div class="message-alert">
     <div class="alert alert-dismissible "
-    style="font-weight:bold;font-size:40px;"
+    style="font-weight:bold;font-size:40px;box-shadow:0 4px 10px rgba(0,0,0,0.46);"
       :class="'alert-' + item.status"
       v-for="(item, i) in messages" :key="i">
       <i class="far fa-check-circle text-success"></i>{{ item.message }}

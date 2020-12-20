@@ -6,7 +6,7 @@
 
 <div class="row ">
 <div class="col-md-2">
-<ul class="list-group sticky-top">
+<ul class="list-group ">
   <a href="#" class="list-group-item  text-center" :class="{'active':visibilty == 'all'}" @click.prevent="visibilty = 'all'">所有商品</a>
   <a href="#" class="list-group-item text-center" :class="{'active':visibilty == 'burger'}" @click.prevent="visibilty = 'burger'">漢堡</a>
   <a href="#" class="list-group-item text-center" :class="{'active':visibilty == 'dessert'}" @click.prevent="visibilty = 'dessert'">配菜</a>
