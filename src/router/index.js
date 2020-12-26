@@ -12,8 +12,8 @@ import cart from '@/components/pages/cart'
 import Checkout from '@/components/pages/checkout'
 import CheckoutFinal from '@/components/pages/checkoutFinal'
 import Track from '@/components/pages/track'
-import CoustomerCoupon from '@/components/pages/coustomerCoupon'
 import Question from '@/components/pages/question'
+import THX from '@/components/pages/thx'
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -68,13 +68,14 @@ export default new VueRouter({
               path:'track',
               component:Track,
             },
-            {
-              path:'coustomerCoupon',
-              component:CoustomerCoupon,
-            },
+
             {
               path:'question',
               component:Question,
+            },
+            {
+              path:'thx',
+              component:THX,
             },
               
            ]

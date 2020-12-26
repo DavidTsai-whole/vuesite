@@ -89,6 +89,7 @@ export default {
            cartid:'',
            allcart:[],
            order:{},
+           isLoading:false,
        }
    },
    methods: {
@@ -117,8 +118,9 @@ export default {
              vm.$http.post(api).then((response) => {
                console.log(response.data);
                vm.isLoading = false;
-               vm.$bus.$emit('message:push','付款成功','light');
-               vm.getorder();
+              vm.getorder();
+              vm.$router.push('/thx');
+               
              
             
             

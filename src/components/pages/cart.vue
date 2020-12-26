@@ -1,7 +1,7 @@
 <template>
 <div>
 <loading :active.sync="isLoading"></loading>
-<div class="container">
+<div class="container ">
 
 
 <div class="row justify-content-center mt-2">
@@ -76,7 +76,7 @@
 <div class="text-center  mt-5 text-danger"style="font-weight:bold"v-else>
 <h2 class=" "style="font-weight:bold;margin-top:100px">您目前並沒有選擇任何商品喔!</h2>
 
-<div class="d-flex justify-content-around mb-5"style="margin-top:100px">
+<div class="d-flex justify-content-around mb-5"style="margin-top:100px;">
 <a class="h3 cartin" style="font-weight:bold"href="#/product"><i class="fas fa-arrow-circle-left"></i>前往購物</a>
 <a class="h3 cartin" style="font-weight:bold"href="#/"><i class="fas fa-home"></i>回首頁</a>
 </div>

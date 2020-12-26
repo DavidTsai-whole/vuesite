@@ -1,6 +1,8 @@
 <template>
 <div>   
 <loading :active.sync="isLoading"></loading>
+<div class="container">
+
 <nav aria-label="breadcrumb ">
   <ol class="breadcrumb bg-transparent">
     <li class="breadcrumb-item"><a href="#/home">首頁</a></li>
@@ -9,18 +11,18 @@
   </ol>
 </nav>
 <div class="row">
-<div class="col-lg-6">
-<div class="asda" style="height: 350px; background-size: cover; background-position: center" :style="{backgroundImage:`url(${singleProduct.imageUrl})`}" >
+<div class="col-lg-6 mb-3">
 
-</div>
+<img :src="singleProduct.imageUrl"class="img-fluid"style="max-height:300px;width:600px;object-fit:cover;" alt="">
+
 </div>
 <div class="col-lg-6 text-center">
-<h2 class="text-success"style="font-weight:bold;">{{singleProduct.title}}</h2>
+<h2 class="text-primary"style="font-weight:bold;">{{singleProduct.title}}</h2>
 
-<h4 class=" mt-4 mb-3"style="font-weight:bold">產品說明</h4>
-<p style="font-weight:bold"class="mb-4 mt-4">{{singleProduct.content}}</p>
+<h3 class=" mt-4 mb-3">產品說明</h3>
+<p class="mb-4 mt-4">{{singleProduct.content}}</p>
 <div class="d-flex justify-content-around">
-<select style="width:50%"id="exampleFormControlSelect1" class="form-control"v-model="singleProduct.num">
+<select style="width:50%;border:2px solid #21232d"id="exampleFormControlSelect1" class="form-control text-primary"v-model="singleProduct.num">
 <option :value="num" v-for="num in 10" :key="num">
 選購{{num}}{{singleProduct.unit}}
 </option>
@@ -33,42 +35,42 @@
 </div>
 
 
-<hr>
-<button class="btn btn-success btn-block"@click="addcart(singleProduct.id,singleProduct.num)">加入購物車</button>
-<button class="btn btn-outline-secondary btn-block"@click="gomenu">回菜單</button>
+<div class="mt-5">
+<button class="btn btn-primary"style="width:49%"@click="addcart(singleProduct.id,singleProduct.num)">加入購物車</button>
+<button class="btn btn-outline-secondary"style="width:49%"@click="gomenu">回菜單</button>
+</div>
+
 </div>
 </div>
 <hr>
-<h5 class="text-center mb-3">相關產品</h5>
+<h2 class="text-center mb-3 font-weight-bold">相關產品</h2>
 
       <div class="row">
-      <div class="col-lg-3 mb-3" v-for="item in filterTodo">
+      <div class="col-md-3 mb-3 col-sm-6" v-for="item in filterTodo">
 
-      <div class="card">
-      <div class ="imgto" style="height: 180px; background-size: cover; background-position: center":style="{backgroundImage:`url(${item.imageUrl})`}" @click="inputProductid(item)">
-      
-      </div>
-
+<div class="card"@click="inputProductid(item)"style="cursor:pointer;overflow:hidden;">
+  <img :src="item.imageUrl" class="card-img-top img-fluid x"style="height:180px;object-fit:cover;transform:scale(1,1);transition: all 1s ease-out;" alt="">
   <div class="card-body">
-    <h5 class="card-title"style="font-weight:bold">{{item.title}}</h5>
-    <p class="card-text"style="font-weight:bold">{{item.content}}</p>
-  
+       <h5 class="card-title"style="font-weight:bold">{{item.title}}</h5>
+    <p class="card-text">{{item.content}}</p>
   </div>
-      </div>
+</div>
+
+    
 
 
 
     </div>
   </div>
- 
+ </div>
 </div>
 </div>
 </template>
 <style scoped>
 
 
-.imgto{
-  cursor:pointer;
+.x:hover{
+  transform:scale(1.2,1.2);
 }
 </style>
 <script>

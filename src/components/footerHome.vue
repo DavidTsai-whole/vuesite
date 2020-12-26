@@ -1,5 +1,5 @@
 <template> 
-<div> 
+
 <div class="footer bg-primary pt-4">
 <h2 class="text-center"style="color:#dcd9cb;font-family: 'Indie Flower', cursive;">ChillBurger</h2>
 
@@ -16,14 +16,10 @@
 
 
 </div>
-</div>
+
 </template>
 <style>
- .wrap{
-    max-width: 1250px;
-    margin: 0 auto;
-    
-  }
+
 
 
 img{

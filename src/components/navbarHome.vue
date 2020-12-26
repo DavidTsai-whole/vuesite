@@ -1,20 +1,17 @@
 <template>
-<div>
 
 
 
-<div class="header bg-primary  d-flex  justify-content-around align-items-center "style="">
 
-<a class="h1 p-2"style="font-weight:bold;color:#dcd9cb;font-family: 'Indie Flower', cursive;" href="#/">ChillBurger</a>
+<div class="header bg-primary mb-5  d-flex  justify-content-around align-items-center ">
+
+<a class="h1 "style="font-weight:bold;color:#dcd9cb;font-family: 'Indie Flower', cursive;" href="#/">ChillBurger</a>
 
 
   
   <ul class=" list-unstyled d-flex menu pt-3"style="">
   <li>
   <a style="font-size:20px;" href="#/product"><i class="fas fa-book-open"></i>美味菜單</a>
-  </li>
-    <li>
-  <a href="#/coustomerCoupon"style="font-size:20px;"><i class="fas fa-ticket-alt"></i>優惠卷</a>
   </li>
   <li>
   <a href="#/track"style="font-size:20px;"><i class="far fa-grin-hearts"></i>我的收藏</a>
@@ -37,7 +34,7 @@
 
 
 
-</div>
+
 </template>
 <style>
 

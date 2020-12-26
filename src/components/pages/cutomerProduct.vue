@@ -6,11 +6,11 @@
 
 <div class="row ">
 <div class="col-md-2">
-<ul class="list-group ">
-  <a href="#" class="list-group-item  text-center" :class="{'active':visibilty == 'all'}" @click.prevent="visibilty = 'all'">所有商品</a>
-  <a href="#" class="list-group-item text-center" :class="{'active':visibilty == 'burger'}" @click.prevent="visibilty = 'burger'">漢堡</a>
-  <a href="#" class="list-group-item text-center" :class="{'active':visibilty == 'dessert'}" @click.prevent="visibilty = 'dessert'">配菜</a>
-  <a href="#" class="list-group-item text-center" :class="{'active':visibilty == 'drink'}" @click.prevent="visibilty = 'drink'">飲品</a>
+<ul class="list-group list-unstyled">
+  <li><a href="#" class="list-group-item  text-center" :class="{'active':visibilty == 'all'}" @click.prevent="visibilty = 'all'">所有商品</a></li>
+  <li><a href="#" class="list-group-item text-center" :class="{'active':visibilty == 'burger'}" @click.prevent="visibilty = 'burger'">漢堡</a></li>
+  <li><a href="#" class="list-group-item text-center" :class="{'active':visibilty == 'dessert'}" @click.prevent="visibilty = 'dessert'">配菜</a></li>
+  <li><a href="#" class="list-group-item text-center" :class="{'active':visibilty == 'drink'}" @click.prevent="visibilty = 'drink'">飲品</a></li>
 
 </ul>
 </div>
@@ -18,7 +18,7 @@
 
 <div class="row mb-5">
 <div class="sort col-md-6 col-sm-6 ">
-<select name="" id="" class="form-control" v-model="asdad">
+<select name=""  id="" class="form-control text-primary"style="border:2px solid #21232d" v-model="asdad">
 <option value="0">全部商品</option>
 <option value="1">依價格低到高排序</option>
 <option value="2">依價格高到低排序</option>
@@ -28,7 +28,7 @@
 <div class="search col-md-6  col-sm-6">
 <div class="d-flex align-items-center">
 <i class="fas fa-search fa-2x pr-2"></i>
-<input type="text"class="form-control"placeholder="搜尋產品"v-model="filterText">
+<input type="text"class="form-control  "style="border:2px solid #21232d"placeholder="搜尋產品 "v-model="filterText">
 </div>
 
 </div>
@@ -48,7 +48,7 @@
       
     </div>
     <div class="imgtext "@click="inputProductid(item)">
-     <h3 class="" >more</h3>
+     <h3>more</h3>
      </div>
     
    <div class="track">
@@ -72,7 +72,7 @@
     </div>
     <div class="card-footer">
       
-      <button class="btn btn-block btn-danger btn-sm ml-auto"@click="addcart(item.id)">
+      <button class="btn btn-block btn-primary btn-sm ml-auto"@click="addcart(item.id)">
         
         加到購物車
       </button>
@@ -288,6 +288,7 @@ export default {
 }
 </script>
 <style>
+
 .box-shadow:hover{
 box-shadow:0 4px 10px rgba(0,0,0,0.46);
 
@@ -297,9 +298,6 @@ box-shadow:0 4px 10px rgba(0,0,0,0.46);
 }
 .box-shadow:hover .toProuductDetail{
 -webkit-filter:brightness(.5);
-}
-.card{
-overflow:hidden;
 }
 
 .toProuductDetail:hover {

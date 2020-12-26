@@ -16,15 +16,14 @@
           <li class="toplogo1 d-flex align-items-center justify-content-center h3 ">訂單完成</li>
         </ul>
         <div class="mt-5">
-        <div class="text-center"v-if="allcart.total<1000 && allcart.final_total == allcart.total && allcart.total!==0"><h4 style="font-weight:bold">消費總金額 <span class="h2 text-success"> NT${{allcart.total+60}}</span></h4></div>
-          <div class="text-center"v-else-if="allcart.total===0 "><h4 style="font-weight:bold">消費總金額 <span class="h2 text-success"> NT${{allcart.total}}</span></h4></div>
+        <div class="text-center"v-if="allcart.total<1000 && allcart.final_total === allcart.total && allcart.total!==0"><h4 style="font-weight:bold">消費總金額 <span class="h2 text-success"> NT${{allcart.total+60}}</span></h4></div>
         <div class="text-center"v-else-if="allcart.total>=1000 && allcart.final_total == allcart.total"><h4 style="font-weight:bold">消費總金額 <span class="h2 text-success"> NT${{allcart.total}}</span></h4></div>
         <div class="text-center"v-else-if="allcart.total<1000 && allcart.final_total !== allcart.total"><h4 style="font-weight:bold">消費總金額 <span class="h2 text-success"> NT${{Math.round(allcart.final_total+60)}}</span></h4></div>
-        <div class="text-center"v-else><h4 style="font-weight:bold">消費總金額 <span class="h2 text-success"> NT${{Math.round(allcart.final_total)}}</span></h4></div>
+        <div class="text-center"v-else><h4 style="font-weight:bold">消費總金額 <span class="h2 text-success"> NT${{Math.round(allcart.total)}}</span></h4></div>
         <div class="text-center " v-if="allcart.total !==0"><h4 style="font-weight:bold;cursor:pointer;display:inline;"@click.prevent="hide = !hide">總計{{cartnum}}件商品<i class="fas fa-angle-down"v-if="hide == true"></i><i class="fas fa-angle-up"v-else></i></h4>
         <div class="input-group w-50  ml-auto mr-auto mt-3">
  
-        <input type="text" class="form-control" aria-label="Recipient's username" v-if="allcart.total !==0" placeholder="請輸入優惠卷" v-model="couponcode" aria-describedby="button-addon2">
+        <input type="text" class="form-control"style="border:2px solid black" aria-label="Recipient's username" v-if="allcart.total !==0" placeholder="請輸入優惠卷" v-model="couponcode" aria-describedby="button-addon2">
         <div class="input-group-append ">
      <button class="btn btn-primary"v-if="allcart.total !==0" type="button" id="button-addon2"@click="useCoupon">傳送</button>
      </div>
@@ -96,16 +95,16 @@
   <form class="pt-3"@submit.prevent="submitorder">
     <validation-provider class="form-group" rules="required|email" v-slot="{ errors, classes }">
   <!-- 輸入框 -->
-  <label for="email">Email</label>
-  <input id="email" type="email" name="email"  v-model="form.user.email"
+  <label for="email">Email<span class="text-danger">(必填)</span></label>
+  <input id="email" type="email" name="電子信箱"  v-model="form.user.email"
     class="form-control" :class="classes">
   <!-- 錯誤訊息 -->
   <span class="invalid-feedback">{{ errors[0] }}</span>
 </validation-provider>
   <validation-provider class="form-group" rules="required|min:3" v-slot="{ errors, classes }">
   <!-- 輸入框 -->
-  <label for="name">姓名</label>
-  <input id="name" type="text" name="name"  v-model="form.user.name"
+  <label for="name">姓名<span class="text-danger">(必填)</span></label>
+  <input id="name" type="text" name="姓名"  v-model="form.user.name"
     class="form-control" :class="classes">
   <!-- 錯誤訊息 -->
   <span class="invalid-feedback">{{ errors[0] }}</span>
@@ -113,7 +112,7 @@
   
     <validation-provider class="form-group" rules="required|min:8|max:10" v-slot="{ errors, classes }">
   <!-- 輸入框 -->
-  <label for="tel">電話</label>
+  <label for="tel">電話<span class="text-danger">(必填)</span></label>
   <input id="tel" type="tel" name="電話"  v-model="form.user.tel"
     class="form-control" :class="classes">
   <!-- 錯誤訊息 -->
@@ -121,7 +120,7 @@
 </validation-provider>
      <validation-provider class="form-group" rules="required" v-slot="{ errors, classes }">
   <!-- 輸入框 -->
-  <label for="address">地址</label>
+  <label for="address">地址<span class="text-danger">(必填)</span></label>
   <input id="address" type="tel" name="地址"  v-model="form.user.address"
     class="form-control" :class="classes">
   <!-- 錯誤訊息 -->
@@ -131,14 +130,15 @@
 
          <validation-provider class="form-group" v-slot="{ errors, classes }">
   <!-- 輸入框 -->
-  <label for="comment">留言(選填)</label>
+  <label for="comment">留言<span class="text-success">(選填)</span></label>
    <textarea name="留言" id="comment" class="form-control" cols="30" rows="10" v-model="form.message"></textarea>
    
   <!-- 錯誤訊息 -->
   <span class="invalid-feedback">{{ errors[0] }}</span>
 </validation-provider>
     <div class="text-right pb-3 pt-3">
-      <button class="btn btn-danger":disabled="invalid">送出訂單</button>
+      <button class="btn btn-danger"v-if="invalid" style="cursor: not-allowed;":disabled="invalid">送出訂單</button>
+      <button class="btn btn-danger"v-if="!invalid" :disabled="invalid">送出訂單</button>
     </div>
   </form>
   </validation-observer>
@@ -149,7 +149,7 @@
 <h1 class="text-danger"style="font-weight:bold">請重新選購商品!!</h1>
 <div class="d-flex justify-content-around mt-5">
 <a class="h3 cartin" style="font-weight:bold"href="#/product"><i class="fas fa-arrow-circle-left"></i>前往購物</a>
-<a class="h3 cartin" style="font-weight:bold"href="#/home"><i class="fas fa-arrow-circle-right"></i>回首頁</a>
+<a class="h3 cartin" style="font-weight:bold"href="#/"><i class="fas fa-arrow-circle-right"></i>回首頁</a>
 </div>
 </div>
 
@@ -230,7 +230,10 @@ export default {
                vm.isLoading = false;
             console.log(response.data);
             vm.coupondata = response.data.data;
+            if(response.data.success === true)
              vm.$bus.$emit('message:push','已使用優惠卷','light');
+             else 
+             vm.$bus.$emit('message:push','此序號不存在','danger');
             vm.getcart();
             
              

@@ -2,10 +2,10 @@
 <div>
  <form class="form-signin " @submit.prevent="signin">
   <h1 class="h3 mb-3 font-weight-normal text-center">請先登入</h1>
-  <label for="inputEmail" class="sr-only">Email address</label>
-  <input type="email" id="inputEmail" class="form-control"v-model="user.username" placeholder="Email address" required autofocus>
+  <label for="inputEmail" class="sr-only"style="border:2px solid #21232d">Email address</label>
+  <input type="email" id="inputEmail" class="form-control"style="border:2px solid #21232d"v-model="user.username" placeholder="Email address" required autofocus>
   <label for="inputPassword" class="sr-only">Password</label>
-  <input type="password" id="inputPassword" v-model="user.password" class="form-control" placeholder="Password" required>
+  <input type="password" id="inputPassword" v-model="user.password" class="form-control"style="border:2px solid #21232d" placeholder="Password" required>
   <div class="checkbox mb-3">
     <label>
       <input type="checkbox" value="remember-me"> Remember me
@@ -17,10 +17,7 @@
 </template>
 
 <style scoped>
-html,
-body {
-  height: 100%;
-}
+
 
 body {
   display: -ms-flexbox;
@@ -85,6 +82,9 @@ export default {
          console.log(response.data);
          if(response.data.success){
            vm.$router.push('/admin/product')
+         }
+         else{
+           this.$bus.$emit('message:push','登入失敗','danger');
          }
           });
 

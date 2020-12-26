@@ -45,50 +45,44 @@
 </div>
 </div>
 
-<div class="container">
-<h2 class="text-center text-danger p-5"style="font-weight:bold"><i class="fas fa-utensils"></i>餐點介紹</h2>
-<div class="row ">
 
+<h2 class="text-center text-white p-3 bg-primary mt-5 mb-5"style="font-weight:bold"><i class="fas fa-utensils"></i>餐點介紹</h2>
+<!--餐點介紹-->
+<div class="row ">
+<!--漢堡-->
 <div class="col-md-4 text-center  mb-3">
 <a href="#"@click.prevent="toCategory('burger')">
-<div class="circle mb-4"  style="height: 300px; background-size: cover; background-position: center;background-image:url('https://upload.cc/i1/2020/12/16/ULuyja.jpg')">
-
-</div>
+<img src="https://upload.cc/i1/2020/12/16/bTHgpY.jpg" class="circle mb-4 img-fluid" alt="">
 </a>
 <h2 style="font-weight:bold">漢堡</h2>
 <p style=" font-weight:bold; margin-top:10px;font-size:20px;border-bottom:2px solid 	#01814A;color:	#01814A">不可錯過的正宗美式漢堡!</p>
-<p style=" font-weight:bold; margin-top:20px;">會不定期的推出新口味，敬請期待</p>
-<p style=" font-weight:bold; margin-top:20px;">有豬肉、牛肉、雞肉、菇類等多樣選擇</p>
+<p style=" margin-top:20px;">會不定期的推出新口味，敬請期待</p>
+<p style=" margin-top:20px;">有豬肉、牛肉、雞肉、菇類等多樣選擇</p>
 <button class="btn btn-outline-dark"@click.prevent="toCategory('burger')">查看更多</button>
 </div> 
-
-<div class="col-md-4 text-center mb-3"style="">
+<!--配菜-->
+<div class="col-md-4 text-center mb-3">
 <a href="#"@click.prevent="toCategory('dessert')">
-<div class="circle mb-4 " style="height: 300px; background-size: cover; background-position: center;background-image:url('https://upload.cc/i1/2020/12/16/Zi9GVn.jpg');">
-</div>
+<img src="https://upload.cc/i1/2020/12/16/HtSnj8.jpg" class="circle mb-4 img-fluid" alt="">
 </a>
 <h2 style="font-weight:bold">配菜</h2>
 <p style=" font-weight:bold; margin-top:10px;font-size:20px;border-bottom:2px solid 	#01814A;color:	#01814A">好看的劇一定是有好的配角!</p>
-<p style=" font-weight:bold; margin-top:20px;">配菜類的商品只要續點通通9折(限內用)</p>
-<p style=" font-weight:bold; margin-top:20px;">沙拉、炸物、烤類等多種配菜</p>
+<p style=" margin-top:20px;">配菜類的商品只要續點通通9折(限內用)</p>
+<p style=" margin-top:20px;">沙拉、炸物、烤類等多種配菜</p>
 <button class="btn btn-outline-dark"@click.prevent="toCategory('dessert')">查看更多</button>
 </div>
-
-<div class="col-md-4 text-center ">
+<!--飲品-->
+<div class="col-md-4 text-center mb-3">
 <a href="#"@click.prevent="toCategory('drink')">
-<div class="circle mb-4"  style="height: 300px; background-size: cover; background-position: center;background-image:url('https://upload.cc/i1/2020/12/16/eiLXZl.jpg')">
-
-</div>
+<img src="https://upload.cc/i1/2020/12/16/eiLXZl.jpg" class="circle mb-4 img-fluid" alt="">
 </a>
-
 <h2 style="font-weight:bold">飲品</h2>
 <p style=" font-weight:bold; margin-top:10px;font-size:20px;border-bottom:2px solid 	#01814A;color:	#01814A">無論此刻甚麼心情我們都能滿足!</p>
-<p style=" font-weight:bold; margin-top:20px;">Bottomless Beverages 無限續杯飲料 (限內用)</p>
-<p style=" font-weight:bold; margin-top:20px;">百事可樂、柳橙汁、咖啡、湯品類</p>
+<p style="margin-top:20px;">Bottomless Beverages 無限續杯飲料 (限內用)</p>
+<p style="margin-top:20px;">百事可樂、柳橙汁、咖啡、湯品類</p>
 <button class="btn btn-outline-dark"@click.prevent="toCategory('drink')">查看更多</button>
 </div>
 
-</div>
 </div>
 </div>
 </div>

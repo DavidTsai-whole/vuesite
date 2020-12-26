@@ -4,16 +4,16 @@
 <Alert></Alert>
 <div class="cartlogo "style="">
 <a class="logocart  d-flex align-items-center justify-content-center" href="#/cart"style=""><i class="fas fa-shopping-cart fa-2x text-white"></i></a>
-<span class="number d-flex align-items-center justify-content-center text-white">{{cartnum}}</span>
+<span class="number d-flex align-items-center justify-content-center text-white"v-if="cartnum!=0">{{cartnum}}</span>
 
 
 </div>
-<div class="top "@click.prevent="scrollTop"style="position:fixed;right:47px;bottom:20px"><i class="far fa-arrow-alt-circle-up fa-4x text-success"></i></div>
-<div class="wrap"style="padding-top:150px;">
 
-<router-view></router-view>
 
-</div>
+
+<router-view style="padding-top:150px;"></router-view>
+
+
 <footer2></footer2>
 
 </div>
@@ -66,6 +66,7 @@ export default {
 }
 </script>
 <style>
+
 @media (max-width:768px){
    
     .top{
@@ -74,10 +75,10 @@ export default {
 }
 .cartlogo{
    right:40px;
-   bottom:90px;
+   bottom:30px;
     
     
-    z-index:10000;
+    z-index:100;
     position:fixed;
    
 
@@ -89,9 +90,10 @@ cursor:pointer;
 .logocart{
 width:80px;
 height:80px;
-display:block;
+
 border-radius:50%;
-background:#5E005E;
+background:#21232d;
+
 }
 .number{
     position:absolute;

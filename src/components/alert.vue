@@ -4,12 +4,22 @@
     style="font-weight:bold;font-size:40px;box-shadow:0 4px 10px rgba(0,0,0,0.46);"
       :class="'alert-' + item.status"
       v-for="(item, i) in messages" :key="i">
-      <i class="far fa-check-circle text-success"></i>{{ item.message }}
+      <i class="far fa-check-circle text-success font-weight-bold"v-if="item.status !=='danger'"> {{ item.message }}</i>
+       <i class="fas fa-times text-danger"v-if="item.status === 'danger'"> {{ item.message }}</i>
       <button type="button" class="close" @click="removeMessage(i)" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
   </div>
+
+
+
+
+  
+  
+  
+
+ 
 </template>
 
 <script>
@@ -68,6 +78,13 @@ export default {
   .message-alert{
    top:10%;
   left:30%;
+  }
+
+}
+@media(max-width:568px){
+  .message-alert{
+   top:10%;
+  left:20%;
   }
 
 }
