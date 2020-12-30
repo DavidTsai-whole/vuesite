@@ -1,0 +1,111 @@
+.banner{
+    position:absolute;
+    padding:40px;
+    background:#dcd9cb;
+    background:hsla(0,0%,100%,.40);
+    margin-top:15%;
+    text-align:center;
+  left:20%;right:20%;
+}
+.banner h1{
+    color:#21232d;
+  font-weight:bold;
+}
+.hamP1{
+    font-weight:bold; 
+    margin-top:10px;font-size:20px;
+    border-bottom:2px solid #01814A;
+    color:#01814A;
+}
+.hamP2{
+    margin-top:20px;
+}
+.hamP3{
+    margin-top:20px;
+}
+.dashP1{
+    font-weight:bold;
+    margin-top:10px;
+    font-size:20px;border-bottom:2px solid#01814A;
+    color:#01814A;
+}
+.dashP2{
+    margin-top:20px;
+}
+.dashP3{
+    margin-top:20px;
+}
+.drinkP1{
+    font-weight:bold;
+     margin-top:10px;
+     font-size:20px;
+     border-bottom:2px solid#01814A;
+     color:#01814A;
+}
+.drinkP2{
+    margin-top:20px;
+}
+.drinkP3{
+    margin-top:20px;
+}
+.develop p{
+    line-height:1.8;
+    font-size:15px;
+}
+.quality ul{
+    font-size:15px;
+    line-height:1.6
+}
+.idea p{
+    line-height:1.8;
+    font-size:15px;
+}
+.circle{
+    border-radius:50%;
+    height:300px;
+    width:300px;
+    object-fit:cover;
+   
+
+   }
+   .menu a{
+       font-weight:bold;
+   }
+.circle:hover{
+   
+ cursor:pointer;  
+}
+.openHour{
+    position:absolute;
+    top:47%;
+    left:65%;
+}
+.modal-body h5{
+    border:2px dashed black;
+}
+
+@media(max-width:992px){
+    .banner{
+      margin-top:20%;
+    }
+  .banner h1{
+    font-size:30px;
+  }
+  .circle{
+     height:220px;
+   width:220px;
+  }
+  
+  
+  }
+  @media(max-width:768px){
+    .banner{
+   left:0;right:0;
+    }
+    .circle{
+         height:400px;
+   width:400px;
+    }
+  
+  }
+  

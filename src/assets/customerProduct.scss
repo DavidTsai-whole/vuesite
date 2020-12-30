@@ -1,0 +1,77 @@
+.sort select{
+    border:2px solid #21232d;
+}
+.search input{
+    border:2px solid #21232d;
+}
+.imgtext{
+    position:absolute;
+    color:white;
+    display:none;
+    z-index:1000;
+     top:16%;
+    left: 39%;
+  }
+.imgtext:hover{
+    cursor:pointer;
+  }
+  .box-shadow:hover{
+    box-shadow:0 4px 10px rgba(0,0,0,0.46); 
+ }
+ .box-shadow:hover .imgtext{
+      display:block;
+ }
+.box-shadow:hover .toProuductDetail{
+    -webkit-filter:brightness(.5);
+ }
+    
+.toProuductDetail:hover {
+      cursor:pointer; 
+  }
+.track{
+    position:absolute;
+    right:0px;
+    
+  }
+.track a{
+    display:block;
+     padding:4px;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width:768px){
+    .sort{
+      margin-top:20px;
+    }
+    .search{
+      margin-top:20px;
+    }
+    }

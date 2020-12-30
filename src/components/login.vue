@@ -11,7 +11,7 @@
       <input type="checkbox" value="remember-me"> Remember me
     </label>
   </div>
-  <button class="btn btn-lg btn-warning btn-block" type="submit">Sign in</button>
+  <button class="btn btn-lg btn-dark1 btn-block" type="submit">Sign in</button>
 </form>
 </div>
 </template>
@@ -79,7 +79,7 @@ export default {
          const api = `${process.env.APIPATH}/admin/signin`;
          const vm = this;
          this.$http.post(api,vm.user).then((response) => {
-         console.log(response.data);
+         
          if(response.data.success){
            vm.$router.push('/admin/product')
          }

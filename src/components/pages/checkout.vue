@@ -3,33 +3,33 @@
     <loading :active.sync="isLoading"></loading>
 
 
-        <div class="container">
+        <div class="container mb-5">
         
       
         <div class="row justify-content-center">
         <div class="col-md-8">
         <ul class=" list-unstyled d-flex justify-content-around">
-          <li class="toplogo1 d-flex align-items-center justify-content-center h3 ">購物車</li>
+          <li class="topLogo1 d-flex align-items-center justify-content-center h3 ">購物車</li>
           <li><i class="fas fa-arrow-right fa-4x text-danger ml-2 mr-2"></i></li>
-          <li class="toplogo1 d-flex align-items-center justify-content-center h3 text-white" style="background:#21232d;">結帳</li>
+          <li class="topLogo1 d-flex align-items-center justify-content-center h3 text-white bg-dark1">結帳</li>
           <li><i class="fas fa-arrow-right fa-4x text-danger ml-2 mr-2"></i></li>
-          <li class="toplogo1 d-flex align-items-center justify-content-center h3 ">訂單完成</li>
+          <li class="topLogo1 d-flex align-items-center justify-content-center h3 ">訂單完成</li>
         </ul>
         <div class="mt-5">
-        <div class="text-center"v-if="allcart.total<1000 && allcart.final_total === allcart.total && allcart.total!==0"><h4 style="font-weight:bold">消費總金額 <span class="h2 text-success"> NT${{allcart.total+60}}</span></h4></div>
-        <div class="text-center"v-else-if="allcart.total>=1000 && allcart.final_total == allcart.total"><h4 style="font-weight:bold">消費總金額 <span class="h2 text-success"> NT${{allcart.total}}</span></h4></div>
-        <div class="text-center"v-else-if="allcart.total<1000 && allcart.final_total !== allcart.total"><h4 style="font-weight:bold">消費總金額 <span class="h2 text-success"> NT${{Math.round(allcart.final_total+60)}}</span></h4></div>
-        <div class="text-center"v-else><h4 style="font-weight:bold">消費總金額 <span class="h2 text-success"> NT${{Math.round(allcart.total)}}</span></h4></div>
-        <div class="text-center " v-if="allcart.total !==0"><h4 style="font-weight:bold;cursor:pointer;display:inline;"@click.prevent="hide = !hide">總計{{cartnum}}件商品<i class="fas fa-angle-down"v-if="hide == true"></i><i class="fas fa-angle-up"v-else></i></h4>
+        <div class="text-center"v-if="allcart.total<1000 && allcart.total!==0"><h4 class="font-weight-bold">消費總金額 <span class="h2 text-success"> NT${{Math.round(allcart.final_total+60)}}</span></h4></div>
+        <div class="text-center"v-else="allcart.total>=1000 && allcart.total ===0"><h4 class="font-weight-bold">消費總金額 <span class="h2 text-success"> NT${{Math.round(allcart.final_total)}}</span></h4></div>
+      
+
+        <div class="text-center" v-if="allcart.total !==0"><h4 class="totalTitle font-weight-bold"@click.prevent="hide = !hide">總計{{cartnum}}件商品<i class="fas fa-angle-down"v-if="hide == true"></i><i class="fas fa-angle-up"v-else></i></h4>
         <div class="input-group w-50  ml-auto mr-auto mt-3">
  
-        <input type="text" class="form-control"style="border:2px solid black" aria-label="Recipient's username" v-if="allcart.total !==0" placeholder="請輸入優惠卷" v-model="couponcode" aria-describedby="button-addon2">
+        <input type="text" class="inputCoupon form-control"aria-label="Recipient's username" v-if="allcart.total !==0" placeholder="請輸入優惠卷" v-model="couponcode" aria-describedby="button-addon2">
         <div class="input-group-append ">
-     <button class="btn btn-primary"v-if="allcart.total !==0" type="button" id="button-addon2"@click="useCoupon">傳送</button>
+     <button class="btn btn-dark1"v-if="allcart.total !==0" type="button" id="button-addon2"@click="useCoupon">傳送</button>
      </div>
  
 </div>
-        <table class="table mt-5 table-borderless"style="color:#dcd9cb;background:#21232d":class="{'d-none':hide}"v-if="allcart.total !==0">
+        <table class="table mt-5 table-borderless bg-dark1 text-white":class="{'d-none':hide}"v-if="allcart.total !==0">
 <thead class="thead-dark">
 
 <th class="text-center">品名</th>
@@ -43,7 +43,8 @@
 <tbody>
 <tr v-for="item in allcart.carts"style="border-bottom:1px solid #E0E0E0">
 
-<td class="text-center pt-4">{{item.product.title}}</td>
+<td class="text-center pt-4"v-if="item.final_total !== item.total">{{item.product.title}}<br><span class="text-danger">(已套用優惠卷)</span></td>
+<td class="text-center pt-4"v-else>{{item.product.title}}</td>
 <td class="text-center"><img style="height:80px;width:80px;" :src="`${item.product.imageUrl}`" alt="" ></td>
 <td class="text-center pt-4">{{item.qty}}</td>
 <td class="text-center pt-4">{{item.product.price}}</td>
@@ -54,34 +55,33 @@
 </tbody>
 <tfoot>
 <tr>
-<td colspan="4" v-if="allcart.total >=1000" class="text-right h5 text-warning" style="font-weight:bold">滿1000免運</td>
+<td colspan="4" v-if="allcart.total >=1000" class="text-right">(滿1000免運)</td>
 </tr>
 
 <tr>
-<td colspan="3" class="text-right h3" style="font-weight:bold">小計:</td>
-<td  class="h3 text-right text-danger"style="font-weight:bold">{{allcart.total}}元</td>
+<td colspan="3" class="text-right">小計:</td>
+<td  class="text-right">${{allcart.total}}元</td>
 </tr>
 
-<tr style="border-bottom:1px solid #E0E0E0">
-<td colspan="3" class="text-right h3" style="font-weight:bold">運費:</td>
-<td v-if="allcart.total >=1000 || allcart.total===0" class="h3 text-right text-warning"style="font-weight:bold">0元</td>
-<td v-else class="h3 text-right text-warning"style="font-weight:bold">60元</td>
+<tr class="tableBorder">
+<td colspan="3" class="text-right">運費:</td>
+<td v-if="allcart.total >=1000 || allcart.total===0" class="text-right">$0元</td>
+<td v-else class="text-right">$60元</td>
 </tr>
 
 <tr>
-<td colspan="3" class="text-right h3" style="font-weight:bold">總計:</td>
-<td v-if="allcart.total >=1000 || allcart.total===0" class="h3 text-right text-success"style="font-weight:bold">{{allcart.total}}元</td>
-<td v-else class="h3 text-right text-success"style="font-weight:bold">{{allcart.total+60}}元</td>
+<td colspan="3" class="text-right h3">總計:</td>
+<td v-if="allcart.total >=1000 || allcart.total===0" class="h3 text-right">${{allcart.total}}元</td>
+<td v-else class="h3 text-right">${{allcart.total+60}}元</td>
 </tr>
 
 <tr v-if="allcart.total !== allcart.final_total && allcart.total<1000">
-<td colspan="3" class="text-right h3 text-success" style="font-weight:bold">優惠價:</td>
-<td class="h3 text-right text-white"style="font-weight:bold">{{Math.round(allcart.final_total+60)}}元</td>
+<td colspan="3" class="text-right h3 text-success">折扣價:</td>
+<td class="h3 text-right text-success">${{Math.round(allcart.final_total+60)}}元</td>
 </tr>
-
 <tr v-if="allcart.total !== allcart.final_total && allcart.total>=1000">
-<td colspan="3" class="text-right h3 text-success" style="font-weight:bold">優惠價:</td>
-<td class="h3 text-right text-white"style="font-weight:bold">{{Math.round(allcart.final_total)}}元</td>
+<td colspan="3" class="text-right h3 text-success">折扣價:</td>
+<td class="h3 text-right text-success">${{Math.round(allcart.final_total)}}元</td>
 </tr>
 </tfoot>
 </table>
@@ -90,9 +90,9 @@
 
        
 
-<div class="my-5 row justify-content-center"style="background:	#21232d;color:#dcd9cb" v-if="allcart.total !==0">
+<div class="my-5 row justify-content-center bg-dark1 text-white" v-if="allcart.total !==0">
 <validation-observer class="col-md-10" v-slot="{ invalid }">
-  <form class="pt-3"@submit.prevent="submitorder">
+  <form class="pt-2"@submit.prevent="submitorder">
     <validation-provider class="form-group" rules="required|email" v-slot="{ errors, classes }">
   <!-- 輸入框 -->
   <label for="email">Email<span class="text-danger">(必填)</span></label>
@@ -137,7 +137,7 @@
   <span class="invalid-feedback">{{ errors[0] }}</span>
 </validation-provider>
     <div class="text-right pb-3 pt-3">
-      <button class="btn btn-danger"v-if="invalid" style="cursor: not-allowed;":disabled="invalid">送出訂單</button>
+      <button class="notAllowed btn btn-danger"v-if="invalid":disabled="invalid">送出訂單</button>
       <button class="btn btn-danger"v-if="!invalid" :disabled="invalid">送出訂單</button>
     </div>
   </form>
@@ -148,8 +148,8 @@
 <div class="text-center mt-5"style="" v-else>
 <h1 class="text-danger"style="font-weight:bold">請重新選購商品!!</h1>
 <div class="d-flex justify-content-around mt-5">
-<a class="h3 cartin" style="font-weight:bold"href="#/product"><i class="fas fa-arrow-circle-left"></i>前往購物</a>
-<a class="h3 cartin" style="font-weight:bold"href="#/"><i class="fas fa-arrow-circle-right"></i>回首頁</a>
+<a class="h3 cartin font-weight-bold" href="#/product"><i class="fas fa-arrow-circle-left"></i>前往購物</a>
+<a class="h3 cartin font-weight-bold" href="#/"><i class="fas fa-arrow-circle-right"></i>回首頁</a>
 </div>
 </div>
 
@@ -161,26 +161,7 @@
           </div>
     </div>
 </template>
-<style scoped>
-.toplogo1{
- 
-  height:60px;
-  width:200px;
-  border-radius:15px ;
- font-weight:bold;
-  border:3px solid 	#21232d;
-  
-}
 
-.cartin{
-  border-bottom:3px solid transparent;
-}
-.cartin:hover{
-  border-bottom:3px solid black;
-}
-
-
-</style>
 <script>
 export default {
     data() {
@@ -208,7 +189,7 @@ export default {
             vm.isLoading = true;
             const api = `${process.env.APIPATH}/api/${process.env.MEPATH}/cart`;
             vm.$http.get(api).then((response) => {
-            console.log(response.data);
+            
              vm.isLoading = false;
              vm.allcart = response.data.data;
              vm.cartnum = response.data.data.carts.length;
@@ -228,7 +209,7 @@ export default {
           };
            vm.$http.post(api,{data:coupon}).then((response) => {
                vm.isLoading = false;
-            console.log(response.data);
+            
             vm.coupondata = response.data.data;
             if(response.data.success === true)
              vm.$bus.$emit('message:push','已使用優惠卷','light');
@@ -251,7 +232,7 @@ export default {
              vm.isLoading = true;
              vm.$http.post(api,{data:vm.form}).then((response) => {
                vm.isLoading = false;
-            console.log(response.data);
+            
            vm.$router.push(`/checkoutFinal/${response.data.orderId}`);
             
              

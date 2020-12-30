@@ -186,7 +186,7 @@ export default {
             const vm = this;
             vm.isLoading = true; //資料讀取中
             this.$http.get(api).then((response) =>{
-              console.log(response.data)
+              
               vm.isLoading = false;  //資料讀取結束
               vm.products = response.data.coupons;
               vm.pagination = response.data.pagination; //取得資料時把pagination存起來
@@ -220,7 +220,7 @@ export default {
           // 丟入兩個參數 1.API路徑 2.要存進去的資料
           // 存進去的資料格式必須用物件
           this.$http[httpMethpd](api, { data: vm.tempProduct }).then((response) =>{
-              console.log(response.data)
+              
               // 如果資料新增成功 就關掉選單 並且再次取得資料
               if (response.data.success){
                 $('#productModal').modal('hide');
@@ -245,7 +245,7 @@ export default {
           let httpMethpd = 'delete';
         
           this.$http[httpMethpd](api).then((response) =>{
-            console.log(response.data)
+            
             // 如果資料刪除成功 就關掉選單 並且再次取得資料
             if (response.data.success){
               $('#delProductModal').modal('hide');

@@ -6,8 +6,8 @@
 
 <div class="row ">
 <div class="col-md-2">
-<ul class="list-group list-unstyled">
-  <li><a href="#" class="list-group-item  text-center" :class="{'active':visibilty == 'all'}" @click.prevent="visibilty = 'all'">所有商品</a></li>
+<ul class="list-group list-unstyled ">
+  <li><a href="#" class="list-group-item  text-center " :class="{'active':visibilty == 'all'}" @click.prevent="visibilty = 'all'">所有商品</a></li>
   <li><a href="#" class="list-group-item text-center" :class="{'active':visibilty == 'burger'}" @click.prevent="visibilty = 'burger'">漢堡</a></li>
   <li><a href="#" class="list-group-item text-center" :class="{'active':visibilty == 'dessert'}" @click.prevent="visibilty = 'dessert'">配菜</a></li>
   <li><a href="#" class="list-group-item text-center" :class="{'active':visibilty == 'drink'}" @click.prevent="visibilty = 'drink'">飲品</a></li>
@@ -18,30 +18,30 @@
 
 <div class="row mb-5">
 <div class="sort col-md-6 col-sm-6 ">
-<select name=""  id="" class="form-control text-primary"style="border:2px solid #21232d" v-model="asdad">
+<select name=""  id="" class="form-control text-dark1"v-model="selected">
 <option value="0">全部商品</option>
 <option value="1">依價格低到高排序</option>
 <option value="2">依價格高到低排序</option>
 
 </select>
 </div>
-<div class="search col-md-6  col-sm-6">
+<div class="search col-md-6  col-sm-6 ">
 <div class="d-flex align-items-center">
 <i class="fas fa-search fa-2x pr-2"></i>
-<input type="text"class="form-control  "style="border:2px solid #21232d"placeholder="搜尋產品 "v-model="filterText">
+<input type="text"class="form-control  "placeholder="搜尋產品 "v-model="filterText">
 </div>
 
 </div>
 </div>
 
-<div class="row">
+<div class="row  animate__animated animate__fadeInUp">
 
 
 
 
-<div class="col-md-4 mb-4 col-sm-6 animate__animated animate__fadeInUp" v-for="item in filterTodo">
+<div class="col-md-4 mb-4 col-sm-6  animate__animated animate__fadeInUp" v-for="item in filterTodo">
 
-<div class="card box-shadow animate__animated animate__fadeInUp">
+<div class="card box-shadow ">
   <div class="toProuductDetail" style="height: 150px; background-size: cover; background-position: center;"
      :style="{backgroundImage:`url(${item.imageUrl})`}" @click="inputProductid(item)">
      
@@ -58,21 +58,21 @@
    </div>
   <div class="card-body">
   <span class="badge badge-secondary float-right ml-2">{{item.category}}</span>
-  <h5 class="card-title"style="font-weight:bold;">{{item.title}}</h5>
+  <h5 class="card-title fot-weight-bold">{{item.title}}</h5>
         
      
       
        <div class="d-flex justify-content-between align-items-baseline">
        
         <del class="p ">原價{{item.origin_price}}元</del>
-        <div class="p text-danger "style="font-weight:bold">特價{{item.price}}元</div>
+        <div class="p text-danger font-weight-bold">特價{{item.price}}元</div>
         
         
       </div>
     </div>
     <div class="card-footer">
       
-      <button class="btn btn-block btn-primary btn-sm ml-auto"@click="addcart(item.id)">
+      <button class="btn btn-block btn-dark1 btn-sm ml-auto"@click="addcart(item.id)">
         
         加到購物車
       </button>
@@ -103,11 +103,9 @@
 
 export default {
     components:{
-    
+
      todo:{},
-    
-    
-    
+
     },
     data() {
         return {
@@ -117,7 +115,7 @@ export default {
             visibilty:'all',
             trackData:JSON.parse(localStorage.getItem('tableData')) || [],
             filterText:'',
-            asdad:'0',
+            selected:'0',
             
             
             
@@ -134,16 +132,9 @@ export default {
           }
             vm.isLoading=true;
                vm.$http.get(api).then((response) => {
-            console.log(response.data);
+            
             vm.isLoading = false;
-            vm.products = response.data.products;
-          
-            
-         
-            
-          
-            
-            
+            vm.products = response.data.products;   
           });
         },
         inputProductid(item){
@@ -175,11 +166,7 @@ export default {
           vm.trackData.splice(followId,1);
           vm.$bus.$emit('message:push','已取消追蹤','light');
           }
-          
-        
          localStorage.setItem('tableData',JSON.stringify(vm.trackData));
-          
-
         },
        
    
@@ -198,10 +185,10 @@ export default {
              return item.title.match(vm.filterText)
         }).sort(function(a,b){
          
-           if(vm.asdad==='1'){
+           if(vm.selected==='1'){
           return a.price-b.price
           }
-          if(vm.asdad==='2'){
+          if(vm.selected==='2'){
           return b.price-a.price
           }
          
@@ -221,10 +208,10 @@ export default {
              return item.title.match(vm.filterText)
         }).sort(function(a,b){
          
-           if(vm.asdad==='1'){
+           if(vm.selected==='1'){
           return a.price-b.price
           }
-          if(vm.asdad==='2'){
+          if(vm.selected==='2'){
           return b.price-a.price
           }
          
@@ -244,10 +231,10 @@ export default {
              return item.title.match(vm.filterText)
         }).sort(function(a,b){
          
-           if(vm.asdad==='1'){
+           if(vm.selected==='1'){
           return a.price-b.price
           }
-          if(vm.asdad==='2'){
+          if(vm.selected==='2'){
           return b.price-a.price
           }
          
@@ -268,16 +255,12 @@ export default {
              return item.title.match(vm.filterText)
         }).sort(function(a,b){
          
-           if(vm.asdad==='1'){
+           if(vm.selected==='1'){
           return a.price-b.price
           }
-          if(vm.asdad==='2'){
+          if(vm.selected==='2'){
           return b.price-a.price
           }
-         
-          
-        
-          
         });
         }
       },
@@ -287,62 +270,3 @@ export default {
     
 }
 </script>
-<style>
-
-.box-shadow:hover{
-box-shadow:0 4px 10px rgba(0,0,0,0.46);
-
-}
-.box-shadow:hover .imgtext{
-  display:block;
-}
-.box-shadow:hover .toProuductDetail{
--webkit-filter:brightness(.5);
-}
-
-.toProuductDetail:hover {
-  cursor:pointer;
-   
-  
-  
-   
-}
-
-.imgtext{
-  position:absolute;
-  color:white;
-  display:none;
-  z-index:1000;
-   top:16%;
-  left: 39%;
-  
-  
-  
-  
-  
-}
-.imgtext:hover{
-  cursor:pointer;
-}
-.track{
-  position:absolute;
-  right:0px;
-  
-}
-.track a{
-  display:block;
-   padding:4px;
-  
-  
-}
-@media (max-width:768px){
-.sort{
-  margin-top:20px;
-}
-.search{
-  margin-top:20px;
-}
-}
-
-
-</style>

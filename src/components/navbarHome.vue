@@ -1,110 +1,31 @@
 <template>
 
 
+<div class="header bg-dark1 mb-5  d-flex  justify-content-around align-items-center ">
+<h1 class="h1Title"@click="goHome">ChillBurger</h1>
 
-
-<div class="header bg-primary mb-5  d-flex  justify-content-around align-items-center ">
-
-<a class="h1 "style="font-weight:bold;color:#dcd9cb;font-family: 'Indie Flower', cursive;" href="#/">ChillBurger</a>
 
 
   
-  <ul class=" list-unstyled d-flex menu pt-3"style="">
+  <ul class="menu list-unstyled d-flex  pt-3">
   <li>
-  <a style="font-size:20px;" href="#/product"><i class="fas fa-book-open"></i>美味菜單</a>
+  <a  href="#/product"><i class="fas fa-book-open"></i>美味菜單</a>
   </li>
   <li>
-  <a href="#/track"style="font-size:20px;"><i class="far fa-grin-hearts"></i>我的收藏</a>
+  <a href="#/track"><i class="far fa-grin-hearts"></i>我的收藏</a>
   </li>
   <li>
-  <a href="#/login"style="font-size:20px;"><i class="fas fa-sign-in-alt"></i>後台管理</a>
+  <a href="#/login"><i class="fas fa-sign-in-alt"></i>後台管理</a>
   </li>
     </ul>
-
-  
-
-
-
-    <a href=""class="rwdmenu"@click.prevent="showmenu"><i class="fas fa-bars fa-3x"style="color:#dcd9cb"></i></a>
-
+    <a href="#"class="rwdMenu"@click.prevent="showmenu"><i class="fas fa-bars fa-3x"></i></a>
 
 </div>
 
-   
-
-
-
 
 </template>
-<style>
-
-.header{
-  position:fixed;
-  width:100%;
-  z-index:10000000;
-  height:100px;
-  
-  
-}
-.menu a{
- display:block;
- padding:10px;
- 
- color:#dcd9cb
-
-}
-.menu a:hover{
-  transform:scale(1.2);
-}
 
 
-.rwdmenu{
-  display:none
-}
-@media (max-width:767px){
-  .menu{
-    flex-direction: column;
-    
-    max-height:0px;
-    overflow:hidden;
-    position:absolute;
-    z-index:10000000000;
-    transition:1.5s;
-    top:85px;
-    left:0;
-    right:0;
-    background:#21232d;
-    
-  }
-  .menu li{
-    border-bottom:2px dashed white;
-    text-align:center;
-  }
-  .menu-show .menu{
-    max-height:300px;
-    
-  }
-  .menu a:hover{
-    color:#21232d;
-    transform:none;
-    
-    
-  }
-  .rwdmenu{
-    display:block;
-  }
-  .menu li:hover{
-   background:white;
-   
-   
-  }
- 
-}
-
-
-
-
-</style>
 <script>
 import $ from 'jquery'
 export default {
@@ -120,6 +41,9 @@ export default {
       this.number = this.getItem.length;
       
       
+    },
+    goHome(){
+     this.$router.push('/');
     },
     showmenu(){
       $('body').toggleClass('menu-show');

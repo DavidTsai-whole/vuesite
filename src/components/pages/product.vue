@@ -211,7 +211,7 @@ export default {
              const vm = this;
              vm.isLoading = true;
             this.$http.get(api).then((response) => {
-            console.log(response.data);
+            
             vm.isLoading = false;
             vm.products = response.data.products;
             vm.pagination = response.data.pagination;
@@ -228,7 +228,7 @@ export default {
                 http = 'put';
              }
             this.$http[http](api,{data:vm.tempProduct}).then((response) => {
-            console.log(response.data);
+            
             if(response.data.success){
              $('#creatNewModal').modal('hide');
               this.getProducts();
@@ -251,7 +251,7 @@ export default {
           vm.isLoading=true;
           const api = `${process.env.APIPATH}/api/${process.env.MEPATH}/admin/product/${vm.tempProduct.id}`;
            this.$http.delete(api).then((response) => {
-            console.log(response.data);
+            
             if(response.data.success){
               vm.isLoading=false;
               $('#deleteModal').modal('hide');
@@ -289,7 +289,7 @@ export default {
             'Content-Type':'multipart/form-data',
           }
         }).then((response) => {
-            console.log(response.data);
+            
             this.status.fileupLoading = false;
             if(response.data.success){
               

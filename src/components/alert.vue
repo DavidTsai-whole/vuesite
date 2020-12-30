@@ -1,7 +1,7 @@
 <template>
   <div class="message-alert">
-    <div class="alert alert-dismissible "
-    style="font-weight:bold;font-size:40px;box-shadow:0 4px 10px rgba(0,0,0,0.46);"
+    <div class="alert alert-dismissible font-weight-bold"
+    
       :class="'alert-' + item.status"
       v-for="(item, i) in messages" :key="i">
       <i class="far fa-check-circle text-success font-weight-bold"v-if="item.status !=='danger'"> {{ item.message }}</i>
@@ -67,25 +67,3 @@ export default {
   },
 };
 </script>
-<style scope>
-.message-alert {
-  position: fixed;
- top:10%;
-  left:40%;
-  z-index: 22231100;
-}
-@media(max-width:768px){
-  .message-alert{
-   top:10%;
-  left:30%;
-  }
-
-}
-@media(max-width:568px){
-  .message-alert{
-   top:10%;
-  left:20%;
-  }
-
-}
-</style>

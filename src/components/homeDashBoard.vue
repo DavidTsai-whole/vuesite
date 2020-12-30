@@ -53,11 +53,7 @@ export default {
             
           });
         },
-        scrollTop(){
-           $('html,body').animate({
-               scrollTop:0
-           },700);
-        },
+      
         
     },
     created() {
@@ -66,13 +62,6 @@ export default {
 }
 </script>
 <style>
-
-@media (max-width:768px){
-   
-    .top{
-        display:none;
-    }
-}
 .cartlogo{
    right:40px;
    bottom:30px;
@@ -83,6 +72,16 @@ export default {
    
 
 }
+@media (max-width:768px){
+   
+    .top{
+        display:none;
+    }
+    .cartlogo{
+        right:10px;
+    }
+}
+
 
 .top:hover{
 cursor:pointer;

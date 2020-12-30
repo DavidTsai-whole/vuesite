@@ -6,8 +6,8 @@
 
 <div class="row justify-content-center">
 <div class="col-md-8"v-if="FollowProduct.length !==0">
-<h2 class="text-center mb-5"style="font-weight:bold"><i class="far fa-grin-hearts text-danger"></i>追蹤名單</h2>
-<table class="table table-borderless  "style="color:#dcd9cb;background:#21232d" >
+<h2 class="text-center mb-5 font-weight-bold"><i class="far fa-grin-hearts text-danger"></i>追蹤名單</h2>
+<table class="table table-borderless bg-dark1">
 <thead class="bg-dark">
 <tr>
 <th>商品名稱</th>
@@ -19,12 +19,12 @@
 
 </thead>
 <tbody>
-<tr v-for="item in FollowProduct"style="border:2px solid #dcd9cb  "class="" >
+<tr class="trBorder" v-for="item in FollowProduct">
 <td>{{item.title}}</td>
 <td>{{item.category}}</td>
 <td>NT$ {{item.price}}</td>
-<td @click="addcart(item.id)"><i class="fas fa-shopping-cart  fa-2x"style="cursor:pointer;color:#01814A"></i></td>
-<td  ><i class="fas fa-trash text-danger fa-2x"style="cursor:pointer"@click="deletee(item.id)"></i></td>
+<td class="tdAddCart" @click="addcart(item.id)"><i class="fas fa-shopping-cart fa-2x text-white1"></i></td>
+<td class="tdDelTrack"><i class="fas fa-trash text-danger fa-2x"@click="deletee(item.id)"></i></td>
 </tr>
 
 </tbody>
@@ -36,9 +36,9 @@
 </div>
 <div class="col-md-8" v-else>
 
-<h1 class="text-center text-dark mb-5"style="font-weight:bold"><i class="far fa-sad-tear text-danger"></i>目前還沒有追蹤任何商品哦,快去逛逛吧</h1>
+<h1 class="text-center text-dark1 mb-5 font-weight-bold"><i class="far fa-sad-tear text-danger"></i>目前還沒有追蹤任何商品哦,快去逛逛吧</h1>
 <div class="text-center mb-5 pt-5">
-<a class="h3 cartin" style="font-weight:bold;"href="#/product"><i class="fas fa-arrow-circle-left"></i>前往購物</a> 
+<a class="h3 cartin font-weight-bold text-dark1"href="#/product"><i class="fas fa-arrow-circle-left"></i>前往購物</a> 
 </div>
 
 
@@ -46,7 +46,7 @@
 </div>
 
 
-<h2 class="text-center text-white p-3 bg-primary mt-5 mb-5"style="font-weight:bold"><i class="fas fa-utensils"></i>餐點介紹</h2>
+<h2 class="text-center text-white p-3 bg-dark1 mt-5 mb-5 font-weight-bold"><i class="fas fa-utensils"></i>餐點介紹</h2>
 <!--餐點介紹-->
 <div class="row ">
 <!--漢堡-->
@@ -54,10 +54,10 @@
 <a href="#"@click.prevent="toCategory('burger')">
 <img src="https://upload.cc/i1/2020/12/16/bTHgpY.jpg" class="circle mb-4 img-fluid" alt="">
 </a>
-<h2 style="font-weight:bold">漢堡</h2>
-<p style=" font-weight:bold; margin-top:10px;font-size:20px;border-bottom:2px solid 	#01814A;color:	#01814A">不可錯過的正宗美式漢堡!</p>
-<p style=" margin-top:20px;">會不定期的推出新口味，敬請期待</p>
-<p style=" margin-top:20px;">有豬肉、牛肉、雞肉、菇類等多樣選擇</p>
+<h2 class="font-weight-bold">漢堡</h2>
+<p class="hamP1">不可錯過的正宗美式漢堡!</p>
+<p class="hamP2">會不定期的推出新口味，敬請期待</p>
+<p class="hamP3">有豬肉、牛肉、雞肉、菇類等多樣選擇</p>
 <button class="btn btn-outline-dark"@click.prevent="toCategory('burger')">查看更多</button>
 </div> 
 <!--配菜-->
@@ -65,10 +65,10 @@
 <a href="#"@click.prevent="toCategory('dessert')">
 <img src="https://upload.cc/i1/2020/12/16/HtSnj8.jpg" class="circle mb-4 img-fluid" alt="">
 </a>
-<h2 style="font-weight:bold">配菜</h2>
-<p style=" font-weight:bold; margin-top:10px;font-size:20px;border-bottom:2px solid 	#01814A;color:	#01814A">好看的劇一定是有好的配角!</p>
-<p style=" margin-top:20px;">配菜類的商品只要續點通通9折(限內用)</p>
-<p style=" margin-top:20px;">沙拉、炸物、烤類等多種配菜</p>
+<h2 class="font-weight-bold">配菜</h2>
+<p class="dashP1">好看的劇一定是有好的配角!</p>
+<p class="dashP2">配菜類的商品只要續點通通9折(限內用)</p>
+<p class="dashP3">沙拉、炸物、烤類等多種配菜</p>
 <button class="btn btn-outline-dark"@click.prevent="toCategory('dessert')">查看更多</button>
 </div>
 <!--飲品-->
@@ -76,10 +76,10 @@
 <a href="#"@click.prevent="toCategory('drink')">
 <img src="https://upload.cc/i1/2020/12/16/eiLXZl.jpg" class="circle mb-4 img-fluid" alt="">
 </a>
-<h2 style="font-weight:bold">飲品</h2>
-<p style=" font-weight:bold; margin-top:10px;font-size:20px;border-bottom:2px solid 	#01814A;color:	#01814A">無論此刻甚麼心情我們都能滿足!</p>
-<p style="margin-top:20px;">Bottomless Beverages 無限續杯飲料 (限內用)</p>
-<p style="margin-top:20px;">百事可樂、柳橙汁、咖啡、湯品類</p>
+<h2 class="font-weight-bold">飲品</h2>
+<p class="drinkP1">無論此刻甚麼心情我們都能滿足!</p>
+<p class="drinkP2">Bottomless Beverages 無限續杯飲料 (限內用)</p>
+<p class="drinkP3">百事可樂、柳橙汁、咖啡、湯品類</p>
 <button class="btn btn-outline-dark"@click.prevent="toCategory('drink')">查看更多</button>
 </div>
 
@@ -88,22 +88,7 @@
 </div>
 
 </template>
-<style>
-.circle{
-   
-   border-radius:50%;
-   
-}
-.circle:hover{
-  
 
-  cursor:pointer;
- 
-}
-.cartin:hover{
-  border-bottom:4px solid black;
-}
-</style>
 <script>
 export default {
     data() {
@@ -122,7 +107,7 @@ export default {
             vm.isLoading=true;
            
               vm.$http.get(api).then((response) => {
-            console.log(response.data);
+            
             vm.isLoading = false;
             vm.products = response.data.products;
            vm.getFollow();
