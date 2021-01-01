@@ -13,21 +13,21 @@
     left: 39%;
   }
 .imgtext:hover{
-    cursor:pointer;
+    cursor: pointer;
   }
   .box-shadow:hover{
     box-shadow:0 4px 10px rgba(0,0,0,0.46); 
+    cursor: pointer;
  }
  .box-shadow:hover .imgtext{
       display:block;
  }
+ 
 .box-shadow:hover .toProuductDetail{
     -webkit-filter:brightness(.5);
  }
     
-.toProuductDetail:hover {
-      cursor:pointer; 
-  }
+
 .track{
     position:absolute;
     right:0px;

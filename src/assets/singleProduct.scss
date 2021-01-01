@@ -13,16 +13,20 @@
 .backMenuBtn{
     width:49%;
 }
-.card{
+.releateCard{
     
     cursor:pointer;
     
 }
-.card img{
+.releateCardImg{
+    overflow: hidden;
+}
+.releateCardImg img{
     transform:scale(1,1);transition: all 1s ease-out;
     height:180px;
     object-fit:cover;
+    
 }
-.card img:hover{
+.releateCardImg img:hover{
     transform:scale(1.2,1.2);
   }

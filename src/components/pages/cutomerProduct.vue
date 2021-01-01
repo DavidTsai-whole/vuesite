@@ -1,90 +1,80 @@
 <template>
 <div>
 <loading :active.sync="isLoading"></loading>
-<div class="container">
-
-
 <div class="row ">
 <div class="col-md-2">
-<ul class="list-group list-unstyled ">
-  <li><a href="#" class="list-group-item  text-center " :class="{'active':visibilty == 'all'}" @click.prevent="visibilty = 'all'">所有商品</a></li>
-  <li><a href="#" class="list-group-item text-center" :class="{'active':visibilty == 'burger'}" @click.prevent="visibilty = 'burger'">漢堡</a></li>
-  <li><a href="#" class="list-group-item text-center" :class="{'active':visibilty == 'dessert'}" @click.prevent="visibilty = 'dessert'">配菜</a></li>
-  <li><a href="#" class="list-group-item text-center" :class="{'active':visibilty == 'drink'}" @click.prevent="visibilty = 'drink'">飲品</a></li>
+<ul class="list-group sticky-top">
+  <a href="#" class="list-group-item  text-center" :class="{'active':visibilty == 'all'}" @click.prevent="visibilty = 'all'">所有商品</a>
+  <a href="#" class="list-group-item text-center" :class="{'active':visibilty == 'mainmeal'}" @click.prevent="visibilty = 'mainmeal'">主餐</a>
+  <a href="#" class="list-group-item text-center" :class="{'active':visibilty == 'dessert'}" @click.prevent="visibilty = 'dessert'">點心</a>
+  <a href="#" class="list-group-item text-center" :class="{'active':visibilty == 'drink'}" @click.prevent="visibilty = 'drink'">飲品</a>
 
 </ul>
 </div>
 <div class="col-md-10">
 
 <div class="row mb-5">
-<div class="sort col-md-6 col-sm-6 ">
-<select name=""  id="" class="form-control text-dark1"v-model="selected">
+<div class="col-md">
+<select name="" id="" class="form-control" >
 <option value="0">全部商品</option>
 <option value="1">依價格低到高排序</option>
 <option value="2">依價格高到低排序</option>
 
 </select>
 </div>
-<div class="search col-md-6  col-sm-6 ">
+<div class="col-md">
 <div class="d-flex align-items-center">
 <i class="fas fa-search fa-2x pr-2"></i>
-<input type="text"class="form-control  "placeholder="搜尋產品 "v-model="filterText">
+<input type="text"class="form-control"placeholder="搜尋產品"v-model="filterText">
 </div>
 
 </div>
 </div>
-
-<div class="row  animate__animated animate__fadeInUp">
-
+<div class="row">
 
 
-
-<div class="col-md-4 mb-4 col-sm-6  animate__animated animate__fadeInUp" v-for="item in filterTodo">
+<div class="col-md-4 mb-4" v-for="item in filterTodo">
 
 <div class="card box-shadow ">
-  <div class="toProuductDetail" style="height: 150px; background-size: cover; background-position: center;"
+  <div class="toProuductDetail" style="height: 150px; background-size: cover; background-position: center"
      :style="{backgroundImage:`url(${item.imageUrl})`}" @click="inputProductid(item)">
-     
-      
+      <h3 class="imgtext text-center pt-5"@click="inputProductid(item)">more</h3>
     </div>
-    <div class="imgtext "@click="inputProductid(item)">
-     <h3>more</h3>
-     </div>
     
    <div class="track">
    <a href="#"@click.prevent="sendlocal(item.id)"v-if="trackData.indexOf(item.id)===-1" ><i class="far fa-grin-hearts fa-2x text-white"></i></a>
       <a href="#"@click.prevent="sendlocal(item.id)"v-else><i class="far fa-grin-hearts fa-2x text-danger"></i></a>
       
    </div>
-  <div class="card-body "@click="inputProductid(item)">
+  <div class="card-body">
   <span class="badge badge-secondary float-right ml-2">{{item.category}}</span>
-  <h5 class="card-title fot-weight-bold">{{item.title}}</h5>
+  <h5 class="card-title"style="font-weight:bold;">{{item.title}}</h5>
         
      
       
        <div class="d-flex justify-content-between align-items-baseline">
        
         <del class="p ">原價{{item.origin_price}}元</del>
-        <div class="p text-danger font-weight-bold">特價{{item.price}}元</div>
+        <div class="p text-danger "style="font-weight:bold">特價{{item.price}}元</div>
         
         
       </div>
     </div>
     <div class="card-footer">
       
-      <button class="btn btn-block btn-dark1 btn-sm ml-auto"@click="addcart(item.id)">
+      <button class="btn btn-block btn-danger btn-sm ml-auto"@click="addcart(item.id)">
         
         加到購物車
       </button>
     </div>
-</div>
+
   </div>
 
 
 </div>
 
 </div>
-
+<!--<pagination  :pages="pagination" @turnPage="getProducts"></pagination>-->
  
 
 
@@ -99,23 +89,24 @@
 
 </template>
 <script>
-
+import pagination from '@/components/Pagination'
 
 export default {
     components:{
-
+     pagination,
      todo:{},
-
+    
+    
+    
     },
     data() {
         return {
             products:[],
-            
+            pagination:{},
             isLoading : false,
             visibilty:'all',
             trackData:JSON.parse(localStorage.getItem('tableData')) || [],
             filterText:'',
-            selected:'0',
             
             
             
@@ -132,9 +123,14 @@ export default {
           }
             vm.isLoading=true;
                vm.$http.get(api).then((response) => {
-            
+            console.log(response.data);
             vm.isLoading = false;
-            vm.products = response.data.products;   
+            vm.products = response.data.products;
+         
+            
+          
+            
+            
           });
         },
         inputProductid(item){
@@ -151,6 +147,7 @@ export default {
            vm.isLoading=true;
           vm.$http.post(api,{data:cart}).then((response) => {
              vm.isLoading=false;
+            console.log(response.data)
             vm.$bus.$emit('message:push','已加入購物車','light');
         })
         },
@@ -159,16 +156,16 @@ export default {
           const followId = vm.trackData.indexOf(id);
           if(followId ==-1){
             vm.trackData.push(id);
-            vm.$bus.$emit('message:push','已加入追蹤','light');
           }
           else{
           vm.trackData.splice(followId,1);
-          vm.$bus.$emit('message:push','已取消追蹤','light');
           }
+          
+        
          localStorage.setItem('tableData',JSON.stringify(vm.trackData));
+          
+
         },
-       
-   
     },
     created() {
         this.getProducts();
@@ -177,95 +174,107 @@ export default {
     computed: {
       filterTodo(){
         const vm = this;
-        if(vm.visibilty == 'all'){
+        if(this.visibilty == 'all'){
           
         return vm.products.filter(function(item){
-          
              return item.title.match(vm.filterText)
-        }).sort(function(a,b){
-         
-           if(vm.selected==='1'){
-          return a.price-b.price
-          }
-          if(vm.selected==='2'){
-          return b.price-a.price
-          }
-         
-          
-        
-          
         });
-        }else if(vm.visibilty == 'burger'){
+        }else if(this.visibilty == 'mainmeal'){
            var newTodo =[];
-           vm.products.forEach(function (item){
-          if(item.category == '漢堡'){
+           this.products.forEach(function (item){
+          if(item.category == '主餐'){
           newTodo.push(item);
 
           }
            })
            return newTodo.filter(function(item){
              return item.title.match(vm.filterText)
-        }).sort(function(a,b){
-         
-           if(vm.selected==='1'){
-          return a.price-b.price
-          }
-          if(vm.selected==='2'){
-          return b.price-a.price
-          }
-         
-          
-        
-          
         });
-        }else if(vm.visibilty == 'dessert'){
+        }else if(this.visibilty == 'dessert'){
            var newTodo =[];
-           vm.products.forEach(function (item){
-          if(item.category == '配菜'){
+           this.products.forEach(function (item){
+          if(item.category == '點心'){
           newTodo.push(item);
 
           }
            })
              return newTodo.filter(function(item){
              return item.title.match(vm.filterText)
-        }).sort(function(a,b){
-         
-           if(vm.selected==='1'){
-          return a.price-b.price
-          }
-          if(vm.selected==='2'){
-          return b.price-a.price
-          }
-         
-          
-        
-          
         });
         }
-        else if(vm.visibilty == 'drink'){
+        else if(this.visibilty == 'drink'){
            var newTodo= [];
-           vm.products.forEach(function (item){
-          if(item.category == '飲品'){
+           this.products.forEach(function (item){
+          if(item.category == '喝的'){
           newTodo.push(item);
 
           }
            })
              return newTodo.filter(function(item){
              return item.title.match(vm.filterText)
-        }).sort(function(a,b){
-         
-           if(vm.selected==='1'){
-          return a.price-b.price
-          }
-          if(vm.selected==='2'){
-          return b.price-a.price
-          }
         });
         }
       },
       
-      
+      sortdata(id){
+        
+        const vm = this;
+        
+        vm.products.sort(function(a,b){
+          
+          return a.price-b.price
+        });
+      }
     },
     
 }
 </script>
+<style>
+.box-shadow:hover{
+box-shadow:0 4px 10px rgba(0,0,0,0.46);
+
+}
+.box-shadow:hover .imgtext{
+  display:block;
+}
+.box-shadow:hover .toProuductDetail{
+-webkit-filter:brightness(.5);
+}
+.card{
+overflow:hidden;
+}
+
+.toProuductDetail:hover {
+  cursor:pointer;
+   
+  
+  
+   
+}
+
+.imgtext{
+
+  color:white;
+  display:none;
+  z-index:1000000;
+  font-weight:bold;
+  
+  
+}
+.imgtext{
+  cursor:pointer;
+}
+.track{
+  position:absolute;
+  right:0px;
+  
+}
+.track a{
+  display:block;
+   padding:4px;
+  
+  background:red;
+}
+
+
+</style>

@@ -24,7 +24,7 @@ export default new VueRouter({
       },
      
        {
-           name:'basic',
+           name:'',
            path:'/',
            component:homeDashBoard,
            

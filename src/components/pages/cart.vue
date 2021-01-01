@@ -25,20 +25,16 @@
 
 
 <tbody>
-<tr v-for="item in allcart.carts"style="border-bottom:2px solid #dcd9cb">
+<tr v-for="item in allcart.carts"style="border-bottom:2px solid #dcd9cb":key="item.id">
 
 <td class="text-center pt-4">{{item.product.title}}</td>
 <td class="text-center"><img class="cartImg":src="`${item.product.imageUrl}`" alt="" ></td>
 <td class="text-center pt-4">
-<select name="" id="" class="form-control" @change="modifynum(item.id,item.product.id,item.qty)" v-model="item.qty">
-
-<option :value="num" v-for="num in 10" :key="num">
-{{num}}
-
-</option>
-
-</select>
-
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-light" @click.prevent="lessQty(item.id)">-</button>
+  <button class="btn btn-outline-light" disabled>{{item.qty}}</button>
+  <button type="button" class="btn btn-light"@click="addQty(item.id)">+</button>
+</div>
 
 </td>
 <td class="text-right pt-4">{{item.product.price}}</td>
@@ -117,6 +113,7 @@ export default {
         return {
             isLoading:false,
             allcart:[],
+            
            
          
               
@@ -130,7 +127,7 @@ export default {
             vm.isLoading = true;
             const api = `${process.env.APIPATH}/api/${process.env.MEPATH}/cart`;
             vm.$http.get(api).then((response) => {
-          
+           console.log(response.data.data);
              vm.isLoading = false;
              vm.allcart = response.data.data;
            
@@ -140,8 +137,41 @@ export default {
             
           });
         },
-        
-        modifynum(id,productid,qty){
+        addcart(item){
+          const vm = this;
+          const api = `${process.env.APIPATH}/api/${process.env.MEPATH}/cart`;
+          const cart={
+            product_id:item.product_id,
+            qty:item.qty,
+          };
+           vm.isLoading=true;
+          vm.$http.post(api,{data:cart}).then((response) => {
+             vm.isLoading=false;
+             vm.deletemodal(item.id);
+            
+        })
+        },
+        addQty(id){
+          const vm = this;
+          let ret = vm.allcart.carts.find(function (item) {
+          return item.id === id;
+             });
+          ret.qty = ret.qty + 1;
+          vm.addcart(ret);
+        },
+         lessQty(id) {
+      const vm = this;
+      let ret = vm.allcart.carts.find(function (item) {
+        return item.id === id;
+      });
+      if (ret.qty == 1) {
+        vm.deletemodal(id);
+      } else {
+        ret.qty = ret.qty - 1;
+        vm.addcart(ret);
+      }
+    },
+        /*modifynum(id,productid,qty){
               const vm = this;
                const cart ={
                  product_id:productid,
@@ -158,17 +188,17 @@ export default {
                 vm.$bus.$emit('message:push','已更改商品數量','light');
              })
 
-        },
+        },*/
         deletemodal(id){
                const vm = this;
                vm.isLoading = true;
                const api = `${process.env.APIPATH}/api/${process.env.MEPATH}/cart/${id}`;
                vm.$http.delete(api).then((response) => {
-          
+          vm.$bus.$emit('message:push','已更改商品','light');
              vm.isLoading = false;
             
              vm.getcart();
-              vm.$bus.$emit('message:push','已刪除商品','light');
+              
            
             
             

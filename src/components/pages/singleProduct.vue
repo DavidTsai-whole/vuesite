@@ -48,12 +48,12 @@
       <div class="row">
       <div class="col-md-3 mb-3 col-sm-6" v-for="item in filterTodo">
 
-<div class="card"@click="inputProductid(item)">
-<div style="overflow:hidden;">
+<div class="releateCard"@click="inputProductid(item)">
+<div class="releateCardImg">
   <img :src="item.imageUrl" class="card-img-top img-fluid" alt="">
 </div>
 
-  <div class="card-body">
+  <div class="card-body bg-dark1 text-white">
        <h5 class="card-title font-weight-bold">{{item.title}}</h5>
     <p class="card-text">{{item.content}}</p>
   </div>
@@ -78,13 +78,14 @@ export default {
         return {
             singleProduct:{},
             isLoading:false,
-            cash:1,
+           
             products:[],
             
             
         }
     },
     methods: {
+      
             getSingleproduct(id){
                 id = this.$route.params.id;
        const api =`${process.env.APIPATH}/api/${process.env.MEPATH}/product/${id}`;

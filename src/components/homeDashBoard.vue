@@ -64,7 +64,7 @@ export default {
 <style>
 .cartlogo{
    right:40px;
-   bottom:30px;
+   bottom:80px;
     
     
     z-index:100;
