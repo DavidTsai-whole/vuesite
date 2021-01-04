@@ -122,7 +122,7 @@ export default {
         toCategory(Name){
       this.$router.push({
         name:'customP',
-        params:{categoryName:Name},
+        params:{categoryname:Name},
       });
     },
       getFollow(){

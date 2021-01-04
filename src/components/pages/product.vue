@@ -4,7 +4,7 @@
 <div class="text-right">
 <button class="btn btn-info" @click="openModal(true)">建立新的產品</button>
 </div>
-<table class="table mt-4">
+<table class="table mt-4 text-dark1">
 <thead>
 <tr>
 <th>分類</th>
@@ -67,8 +67,7 @@
               <input type="file" id="customFile" class="form-control"
                 ref="files" @change="uploadFile">
             </div>
-            <img img="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=828346ed697837ce808cae68d3ddc3cf&auto=format&fit=crop&w=1350&q=80"
-              class="img-fluid" :src="tempProduct.imageUrl" alt="">
+            <img  class="img-fluid" :src="tempProduct.imageUrl" alt="">
           </div>
           <div class="col-sm-8">
             <div class="form-group">
@@ -232,8 +231,6 @@ export default {
             if(response.data.success){
              $('#creatNewModal').modal('hide');
               this.getProducts();
-            }else{
-                console.log('新增失敗0');
             }
            
            
@@ -278,7 +275,7 @@ export default {
         },
         //上傳圖片
         uploadFile(){
-       console.log(this);
+      
        const uploadFile = this.$refs.files.files[0];
        this.status.fileupLoading = true;
        const formData = new FormData();

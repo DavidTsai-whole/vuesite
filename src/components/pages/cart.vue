@@ -31,14 +31,14 @@
 <td class="text-center"><img class="cartImg":src="`${item.product.imageUrl}`" alt="" ></td>
 <td class="text-center pt-4">
 <div class="btn-group" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-light" @click.prevent="lessQty(item.id)">-</button>
+  <button type="button" class="btn btn-light" @click.prevent="lessQty(item)">-</button>
   <button class="btn btn-outline-light" disabled>{{item.qty}}</button>
-  <button type="button" class="btn btn-light"@click="addQty(item.id)">+</button>
+  <button type="button" class="btn btn-light"@click="addQty(item)">+</button>
 </div>
 
 </td>
 <td class="text-right pt-4">{{item.product.price}}</td>
-<td class="text-center pt-4"><i class="far fa-trash-alt text-danger fa-2x"@click="deletemodal(item.id)"></i></td>
+<td class="text-center pt-4"><i class="far fa-trash-alt text-danger fa-2x"@click="deleteCart(item)"></i></td>
 
 
 </tr>
@@ -147,28 +147,24 @@ export default {
            vm.isLoading=true;
           vm.$http.post(api,{data:cart}).then((response) => {
              vm.isLoading=false;
-             vm.deletemodal(item.id);
+             vm.deleteCart(item);
             
         })
         },
-        addQty(id){
+        addQty(item){
           const vm = this;
-          let ret = vm.allcart.carts.find(function (item) {
-          return item.id === id;
-             });
-          ret.qty = ret.qty + 1;
-          vm.addcart(ret);
+          
+          item.qty+= 1;
+          vm.addcart(item);
         },
-         lessQty(id) {
+         lessQty(item) {
       const vm = this;
-      let ret = vm.allcart.carts.find(function (item) {
-        return item.id === id;
-      });
-      if (ret.qty == 1) {
-        vm.deletemodal(id);
+ 
+      if (item.qty == 1) {
+        vm.deleteCart(item);
       } else {
-        ret.qty = ret.qty - 1;
-        vm.addcart(ret);
+        item.qty-= 1;
+        vm.addcart(item);
       }
     },
         /*modifynum(id,productid,qty){
@@ -189,13 +185,15 @@ export default {
              })
 
         },*/
-        deletemodal(id){
+        deleteCart(item){
                const vm = this;
                vm.isLoading = true;
-               const api = `${process.env.APIPATH}/api/${process.env.MEPATH}/cart/${id}`;
-               vm.$http.delete(api).then((response) => {
-          vm.$bus.$emit('message:push','已更改商品','light');
-             vm.isLoading = false;
+               const api = `${process.env.APIPATH}/api/${process.env.MEPATH}/cart/${item.id}`;
+               vm.$http.delete(api).then((res) => {
+         
+            
+          vm.$bus.$emit("message:push", "購物車已更新", "light");
+           vm.isLoading = false;
             
              vm.getcart();
               

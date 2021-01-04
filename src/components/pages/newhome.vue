@@ -121,7 +121,7 @@ HACCP 認證，
 
 
      </div>
-
+<!--modal-->
 <div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -156,7 +156,7 @@ export default {
     toCategory(Name){
       this.$router.push({
         name:'customP',
-        params:{categoryName:Name},
+        params:{categoryname:Name},
       });
     },
     goProdut(){
@@ -167,7 +167,7 @@ export default {
     },
      copy(){
       this.$bus.$emit('message:push','複製成功','light');
-      var clipboard = new ClipboardJS('#copy');
+      let clipboard = new ClipboardJS('#copy');
       
        
     }

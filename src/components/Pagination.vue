@@ -28,8 +28,8 @@ export default {
       }
   },
  methods: {
-     turnPage(page){
-         this.$emit('turnPage',page);
+     turnPage(px){
+         this.$emit('turnPage',px);
      }
  },
 }

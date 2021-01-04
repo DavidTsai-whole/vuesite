@@ -125,7 +125,7 @@ export default {
         getProducts(){
             const api =`${process.env.APIPATH}/api/${process.env.MEPATH}/products/all`;
             const vm = this;
-               const  categoryName  = this.$route.params.categoryName;
+               const  categoryName  = this.$route.params.categoryname;
                //如果有categoryName存在visibilty才變
           if(categoryName){
             this.visibilty = categoryName;
