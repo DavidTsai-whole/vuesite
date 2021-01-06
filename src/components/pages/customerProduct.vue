@@ -72,10 +72,12 @@
     </div>
     <div class="card-footer">
       
-      <button class="btn btn-block btn-dark1 btn-sm ml-auto"@click="addcart(item.id)">
+      <button class="btn btn-block btn-dark1 btn-sm ml-auto"@click="addcart(item)">
         
         加到購物車
       </button>
+      
+     
     </div>
 </div>
   </div>
@@ -104,18 +106,21 @@
 export default {
     components:{
 
-     todo:{},
+
 
     },
     data() {
         return {
             products:[],
             
+            
             isLoading : false,
             visibilty:'all',
             trackData:JSON.parse(localStorage.getItem('tableData')) || [],
+            cartData:JSON.parse(localStorage.getItem('cartData')) || [],
             filterText:'',
             selected:'0',
+            
             
             
             
@@ -141,18 +146,80 @@ export default {
        const vm = this;
             vm.$router.push(`/products/${item.id}`);
         },
-         addcart(id,qty=1){
+         addcart(data){
           const vm = this;
-          const api = `${process.env.APIPATH}/api/${process.env.MEPATH}/cart`;
-          const cart={
-            product_id:id,
-            qty,
+          const cacheCarID = [];
+          vm.cartData.forEach((item) => cacheCarID.push(item.product_id));
+         
+          if (cacheCarID.indexOf(data.id) === -1) {
+         
+            const cartContent = {
+            product_id:data.id,
+            qty:1,
+            name:data.title,
           };
-           vm.isLoading=true;
-          vm.$http.post(api,{data:cart}).then((response) => {
-             vm.isLoading=false;
-            vm.$bus.$emit('message:push','已加入購物車','light');
-        })
+          vm.cartData.push(cartContent);
+          localStorage.setItem('cartData',JSON.stringify(vm.cartData));
+          }else{
+           vm.cartData.forEach( (item,keys) =>{
+             if(item.product_id ===data.id){
+               
+               const cache={
+                 product_id:data.id,
+                 qty:item.qty+=1,
+                 name:data.title,
+               };
+               vm.cartData.splice(keys,1);
+               vm.cartData.push(cache);
+               localStorage.setItem('cartData',JSON.stringify(vm.cartData));
+              
+             }
+           });
+          }
+         vm.addcart2();
+          
+        },
+    
+        addcart2(){
+          const vm = this;
+          vm.isLoading=true;
+          const cacheID=[];
+           const api =`${process.env.APIPATH}/api/${process.env.MEPATH}/cart`;
+           
+          vm.$http.get(api).then((res) => {
+               const cacheData = res.data.data.carts;
+               cacheData.forEach((item)=>{
+                 cacheID.push(item.id);
+               })
+             }).then(()=>{
+              cacheID.forEach((item)=>{
+                const api2 = `${process.env.APIPATH}/api/${process.env.MEPATH}/cart/${item}`;
+                vm.$http.delete(api2).then(()=>{
+
+                });
+              })
+             }).then(()=>{
+             vm.cartData.forEach( (item)=>{
+             const cache2={
+              product_id:item.product_id,
+              qty:item.qty,
+            };
+            const api =`${process.env.APIPATH}/api/${process.env.MEPATH}/cart`;
+          vm.$http.post(api,{data:cache2}).then(() => {
+               vm.$bus.$emit("message:push", "已加到購物車", "light");
+              
+
+               
+               vm.isLoading=false;
+             });
+         
+         
+             
+               
+             });
+          });
+         
+
         },
         sendlocal(id){
           const vm = this;
@@ -167,6 +234,7 @@ export default {
           }
          localStorage.setItem('tableData',JSON.stringify(vm.trackData));
         },
+          
        
    
     },

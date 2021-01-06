@@ -31,17 +31,12 @@ import $ from 'jquery'
 export default {
   data() {
     return {
-      getItem:[],
-      number:'',
+      
+      
     }
   },
   methods: {
-    getitem(){
-      this.getItem = JSON.parse(localStorage.getItem('tableData'));
-      this.number = this.getItem.length;
-      
-      
-    },
+  
     goHome(){
      this.$router.push('/');
     },
@@ -50,7 +45,7 @@ export default {
     },
   },
   created() {
-    this.getitem();
+    
   },
 }
 </script>

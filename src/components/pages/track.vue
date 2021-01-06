@@ -111,7 +111,7 @@ export default {
             vm.isLoading = false;
             vm.products = response.data.products;
            vm.getFollow();
-            
+           
           
             
             

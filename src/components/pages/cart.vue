@@ -113,6 +113,8 @@ export default {
         return {
             isLoading:false,
             allcart:[],
+            cartData:JSON.parse(localStorage.getItem('cartData')) || [],
+            
             
            
          
@@ -127,17 +129,126 @@ export default {
             vm.isLoading = true;
             const api = `${process.env.APIPATH}/api/${process.env.MEPATH}/cart`;
             vm.$http.get(api).then((response) => {
-           console.log(response.data.data);
+            
              vm.isLoading = false;
              vm.allcart = response.data.data;
+             console.log(response.data.data);
+             
            
             
             
             
             
           });
+        },   
+         addcart2(){
+          const vm = this;
+          vm.isLoading=true;
+          const cacheID=[];
+           const api =`${process.env.APIPATH}/api/${process.env.MEPATH}/cart`;
+           
+          vm.$http.get(api).then((res) => {
+               const cacheData = res.data.data.carts;
+               cacheData.forEach((item)=>{
+                 cacheID.push(item.id);
+               })
+             }).then(()=>{
+              cacheID.forEach((item)=>{
+                const api2 = `${process.env.APIPATH}/api/${process.env.MEPATH}/cart/${item}`;
+                vm.$http.delete(api2).then(()=>{
+
+                });
+              })
+             }).then(()=>{
+             vm.cartData.forEach( (item)=>{
+             const cache2={
+              product_id:item.product_id,
+              qty:item.qty,
+            };
+            const api =`${process.env.APIPATH}/api/${process.env.MEPATH}/cart`;
+          vm.$http.post(api,{data:cache2}).then(() => {
+               vm.$bus.$emit("message:push", "購物車已更新", "light");
+               vm.getcart();
+
+               
+               vm.isLoading=false;
+             });
+         
+         
+             
+               
+             });
+          });
+         
+
         },
-        addcart(item){
+        addcart(data){
+          const vm = this;
+          const cacheCarID = [];
+          vm.cartData.forEach((item) => cacheCarID.push(item.product_id));
+         
+          if (cacheCarID.indexOf(data.product_id) === -1) {
+         
+            const cartContent = {
+            product_id:data.product_id,
+            qty:1,
+            name:data.product.title,
+          };
+          vm.cartData.push(cartContent);
+          localStorage.setItem('cartData',JSON.stringify(vm.cartData));
+          }else{
+           vm.cartData.forEach( (item,keys) =>{
+             if(item.product_id ===data.product_id){
+               
+               const cache={
+                 product_id:data.product_id,
+                 qty:item.qty+=1,
+                 name:data.product.title,
+               };
+               vm.cartData.splice(keys,1);
+               vm.cartData.push(cache);
+               localStorage.setItem('cartData',JSON.stringify(vm.cartData));
+              
+             }
+           });
+          }
+         vm.addcart2();
+          
+        },
+         addcartRed(data){
+          const vm = this;
+          const cacheCarID = [];
+          vm.cartData.forEach((item) => cacheCarID.push(item.product_id));
+         
+          if (cacheCarID.indexOf(data.product_id) === -1) {
+         
+            const cartContent = {
+            product_id:data.product_id,
+            qty:1,
+            name:data.product.title,
+          };
+          vm.cartData.push(cartContent);
+          localStorage.setItem('cartData',JSON.stringify(vm.cartData));
+          }else{
+           vm.cartData.forEach( (item,keys) =>{
+             if(item.product_id ===data.product_id){
+               
+               const cache={
+                 product_id:data.product_id,
+                 qty:item.qty-=1,
+                 name:data.product.title,
+               };
+               vm.cartData.splice(keys,1);
+               vm.cartData.push(cache);
+               localStorage.setItem('cartData',JSON.stringify(vm.cartData));
+              
+             }
+           });
+          }
+         vm.addcart2();
+          
+        },
+        /*addcart(item){
           const vm = this;
           const api = `${process.env.APIPATH}/api/${process.env.MEPATH}/cart`;
           const cart={
@@ -150,7 +261,7 @@ export default {
              vm.deleteCart(item);
             
         })
-        },
+        },*/
         addQty(item){
           const vm = this;
           
@@ -164,7 +275,7 @@ export default {
         vm.deleteCart(item);
       } else {
         item.qty-= 1;
-        vm.addcart(item);
+        vm.addcartRed(item);
       }
     },
         /*modifynum(id,productid,qty){
@@ -192,7 +303,7 @@ export default {
                vm.$http.delete(api).then((res) => {
          
             
-          vm.$bus.$emit("message:push", "購物車已更新", "light");
+          vm.$bus.$emit("message:push", "已刪除產品", "light");
            vm.isLoading = false;
             
              vm.getcart();
@@ -202,7 +313,18 @@ export default {
             
             
             
-          });
+          }).then(()=>{
+            
+            vm.cartData.forEach((item2,key)=>{
+              
+              if(item2.product_id===item.product_id){
+                vm.cartData.splice(key,1);
+              }
+               localStorage.setItem('cartData',JSON.stringify(vm.cartData));
+            })
+
+            
+          })
         },
         
    
