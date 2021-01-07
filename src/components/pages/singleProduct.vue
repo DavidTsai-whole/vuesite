@@ -36,7 +36,7 @@
 
 
 <div class="mt-5">
-<button class="addCartBtn btn btn-dark1"@click="addcart(singleProduct.id,singleProduct.num)">加入購物車</button>
+<button class="addCartBtn btn btn-dark1"@click="addcart(singleProduct)">加入購物車</button>
 <button class="backMenuBtn btn btn-outline-secondary"@click="gomenu">回菜單</button>
 </div>
 
@@ -78,7 +78,7 @@ export default {
         return {
             singleProduct:{},
             isLoading:false,
-           
+           cartData:JSON.parse(localStorage.getItem('cartData')) || [],
             products:[],
             
             
@@ -104,6 +104,48 @@ export default {
        
 
         },
+        addcart(data){
+          const vm = this;
+          const cacheCarID = [];
+          vm.cartData.forEach((item) => cacheCarID.push(item.product_id));
+         
+          if (cacheCarID.indexOf(data.id) === -1) {
+         
+            const cartContent = {
+            product_id:data.id,
+            qty:vm.singleProduct.num,
+            title:data.title,
+            price:data.price,
+           imageUrl:data.imageUrl,
+          };
+          vm.cartData.push(cartContent);
+          localStorage.setItem('cartData',JSON.stringify(vm.cartData));
+          }else{
+            let cache={};
+           vm.cartData.forEach( (item,keys) =>{
+             if(item.product_id ===data.id){
+               
+                cache={
+                 product_id:data.id,
+                 qty:item.qty+=vm.singleProduct.num,
+                 title:data.title,
+                 price:data.price,
+                 imageUrl:data.imageUrl,
+               };
+               vm.cartData.splice(keys,1);
+             
+              
+             }
+           });
+             vm.cartData.push(cache);
+               localStorage.setItem('cartData',JSON.stringify(vm.cartData));
+               
+          }
+          
+          vm.$bus.$emit('message:push','已加入購物車','light');
+         
+          
+        },
         inputProductid(item){
        const vm = this;
             vm.$router.push(`/products/${item.id}`);
@@ -127,20 +169,7 @@ export default {
         },
      
     
-        addcart(id,qty=1){
-          const vm = this;
-          const api = `${process.env.APIPATH}/api/${process.env.MEPATH}/cart`;
-          const cart={
-            product_id:id,
-            qty,
-          };
-           vm.isLoading=true;
-          vm.$http.post(api,{data:cart}).then((response) => {
-             vm.isLoading=false;
-            
-            vm.$bus.$emit('message:push','已加入購物車','light');
-        })
-        },
+       
         
     },
     computed: {

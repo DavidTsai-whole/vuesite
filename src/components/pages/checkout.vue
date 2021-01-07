@@ -168,7 +168,7 @@ export default {
         return {
             isLoading:false,
             allcart:[],
-            cartnum:'',
+            cartnum:0,
             hide:true,
              couponcode:'',
              form:{
@@ -180,7 +180,8 @@ export default {
                 },
                 message:'',
                  
-             }
+             },
+             cartData:JSON.parse(localStorage.getItem('cartData')) || [],
         }
     },
     methods: {
@@ -192,7 +193,7 @@ export default {
             
              vm.isLoading = false;
              vm.allcart = response.data.data;
-             vm.cartnum = response.data.data.carts.length;
+             vm.cartnum = vm.cartData.length;
            
             
             
@@ -231,6 +232,8 @@ export default {
              const api = `${process.env.APIPATH}/api/${process.env.MEPATH}/order`;
              vm.isLoading = true;
              vm.$http.post(api,{data:vm.form}).then((response) => {
+               vm.cartData=[];
+             localStorage.removeItem('cartData');
                vm.isLoading = false;
             
            vm.$router.push(`/checkoutFinal/${response.data.orderId}`);

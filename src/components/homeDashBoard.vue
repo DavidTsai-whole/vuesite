@@ -32,32 +32,23 @@ export default {
     },
     data() {
         return {
-            cartnum:'',
+            cartData:JSON.parse(localStorage.getItem('cartData')) || [],
+            cartnum:0,
         }
     },
     
     methods: {
-         getcart(){
+         getCartNum(){
             const vm = this;
-            vm.isLoading = true;
-            const api = `${process.env.APIPATH}/api/${process.env.MEPATH}/cart`;
-            vm.$http.get(api).then((response) => {
+            vm.cartnum = vm.cartData.length;
+            
            
-             vm.isLoading = false;
-             
-             vm.cartnum = response.data.data.carts.length;
-           vm.getcart();
-            
-            
-            
-            
-          });
         },
       
         
     },
     created() {
-        this.getcart();
+        this.getCartNum();
     },
 }
 </script>
