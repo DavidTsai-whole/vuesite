@@ -14,7 +14,7 @@
 <th>商品種類</th>
 <th>商品價錢</th>
 <th >加入購物車</th>
-<th>刪除</th>
+<th>取消追蹤</th>
 </tr>
 
 </thead>
@@ -23,7 +23,7 @@
 <td>{{item.title}}</td>
 <td>{{item.category}}</td>
 <td>NT$ {{item.price}}</td>
-<td class="tdAddCart" @click="addcart(item.id)"><i class="fas fa-shopping-cart fa-2x text-white1"></i></td>
+<td class="tdAddCart" @click="addcart(item)"><i class="fas fa-shopping-cart fa-2x text-white1"></i></td>
 <td class="tdDelTrack"><i class="fas fa-trash text-danger fa-2x"@click="deletee(item.id)"></i></td>
 </tr>
 
@@ -94,6 +94,7 @@ export default {
     data() {
         return {
              trackData:JSON.parse(localStorage.getItem('tableData')) || [],
+             cartData:JSON.parse(localStorage.getItem('cartData')) || [],
              products:[],
              isLoading:false,
              FollowProduct:[],
@@ -145,20 +146,50 @@ export default {
           
 
        },
-          addcart(id,qty=1){
+          addcart(data){
           const vm = this;
-          const api = `${process.env.APIPATH}/api/${process.env.MEPATH}/cart`;
-          const cart={
-            product_id:id,
-            qty,
+          const cacheCarID = [];
+          vm.cartData.forEach((item) => cacheCarID.push(item.product_id));
+         
+          if (cacheCarID.indexOf(data.id) === -1) {
+         
+            const cartContent = {
+            product_id:data.id,
+            qty:1,
+            title:data.title,
+            price:data.price,
+           imageUrl:data.imageUrl,
           };
-           vm.isLoading=true;
-          vm.$http.post(api,{data:cart}).then((response) => {
-             vm.isLoading=false;
-            console.log(response.data)
-            vm.$bus.$emit('message:push','已加入購物車','light');
-        })
+          vm.cartData.push(cartContent);
+          localStorage.setItem('cartData',JSON.stringify(vm.cartData));
+          }else{
+            let cache={};
+           vm.cartData.forEach( (item,keys) =>{
+             if(item.product_id ===data.id){
+               
+                cache={
+                 product_id:data.id,
+                 qty:item.qty+=1,
+                 title:data.title,
+                 price:data.price,
+                 imageUrl:data.imageUrl,
+               };
+               vm.cartData.splice(keys,1);
+             
+              
+             }
+           });
+             vm.cartData.push(cache);
+               localStorage.setItem('cartData',JSON.stringify(vm.cartData));
+               
+          }
+          
+          vm.$bus.$emit('message:push','已加入購物車','light');
+         
+          
         },
+     
+  
     },
     created() {
       this.getproducts();

@@ -141,16 +141,23 @@ export default {
           
           item.qty+= 1;
           localStorage.setItem('cartData',JSON.stringify(vm.cartData));
+          vm.$bus.$emit('message:push','以更新商品數量','light');
+          
           
         },
          lessQty(item) {
       const vm = this;
           item.qty-= 1;
           localStorage.setItem('cartData',JSON.stringify(vm.cartData));
+          
       if (item.qty == 0) {
         vm.deleteCart(item);
         localStorage.setItem('cartData',JSON.stringify(vm.cartData));
       }
+      else{
+        vm.$bus.$emit('message:push','已更新商品數量','light');
+      }
+      
     },
       
         deleteCart(item2){
@@ -163,10 +170,13 @@ export default {
                 vm.cartData.splice(key,1);
               }
                localStorage.setItem('cartData',JSON.stringify(vm.cartData));
+               
             
 
             
           })
+          vm.$bus.$emit('message:push','已移除該商品','light');
+          
         },
         goCheckout(){
           const vm = this;
