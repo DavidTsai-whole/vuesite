@@ -178,10 +178,11 @@ export default {
                     tel:'',
                     address:'',
                 },
-                message:'',
-                 
+                message:'',    
              },
              cartData:JSON.parse(localStorage.getItem('cartData')) || [],
+             LocalData:[],
+            
         }
     },
     methods: {
@@ -232,8 +233,7 @@ export default {
              const api = `${process.env.APIPATH}/api/${process.env.MEPATH}/order`;
              vm.isLoading = true;
              vm.$http.post(api,{data:vm.form}).then((response) => {
-               vm.cartData=[];
-             localStorage.removeItem('cartData');
+               
                vm.isLoading = false;
             
            vm.$router.push(`/checkoutFinal/${response.data.orderId}`);
@@ -248,7 +248,12 @@ export default {
         }
     },
     created() {
-        this.getcart();
+      const vm =this;
+        vm.getcart();
+        vm.$bus.$on('getLocalData',(msg)=>{
+         vm.LocalData.push(msg);
+        });
+        
     },
 }
 </script>

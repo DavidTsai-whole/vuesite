@@ -100,6 +100,7 @@ export default {
             
             
             
+            
           });
        
 
@@ -143,6 +144,7 @@ export default {
           }
           
           vm.$bus.$emit('message:push','已加入購物車','light');
+          
          
           
         },

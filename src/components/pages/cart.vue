@@ -191,7 +191,10 @@ export default {
              
                vm.isLoading=false;
            })
+           vm.$bus.$emit('getLocalData',item);
          })
+         
+         
           vm.$router.push('/checkout');
         
         }
@@ -200,9 +203,11 @@ export default {
      
     },
     created() {
-      
-        
+     
         this.getTotalPr();
+       
+      
+    
     },
 }
 </script>
