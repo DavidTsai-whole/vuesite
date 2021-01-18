@@ -233,7 +233,8 @@ export default {
              const api = `${process.env.APIPATH}/api/${process.env.MEPATH}/order`;
              vm.isLoading = true;
              vm.$http.post(api,{data:vm.form}).then((response) => {
-               
+                vm.cartData=[];
+               localStorage.removeItem('cartData');
                vm.isLoading = false;
             
            vm.$router.push(`/checkoutFinal/${response.data.orderId}`);
@@ -245,6 +246,7 @@ export default {
             
             
           });
+         
         }
     },
     created() {

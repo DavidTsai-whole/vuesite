@@ -126,6 +126,27 @@ export default {
         }
     },
     methods: {
+
+      getCartData(){
+      const vm = this;
+      const api=`${process.env.APIPATH}/api/${process.env.MEPATH}/cart`;
+      vm.$http.get(api).then((response) => {
+        
+        vm.allcart = response.data.data.carts;
+        
+        
+        
+})
+
+      },
+      deleteCartData(id){
+      const vm = this;
+      const api=`${process.env.APIPATH}/api/${process.env.MEPATH}/cart/${id}`;
+         vm.$http.delete(api).then((response) => {    
+          
+          
+      });
+      },
         
         getTotalPr(){
           const vm = this;
@@ -141,6 +162,9 @@ export default {
           
           item.qty+= 1;
           localStorage.setItem('cartData',JSON.stringify(vm.cartData));
+          
+          
+          
           vm.$bus.$emit('message:push','以更新商品數量','light');
           
           
@@ -170,11 +194,17 @@ export default {
                 vm.cartData.splice(key,1);
               }
                localStorage.setItem('cartData',JSON.stringify(vm.cartData));
-               
-            
-
-            
-          })
+ 
+          });
+          
+            vm.allcart.forEach((item,key)=>{
+              if(item2.product_id===item.product_id){
+              vm.deleteCartData(item.id);
+              console.log(item.id);
+              }
+          });
+          vm.getCartData();
+         
           vm.$bus.$emit('message:push','已移除該商品','light');
           
         },
@@ -191,11 +221,22 @@ export default {
              
                vm.isLoading=false;
            })
-           vm.$bus.$emit('getLocalData',item);
          })
+         vm.allcart.forEach(item=>{
+           vm.cartData.forEach(item2=>{
+              if(item.product_id===item2.product_id){
+               vm.deleteCartData(item.id);
+              } 
+
+           })
+          
+           });
+          
          
-         
-          vm.$router.push('/checkout');
+         setTimeout(()=>{
+           vm.$router.push('/checkout');
+         },2000)
+          
         
         }
         
@@ -205,6 +246,7 @@ export default {
     created() {
      
         this.getTotalPr();
+        this.getCartData();
        
       
     

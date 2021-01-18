@@ -149,6 +149,7 @@ export default {
         },
         addcart(data){
           const vm = this;
+          vm.isLoading=true;
           const cacheCarID = [];
           vm.cartData.forEach((item) => cacheCarID.push(item.product_id));
          
