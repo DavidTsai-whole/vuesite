@@ -183,7 +183,7 @@ export default {
                localStorage.setItem('cartData',JSON.stringify(vm.cartData));
                
           }
-          
+          vm.$bus.$emit('number'); 
           vm.$bus.$emit('message:push','已加入購物車','light');
          
           

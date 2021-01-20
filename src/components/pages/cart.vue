@@ -150,6 +150,7 @@ export default {
         
         getTotalPr(){
           const vm = this;
+          vm.totoaPrice = 0; 
         vm.cartData.forEach((item)=>{
           vm.totoaPrice += item.price*item.qty;
 
@@ -162,7 +163,7 @@ export default {
           
           item.qty+= 1;
           localStorage.setItem('cartData',JSON.stringify(vm.cartData));
-          
+          vm.getTotalPr();
           
           
           vm.$bus.$emit('message:push','以更新商品數量','light');
@@ -171,8 +172,10 @@ export default {
         },
          lessQty(item) {
       const vm = this;
+      
           item.qty-= 1;
           localStorage.setItem('cartData',JSON.stringify(vm.cartData));
+          vm.getTotalPr();
           
       if (item.qty == 0) {
         vm.deleteCart(item);
@@ -194,6 +197,7 @@ export default {
                 vm.cartData.splice(key,1);
               }
                localStorage.setItem('cartData',JSON.stringify(vm.cartData));
+               vm.getTotalPr();
  
           });
           
@@ -204,7 +208,7 @@ export default {
               }
           });
           vm.getCartData();
-         
+         vm.$bus.$emit('number'); 
           vm.$bus.$emit('message:push','已移除該商品','light');
           
         },

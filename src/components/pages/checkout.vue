@@ -236,7 +236,7 @@ export default {
                 vm.cartData=[];
                localStorage.removeItem('cartData');
                vm.isLoading = false;
-            
+            vm.$bus.$emit('number'); 
            vm.$router.push(`/checkoutFinal/${response.data.orderId}`);
             
              
