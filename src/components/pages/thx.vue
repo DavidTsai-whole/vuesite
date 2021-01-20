@@ -32,3 +32,17 @@ shopping(){
 
 }
 </script>
+<style scoped>
+.thxH2{
+    position:absolute;left: 50%;transform: translate(-50%);padding-top:130px;
+}
+.thxI{
+    position:absolute;left: 50%;transform: translate(-50%);padding-top:50px;
+}
+.thxH3{
+    position:absolute;left: 50%;transform: translate(-50%);padding-top:180px;
+}
+.thxBtn{
+    position:absolute;left: 50%;transform: translate(-50%); margin-top:230px;
+}
+</style>

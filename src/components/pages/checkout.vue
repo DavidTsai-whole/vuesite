@@ -259,3 +259,15 @@ export default {
     },
 }
 </script>
+<style scoped>
+.totalTitle{
+    cursor:pointer;
+    display:inline;
+}
+.inputCoupon{
+    border:2px solid black;
+}
+.notAllowed{
+    cursor:not-allowed;
+}
+</style>
