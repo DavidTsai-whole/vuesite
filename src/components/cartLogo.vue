@@ -71,6 +71,9 @@ data(){
   },
    created(){
      const vm = this;
+     vm.cartData = JSON.parse(localStorage.getItem('cartData')) || [];
+     vm.cartNum = vm.cartData.length;
+     
      vm.$bus.$on('number',()=>{
          vm.cartData = JSON.parse(localStorage.getItem('cartData')) || [],
         vm.number();
