@@ -9,7 +9,7 @@
 <style>
 .cartlogo{
    right:40px;
-   bottom:80px;
+   bottom:200px;
     
     
     z-index:100;

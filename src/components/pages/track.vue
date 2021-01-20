@@ -196,3 +196,20 @@ export default {
     },
 }
 </script>
+<style>
+.table{
+    color:#dcd9cb;
+}
+.trBorder{
+    border:2px solid #dcd9cb;
+}
+.tdAddCart{
+    cursor:pointer;
+}
+.tdDelTrack{
+    cursor:pointer;
+}
+.cartin:hover{
+    border-bottom:4px solid black;
+  }
+</style>

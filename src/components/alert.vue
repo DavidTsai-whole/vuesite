@@ -67,4 +67,29 @@ export default {
   },
 };
 </script>
-
+<style scoped>
+.message-alert {
+    position: fixed;
+   top:10%;
+    left:40%;
+    z-index: 22231100;
+  }
+  @media(max-width:768px){
+    .message-alert{
+     top:10%;
+    left:30%;
+    }
+  
+  }
+  @media(max-width:568px){
+    .message-alert{
+     top:10%;
+    left:13%;
+    }
+  
+  }
+  .alert{
+    font-size:40px;
+    box-shadow:7px 7px 6px 10px rgba(0,0,0,0.6);
+  }
+</style>

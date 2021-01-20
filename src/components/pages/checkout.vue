@@ -91,8 +91,8 @@
        
 
 <div class="my-5 row justify-content-center bg-dark1 text-white" v-if="allcart.total !==0">
-<validation-observer class="col-md-10" v-slot="{ invalid }">
-  <form class="pt-2"@submit.prevent="submitorder">
+<validation-observer class="col-md-10 p-3" v-slot="{ invalid }">
+  <form @submit.prevent="submitorder">
     <validation-provider class="form-group" rules="required|email" v-slot="{ errors, classes }">
   <!-- 輸入框 -->
   <label for="email">Email<span class="text-danger">(必填)</span></label>
@@ -145,8 +145,8 @@
 </div>
 
 
-<div class="text-center mt-5"style="" v-else>
-<h1 class="text-danger"style="font-weight:bold">請重新選購商品!!</h1>
+<div class="text-center mt-5" v-else>
+<h1 class="text-danger fonr-weight-bold">請重新選購商品!!</h1>
 <div class="d-flex justify-content-around mt-5">
 <a class="h3 cartin font-weight-bold" href="#/product"><i class="fas fa-arrow-circle-left"></i>前往購物</a>
 <a class="h3 cartin font-weight-bold" href="#/"><i class="fas fa-arrow-circle-right"></i>回首頁</a>

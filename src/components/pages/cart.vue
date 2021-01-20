@@ -149,6 +149,7 @@ export default {
       },
         
         getTotalPr(){
+         
           const vm = this;
           vm.totoaPrice = 0; 
         vm.cartData.forEach((item)=>{
@@ -257,3 +258,29 @@ export default {
     },
 }
 </script>
+<style>
+.topLogo1{
+    height:60px;
+    width:200px;
+    border-radius:15px ;
+   font-weight:bold;
+   border:3px solid 	#21232d;
+}
+.cartImg{
+    height:80px;width:80px;
+}
+.tableBorder{
+    border-bottom:2px solid #dcd9cb;
+}
+.far:hover{
+    cursor:pointer;
+}
+.cartin{
+  border-bottom:3px solid transparent;
+  color:#21232d;
+}
+.cartin:hover{
+  border-bottom:3px solid black;
+}
+
+</style>

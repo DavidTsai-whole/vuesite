@@ -138,3 +138,8 @@ export default {
    },
 }
 </script>
+<style>
+.finalBorder{
+    border:1px solid #BEBEBE;
+}
+</style>
