@@ -1,48 +1,36 @@
 <template>
-<div>
-<Navbar2></Navbar2>
-<Alert></Alert>
-<cartLogo></cartLogo>
+  <div>
+    <Navbar2></Navbar2>
+    <Alert></Alert>
+    <cartLogo></cartLogo>
 
+    <router-view style="padding-top: 150px"></router-view>
 
-
-<router-view style="padding-top:150px;"></router-view>
-
-
-<footer2></footer2>
-
-</div>
+    <footer2></footer2>
+  </div>
 </template>
 
 <script>
-import $ from 'jquery'
-import Navbar2 from './navbarHome'
-import footer2 from './footerHome'
-import Alert from './alert'
-import cartLogo from './cartLogo'
+import $ from "jquery";
+import Navbar2 from "./navbarHome";
+import footer2 from "./footerHome";
+import Alert from "./alert";
+import cartLogo from "./cartLogo";
 export default {
-    components:{
-        Navbar2,
-         footer2,
-         Alert,
-         cartLogo,
-    },
-    data() {
-        return {
-            cartData:JSON.parse(localStorage.getItem('cartData')) || [],
-            cartnum:0,
-        }
-    },
-    
-    methods: {
-     
-      
-        
-    },
-    created() {
-        
-    },
-}
+  components: {
+    Navbar2,
+    footer2,
+    Alert,
+    cartLogo,
+  },
+  data() {
+    return {
+      cartData: JSON.parse(localStorage.getItem("cartData")) || [],
+      cartnum: 0,
+    };
+  },
+
+  methods: {},
+  created() {},
+};
 </script>
-
-

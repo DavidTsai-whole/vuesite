@@ -18,7 +18,7 @@
 
 <div class="row mb-5">
 <div class="sort col-md-6 col-sm-6 ">
-<select name=""  id="" class="form-control text-dark1"v-model="selected">
+<select name=""  id="" class="form-control text-dark1" v-model="selected">
 <option value="0">全部商品</option>
 <option value="1">依價格低到高排序</option>
 <option value="2">依價格高到低排序</option>
@@ -28,7 +28,7 @@
 <div class="search col-md-6  col-sm-6 ">
 <div class="d-flex align-items-center">
 <i class="fas fa-search fa-2x pr-2"></i>
-<input type="text"class="form-control  "placeholder="搜尋產品 "v-model="filterText">
+<input type="text"class="form-control"placeholder="搜尋產品 " v-model="filterText">
 </div>
 
 </div>
@@ -42,21 +42,21 @@
 <div class="col-md-4 mb-4 col-sm-6  animate__animated animate__fadeInUp" v-for="item in filterTodo">
 
 <div class="card box-shadow ">
-  <div class="toProuductDetail" style="height: 150px; background-size: cover; background-position: center;"
+  <div class="toProuductDetail"
      :style="{backgroundImage:`url(${item.imageUrl})`}" @click="inputProductid(item)">
      
       
     </div>
-    <div class="imgtext "@click="inputProductid(item)">
+    <div class="imgtext" @click="inputProductid(item)">
      <h3>more</h3>
      </div>
     
    <div class="track">
-   <a href="#"@click.prevent="sendlocal(item.id)"v-if="trackData.indexOf(item.id)===-1" ><i class="far fa-grin-hearts fa-2x text-white"></i></a>
-      <a href="#"@click.prevent="sendlocal(item.id)"v-else><i class="far fa-grin-hearts fa-2x text-danger"></i></a>
+   <a href="#" @click.prevent="sendlocal(item.id)"v-if="trackData.indexOf(item.id)===-1" ><i class="far fa-grin-hearts fa-2x text-white"></i></a>
+      <a href="#" @click.prevent="sendlocal(item.id)"v-else><i class="far fa-grin-hearts fa-2x text-danger"></i></a>
       
    </div>
-  <div class="card-body "@click="inputProductid(item)">
+  <div class="card-body" @click="inputProductid(item)">
   <span class="badge badge-secondary float-right ml-2">{{item.category}}</span>
   <h5 class="card-title fot-weight-bold">{{item.title}}</h5>
         
@@ -64,7 +64,7 @@
       
        <div class="d-flex justify-content-between align-items-baseline">
        
-        <del class="p ">原價{{item.origin_price}}元</del>
+        <del class="p">原價{{item.origin_price}}元</del>
         <div class="p text-danger font-weight-bold">特價{{item.price}}元</div>
         
         
@@ -72,7 +72,7 @@
     </div>
     <div class="card-footer">
       
-      <button class="btn btn-block btn-dark1 btn-sm ml-auto"@click="addcart(item)">
+      <button class="btn btn-block btn-dark1 btn-sm ml-auto" @click="addcart(item)">
         
         加到購物車
       </button>
@@ -100,7 +100,63 @@
 </div>
 
 </template>
+<style>
+.toProuductDetail{
+height: 150px;
+ background-size: cover; 
+ background-position: center;
+}
+  .sort select{
+    border:2px solid #21232d;
+}
+.search input{
+    border:2px solid #21232d;
+}
+.imgtext{
+    position:absolute;
+    color:white;
+    display:none;
+    z-index:1000;
+     top:16%;
+    left: 39%;
+  }
+.imgtext:hover{
+    cursor: pointer;
+  }
+  .box-shadow:hover{
+    box-shadow:0 4px 10px rgba(0,0,0,0.46); 
+    cursor: pointer;
+ }
+ .box-shadow:hover .imgtext{
+      display:block;
+ }
+ 
+.box-shadow:hover .toProuductDetail{
+    -webkit-filter:brightness(.5);
+ }
+    
+
+.track{
+    position:absolute;
+    right:0px;
+    
+  }
+.track a{
+    display:block;
+     padding:4px;
+  }
+
+@media (max-width:768px){
+    .sort{
+      margin-top:20px;
+    }
+    .search{
+      margin-top:20px;
+    }
+    }
+</style>
 <script>
+
 
 
 export default {
@@ -129,12 +185,13 @@ export default {
     },
     methods: {
         getProducts(){
+          const vm = this;
             const api =`${process.env.APIPATH}/api/${process.env.MEPATH}/products/all`;
-            const vm = this;
-               const  categoryName  = this.$route.params.categoryname;
+            
+                const  categoryName  = vm.$route.params.categoryname;
                //如果有categoryName存在visibilty才變
           if(categoryName){
-            this.visibilty = categoryName;
+            vm.visibilty = categoryName;
           }
             vm.isLoading=true;
                vm.$http.get(api).then((response) => {
@@ -145,7 +202,7 @@ export default {
         },
         inputProductid(item){
        const vm = this;
-            vm.$router.push(`/products/${item.id}`);
+                                                 vm.$router.push(`/products/${item.id}`);
         },
         addcart(data){
           const vm = this;
@@ -183,23 +240,11 @@ export default {
            });
              vm.cartData.push(cache);
                localStorage.setItem('cartData',JSON.stringify(vm.cartData));
-               
-               
-               
-               
           }
           
                 vm.$bus.$emit('number'); 
-               
           vm.$bus.$emit('message:push','已加入購物車','light');
-         
-          
         },
-     
-  
-         
-    
-    
         sendlocal(id){
           const vm = this;
           const followId = vm.trackData.indexOf(id);
@@ -213,9 +258,7 @@ export default {
           }
          localStorage.setItem('tableData',JSON.stringify(vm.trackData));
         },
-          
-       
-   
+
     },
     created() {
         this.getProducts();

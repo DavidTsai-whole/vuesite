@@ -90,6 +90,6 @@ export default {
   }
   .alert{
     font-size:40px;
-    box-shadow:7px 7px 6px 10px rgba(0,0,0,0.6);
+    box-shadow:3px 3px 3px 3px rgba(0,0,0,0.6);
   }
 </style>

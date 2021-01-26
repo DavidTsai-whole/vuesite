@@ -1,24 +1,39 @@
 <template>
-<div>
- <form class="form-signin " @submit.prevent="signin">
-  <h1 class="h3 mb-3 font-weight-normal text-center">請先登入</h1>
-  <label for="inputEmail" class="sr-only"style="border:2px solid #21232d">Email address</label>
-  <input type="email" id="inputEmail" class="form-control"style="border:2px solid #21232d"v-model="user.username" placeholder="Email address" required autofocus>
-  <label for="inputPassword" class="sr-only">Password</label>
-  <input type="password" id="inputPassword" v-model="user.password" class="form-control"style="border:2px solid #21232d" placeholder="Password" required>
-  <div class="checkbox mb-3">
-    <label>
-      <input type="checkbox" value="remember-me"> Remember me
-    </label>
+  <div>
+    <form class="form-signin" @submit.prevent="signin">
+      <h1 class="h3 mb-3 font-weight-normal text-center">請先登入</h1>
+      <label for="inputEmail" class="sr-only" style="border: 2px solid #21232d"
+        >Email address</label
+      >
+      <input
+        type="email"
+        id="inputEmail"
+        class="form-control"
+        style="border: 2px solid #21232d"
+        v-model="user.username"
+        placeholder="Email address"
+        required
+        autofocus
+      />
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input
+        type="password"
+        id="inputPassword"
+        v-model="user.password"
+        class="form-control"
+        style="border: 2px solid #21232d"
+        placeholder="Password"
+        required
+      />
+      <div class="checkbox mb-3">
+        <label> <input type="checkbox" value="remember-me" /> Remember me </label>
+      </div>
+      <button class="btn btn-lg btn-dark1 btn-block" type="submit">Sign in</button>
+    </form>
   </div>
-  <button class="btn btn-lg btn-dark1 btn-block" type="submit">Sign in</button>
-</form>
-</div>
 </template>
 
 <style scoped>
-
-
 body {
   display: -ms-flexbox;
   display: flex;
@@ -34,7 +49,7 @@ body {
   max-width: 330px;
   padding: 15px;
   margin: auto;
-  padding-bottom:200px;
+  padding-bottom: 200px;
 }
 .form-signin .checkbox {
   font-weight: 400;
@@ -59,37 +74,34 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-.form-signin{
-    padding-top:110px;
+.form-signin {
+  padding-top: 110px;
 }
 </style>
 
 <script>
 export default {
-    data() {
-        return {
-            user:{
-            username:'',
-            password:'',
-            }
-        }
-    },
-    methods: {
-        signin(){
-         const api = `${process.env.APIPATH}/admin/signin`;
-         const vm = this;
-         this.$http.post(api,vm.user).then((response) => {
-         
-         if(response.data.success){
-           vm.$router.push('/admin/product')
-         }
-         else{
-           this.$bus.$emit('message:push','登入失敗','danger');
-         }
-          });
+  data() {
+    return {
+      user: {
+        username: "",
+        password: "",
+      },
+    };
+  },
+  methods: {
+    signin() {
+      const vm = this;
+      const api = `${process.env.APIPATH}/admin/signin`;
 
+      vm.$http.post(api, vm.user).then((response) => {
+        if (response.data.success) {
+          vm.$router.push("/admin/product");
+        } else {
+          vm.$bus.$emit("message:push", "登入失敗", "danger");
         }
+      });
     },
-  
-}
+  },
+};
 </script>
