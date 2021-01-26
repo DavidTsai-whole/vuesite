@@ -11,11 +11,11 @@
               購物車
             </li>
             <li><i class="fas fa-arrow-right fa-4x text-danger ml-2 mr-2"></i></li>
-            <li class="topLogo1 d-flex align-items-center justify-content-center h3">
+            <li class="topLogo2 d-flex align-items-center justify-content-center h3">
               結帳
             </li>
             <li><i class="fas fa-arrow-right fa-4x text-danger ml-2 mr-2"></i></li>
-            <li class="topLogo1 d-flex align-items-center justify-content-center h3">
+            <li class="topLogo2 d-flex align-items-center justify-content-center h3">
               完成
             </li>
           </ul>
@@ -135,7 +135,13 @@
   border-radius: 15px;
   color: #dcd9cb;
   font-weight: bold;
+}
+.topLogo2 {
   border: 3px solid #21232d;
+  height: 60px;
+  width: 200px;
+  border-radius: 15px;
+  font-weight: bold;
 }
 .cartImg {
   height: 80px;
