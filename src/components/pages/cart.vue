@@ -7,7 +7,6 @@
           <ul class="list-unstyled d-flex justify-content-around">
             <li
               class="topLogo1 d-flex align-items-center justify-content-center h3 bg-dark1"
-              style="color: #dcd9cb"
             >
               購物車
             </li>
@@ -33,11 +32,7 @@
             </thead>
 
             <tbody>
-              <tr
-                v-for="item in cartData"
-                style="border-bottom: 2px solid #dcd9cb"
-                :key="item.id"
-              >
+              <tr class="borderBot" v-for="item in cartData" :key="item.id">
                 <td class="text-center pt-4">{{ item.title }}</td>
                 <td class="text-center">
                   <img class="cartImg" :src="`${item.imageUrl}`" alt="" />
@@ -95,11 +90,9 @@
           </table>
 
           <div class="text-center mt-5 text-danger font-weight-bold" v-else>
-            <h2 class="font-weight-bold" style="margin-top: 100px">
-              您目前並沒有選擇任何商品喔!
-            </h2>
+            <h2 class="noMerch font-weight-bold">您目前並沒有選擇任何商品喔!</h2>
 
-            <div class="d-flex justify-content-around mb-5" style="margin-top: 100px">
+            <div class="link d-flex justify-content-around mb-5">
               <a class="h3 cartin font-weight-bold" href="#/product"
                 ><i class="fas fa-arrow-circle-left"></i>前往購物</a
               >
@@ -126,7 +119,42 @@
     </div>
   </div>
 </template>
-
+<style>
+.borderBot {
+  border-bottom: 2px solid #dcd9cb;
+}
+.noMerch {
+  margin-top: 100px;
+}
+.link {
+  margin-top: 100px;
+}
+.topLogo1 {
+  height: 60px;
+  width: 200px;
+  border-radius: 15px;
+  color: #dcd9cb;
+  font-weight: bold;
+  border: 3px solid #21232d;
+}
+.cartImg {
+  height: 80px;
+  width: 80px;
+}
+.tableBorder {
+  border-bottom: 2px solid #dcd9cb;
+}
+.far:hover {
+  cursor: pointer;
+}
+.cartin {
+  border-bottom: 3px solid transparent;
+  color: #21232d;
+}
+.cartin:hover {
+  border-bottom: 3px solid black;
+}
+</style>
 <script>
 export default {
   data() {
@@ -236,29 +264,3 @@ export default {
   },
 };
 </script>
-<style>
-.topLogo1 {
-  height: 60px;
-  width: 200px;
-  border-radius: 15px;
-  font-weight: bold;
-  border: 3px solid #21232d;
-}
-.cartImg {
-  height: 80px;
-  width: 80px;
-}
-.tableBorder {
-  border-bottom: 2px solid #dcd9cb;
-}
-.far:hover {
-  cursor: pointer;
-}
-.cartin {
-  border-bottom: 3px solid transparent;
-  color: #21232d;
-}
-.cartin:hover {
-  border-bottom: 3px solid black;
-}
-</style>
