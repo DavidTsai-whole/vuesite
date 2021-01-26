@@ -8,7 +8,7 @@
 
           <div>
             <button class="btn btn-dark1" @click="goProdut">來去逛逛</button>
-            <button class="btn btn-outline-dark1" @click="openModal">查看優惠</button>
+            <button class="btn btn-outline-success " @click="openModal">查看優惠</button>
           </div>
         </div>
       </div>
