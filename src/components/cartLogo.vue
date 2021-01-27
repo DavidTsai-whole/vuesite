@@ -19,7 +19,6 @@
   position: fixed;
 }
 
-
 .top:hover {
   cursor: pointer;
 }
@@ -46,7 +45,6 @@
   .cartlogo {
     right: 10px;
   }
- 
 }
 </style>
 <script>

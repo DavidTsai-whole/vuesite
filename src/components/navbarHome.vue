@@ -2,7 +2,6 @@
   <div class="header bg-dark1 mb-5">
     <div class="container d-flex justify-content-between align-items-center">
       <h1 class="h1Title pt-3" @click="goHome">ChillBurger</h1>
-
       <ul class="menu list-unstyled d-flex pt-4">
         <li>
           <a href="#/product"><i class="fas fa-book-open"></i>美味菜單</a>
@@ -65,11 +64,10 @@
     right: 0;
     background: #21232d;
   }
- .h1Title{
-   font-size:35px;
-   margin-top:10px;
-   
- }
+  .h1Title {
+    font-size: 35px;
+    margin-top: 10px;
+  }
   .menu li {
     border-bottom: 2px dashed white;
     text-align: center;

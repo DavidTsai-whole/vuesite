@@ -2,14 +2,11 @@
   <div>
     <form class="form-signin" @submit.prevent="signin">
       <h1 class="h3 mb-3 font-weight-normal text-center">請先登入</h1>
-      <label for="inputEmail" class="sr-only" style="border: 2px solid #21232d"
-        >Email address</label
-      >
+      <label for="inputEmail" class="sr-only">Email address</label>
       <input
         type="email"
         id="inputEmail"
         class="form-control"
-        style="border: 2px solid #21232d"
         v-model="user.username"
         placeholder="Email address"
         required
@@ -21,7 +18,6 @@
         id="inputPassword"
         v-model="user.password"
         class="form-control"
-        style="border: 2px solid #21232d"
         placeholder="Password"
         required
       />
@@ -60,6 +56,7 @@ body {
   height: auto;
   padding: 10px;
   font-size: 16px;
+  border: 2px solid #21232d;
 }
 .form-signin .form-control:focus {
   z-index: 2;
@@ -93,7 +90,6 @@ export default {
     signin() {
       const vm = this;
       const api = `${process.env.APIPATH}/admin/signin`;
-
       vm.$http.post(api, vm.user).then((response) => {
         if (response.data.success) {
           vm.$router.push("/admin/product");

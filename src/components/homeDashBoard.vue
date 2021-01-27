@@ -29,8 +29,5 @@ export default {
       cartnum: 0,
     };
   },
-
-  methods: {},
-  created() {},
 };
 </script>

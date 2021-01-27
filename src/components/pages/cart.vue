@@ -120,6 +120,9 @@
   </div>
 </template>
 <style>
+.table {
+  color: #dcd9cb;
+}
 .borderBot {
   border-bottom: 2px solid #dcd9cb;
 }

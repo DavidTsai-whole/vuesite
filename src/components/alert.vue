@@ -1,6 +1,6 @@
 <template>
   <div class="message-alert">
-    <div class="alert alert-dismissible font-weight-bold"
+    <div class="alert alert-dismissible"
     
       :class="'alert-' + item.status"
       v-for="(item, i) in messages" :key="i">
@@ -70,26 +70,33 @@ export default {
 <style scoped>
 .message-alert {
     position: fixed;
-   top:10%;
-    left:40%;
+   top:20%;
+    left:84%;
     z-index: 22231100;
+  }
+  .alert{
+    font-size:20px;
+    box-shadow:1px 3px 3px 1px rgba(0,0,0,0.6);
+  }
+  @media(max-width:1200px){
+    .message-alert{
+      left:78%;
+    }
+  }
+  @media(max-width:992px){
+    .message-alert{
+      left:74%;
+    }
   }
   @media(max-width:768px){
     .message-alert{
-     top:10%;
-    left:30%;
+      left:66%;
     }
-  
   }
-  @media(max-width:568px){
+  @media(max-width:576px){
     .message-alert{
-     top:10%;
-    left:13%;
+      left:56%;
     }
-  
   }
-  .alert{
-    font-size:40px;
-    box-shadow:3px 3px 3px 3px rgba(0,0,0,0.6);
-  }
+
 </style>

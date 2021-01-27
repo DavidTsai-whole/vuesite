@@ -59,7 +59,7 @@
             <button v-if="!order.is_paid" class="btn btn-danger" @click="paid">
               確認付款
             </button>
-            <button v-else class="btn btn-success" @click.prevent="Home">回首頁</button>
+            <button v-else class="btn btn-success " @click.prevent="Home">回首頁</button>
           </div>
         </div>
       </div>

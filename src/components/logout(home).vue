@@ -1,35 +1,33 @@
 <template>
   <div class="hello">
-  <a href="#" @click.prevent="logout">登出</a>
+    <a href="#" @click.prevent="logout">登出</a>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'logout',
-  data () {
-    return {
-    
-    }
+  name: "logout",
+  data() {
+    return {};
   },
   methods: {
-    logout(){
+    logout() {
+      const vm = this;
       const api = `${process.env.APIPATH}/logout`;
-   const vm  = this;
-    this.$http.post(api).then((response) => {
- 
-  if(response.data.success){
-      vm.$router.push('/login')
-  }
-})
-    }
+      vm.$http.post(api).then((response) => {
+        if (response.data.success) {
+          vm.$router.push("/login");
+        }
+      });
+    },
   },
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 ul {

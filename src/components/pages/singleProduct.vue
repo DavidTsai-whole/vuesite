@@ -198,3 +198,37 @@ export default {
     },
 }
 </script>
+<style>
+  .productNum{
+    width:50%;
+    border:2px solid #21232d;
+}
+.singleImg{
+    max-height:300px;
+    width:600px;
+    object-fit:cover;
+}
+.addCartBtn{
+    width:49%;
+}
+.backMenuBtn{
+    width:49%;
+}
+.releateCard{
+    
+    cursor:pointer;
+    
+}
+.releateCardImg{
+    overflow: hidden;
+}
+.releateCardImg img{
+    transform:scale(1,1);transition: all 1s ease-out;
+    height:180px;
+    object-fit:cover;
+    
+}
+.releateCardImg img:hover{
+    transform:scale(1.2,1.2);
+  }
+</style>

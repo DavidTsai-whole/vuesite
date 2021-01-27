@@ -39,7 +39,7 @@
 
 
 
-<div class="col-md-4 mb-4 col-sm-6  animate__animated animate__fadeInUp" v-for="item in filterTodo">
+<div class="col-lg-4 mb-4 col-md-6  animate__animated animate__fadeInUp" v-for="item in filterTodo">
 
 <div class="card box-shadow ">
   <div class="toProuductDetail"
