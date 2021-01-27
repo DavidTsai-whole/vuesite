@@ -119,7 +119,7 @@
     </div>
   </div>
 </template>
-<style>
+<style scoped>
 .borderBot {
   border-bottom: 2px solid #dcd9cb;
 }
@@ -154,7 +154,7 @@
   cursor: pointer;
 }
 .cartin {
-  border-bottom: 3px solid transparent;
+  border-bottom: 4px solid transparent;
   color: #21232d;
 }
 .cartin:hover {

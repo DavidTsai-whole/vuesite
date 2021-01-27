@@ -1,62 +1,44 @@
 <template>
   <div>
     <div class="container">
-      <div class="row justify-content-center mt-2">
-        <div
-          class="col-md-12"
-          style="
-            background-position: center center;
-            position: relative;
-            background-size: cover;
-            height: 550px;
-            background-image: url('https://upload.cc/i1/2020/12/26/oIy29m.jpg');
-          "
-        >
-          <div>
-            <h2 class="thxH2 text-white font-weight-bold">交易成功</h2>
-            <i class="thxI far fa-check-circle fa-5x text-success"></i>
-            <h3 class="thxH3 text-white font-weight-bold">專人會盡快與您聯絡</h3>
-            <button class="thxBtn btn btn-light font-weight-bold" @click="shopping">
-              繼續購物
-            </button>
-          </div>
-        </div>
+      <div class="row">
+      <div class="col-md-12">
+      <h2 class="text-center font-weight-bold">恭喜已完成結帳囉</h2>
+      <h2 class="text-center font-weight-bold">感謝您對本店的信任與支持!</h2>
+      <i class="far fa-laugh-beam text-success pt-5"></i>
+      <div class="d-flex justify-content-around pt-5">
+        <a class="cartin h3 font-weight-bold"><i class="fas fa-home"></i>首頁</a>
+        <a class="cartin h3 font-weight-bold"><i class="fas fa-arrow-circle-left"></i>繼續購物</a>
       </div>
+      
+      </div>
+      </div>
+
+
     </div>
   </div>
 </template>
 <script>
 export default {
   methods: {
-    shopping() {
-      this.$router.push("/product");
-    },
+    
   },
 };
 </script>
 <style scoped>
-.thxH2 {
-  position: absolute;
-  left: 50%;
+.far{
+  font-size:130px;
+  position:relative;
+  left:50%;
   transform: translate(-50%);
-  padding-top: 130px;
+  
 }
-.thxI {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  padding-top: 50px;
+.cartin{
+  border-bottom: 4px solid transparent;
+  color: #21232d;
 }
-.thxH3 {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  padding-top: 180px;
-}
-.thxBtn {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  margin-top: 230px;
+.cartin:hover {
+  border-bottom: 3px solid black;
+  cursor:pointer;
 }
 </style>

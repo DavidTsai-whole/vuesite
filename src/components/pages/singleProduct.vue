@@ -13,7 +13,7 @@
 <div class="row">
 <div class="singleImg col-lg-6 mb-3 ">
 
-<img :src="singleProduct.imageUrl"class="singleImg img-fluid" alt="">
+<img :src="singleProduct.imageUrl" class="singleImg img-fluid" alt="">
 
 </div>
 <div class="col-lg-6 text-center">
@@ -22,7 +22,7 @@
 <h3 class=" mt-4 mb-3">產品說明</h3>
 <p class="mb-4 mt-4">{{singleProduct.content}}</p>
 <div class="d-flex justify-content-around">
-<select id="exampleFormControlSelect1" class="productNum form-control text-dark1"v-model="singleProduct.num">
+<select id="exampleFormControlSelect1" class="productNum form-control text-dark1" v-model="singleProduct.num">
 <option :value="num" v-for="num in 10" :key="num">
 選購{{num}}{{singleProduct.unit}}
 </option>
@@ -36,8 +36,8 @@
 
 
 <div class="mt-5">
-<button class="addCartBtn btn btn-dark1"@click="addcart(singleProduct)">加入購物車</button>
-<button class="backMenuBtn btn btn-outline-secondary"@click="gomenu">回菜單</button>
+<button class="addCartBtn btn btn-dark1" @click="addcart(singleProduct)">加入購物車</button>
+<button class="backMenuBtn btn btn-outline-secondary" @click="gomenu">回菜單</button>
 </div>
 
 </div>
@@ -48,7 +48,7 @@
       <div class="row">
       <div class="col-md-3 mb-3 col-sm-6" v-for="item in filterTodo">
 
-<div class="releateCard"@click="inputProductid(item)">
+<div class="releateCard" @click="inputProductid(item)">
 <div class="releateCardImg">
   <img :src="item.imageUrl" class="card-img-top img-fluid" alt="">
 </div>
@@ -85,11 +85,12 @@ export default {
         }
     },
     methods: {
-      
+              
             getSingleproduct(id){
-                id = this.$route.params.id;
+              const vm = this;
+                id = vm.$route.params.id;
        const api =`${process.env.APIPATH}/api/${process.env.MEPATH}/product/${id}`;
-       const vm = this;
+       
            vm.isLoading = true;
         vm.$http.get(api).then((response) => {
             
@@ -151,11 +152,12 @@ export default {
         inputProductid(item){
        const vm = this;
             vm.$router.push(`/products/${item.id}`);
-            this.getSingleproduct();
+            vm.getSingleproduct();
         },
        getProducts(){
+         const vm = this;
             const api =`${process.env.APIPATH}/api/${process.env.MEPATH}/products/all`;
-            const vm = this;
+            
             vm.isLoading=true;
                vm.$http.get(api).then((response) => {
             

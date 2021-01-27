@@ -14,7 +14,7 @@
           <a href="#/login"><i class="fas fa-sign-in-alt"></i>後台管理</a>
         </li>
       </ul>
-      <a href="#" class="rwdMenu" @click.prevent="showmenu"
+      <a href="#" class="rwdMenu pt-3" @click.prevent="showmenu"
         ><i class="fas fa-bars fa-3x"></i
       ></a>
     </div>
@@ -38,7 +38,7 @@
 }
 .menu a {
   display: block;
-  padding: 10px;
+  padding: 6px;
   color: #dcd9cb;
   font-size: 20px;
 }
@@ -60,12 +60,16 @@
     position: absolute;
     z-index: 10000000000;
     transition: 1.5s;
-    top: 69px;
+    top: 73px;
     left: 0;
     right: 0;
     background: #21232d;
   }
-
+ .h1Title{
+   font-size:35px;
+   margin-top:10px;
+   
+ }
   .menu li {
     border-bottom: 2px dashed white;
     text-align: center;
