@@ -119,7 +119,7 @@
     </div>
   </div>
 </template>
-<style scoped>
+<style>
 .borderBot {
   border-bottom: 2px solid #dcd9cb;
 }
