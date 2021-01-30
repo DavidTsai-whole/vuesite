@@ -71,7 +71,7 @@ export default {
 .message-alert {
     position: fixed;
    top:20%;
-    left:84%;
+    left:80%;
     z-index: 22231100;
   }
   .alert{
@@ -80,22 +80,31 @@ export default {
   }
   @media(max-width:1200px){
     .message-alert{
-      left:78%;
+      left:74%;
     }
   }
   @media(max-width:992px){
     .message-alert{
       left:74%;
     }
+    .alert{
+      font-size:17px;
+    }
   }
   @media(max-width:768px){
     .message-alert{
-      left:66%;
+      left:63%;
+    }
+    .alert{
+      font-size:15px;
     }
   }
   @media(max-width:576px){
     .message-alert{
       left:56%;
+    }
+    .alert{
+      font-size:15px;
     }
   }
 

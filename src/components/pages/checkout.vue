@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-
+  <CartLogo></CartLogo>
     <div class="container mb-5">
       <div class="row justify-content-center">
         <div class="col-md-8">
@@ -107,7 +107,7 @@
 
                   <tr>
                     <td colspan="3" class="text-right">小計:</td>
-                    <td class="text-right">${{ allcart.total }}元</td>
+                    <td class="text-right">${{ allcart.total }}</td>
                   </tr>
 
                   <tr class="tableBorder">
@@ -116,9 +116,9 @@
                       v-if="allcart.total >= 1000 || allcart.total === 0"
                       class="text-right"
                     >
-                      $0元
+                      $0
                     </td>
-                    <td v-else class="text-right">$60元</td>
+                    <td v-else class="text-right">$60</td>
                   </tr>
 
                   <tr>
@@ -127,9 +127,9 @@
                       v-if="allcart.total >= 1000 || allcart.total === 0"
                       class="h3 text-right"
                     >
-                      ${{ allcart.total }}元
+                      ${{ allcart.total }}
                     </td>
-                    <td v-else class="h3 text-right">${{ allcart.total + 60 }}元</td>
+                    <td v-else class="h3 text-right">${{ allcart.total + 60 }}</td>
                   </tr>
 
                   <tr
@@ -137,7 +137,7 @@
                   >
                     <td colspan="3" class="text-right h3 text-success">折扣價:</td>
                     <td class="h3 text-right text-success">
-                      ${{ Math.round(allcart.final_total + 60) }}元
+                      ${{ Math.round(allcart.final_total + 60) }}
                     </td>
                   </tr>
                   <tr
@@ -145,7 +145,7 @@
                   >
                     <td colspan="3" class="text-right h3 text-success">折扣價:</td>
                     <td class="h3 text-right text-success">
-                      ${{ Math.round(allcart.final_total) }}元
+                      ${{ Math.round(allcart.final_total) }}
                     </td>
                   </tr>
                 </tfoot>
@@ -267,13 +267,13 @@
           </div>
 
           <div class="text-center mt-5" v-else>
-            <h1 class="text-danger fonr-weight-bold">請重新選購商品!!</h1>
+            <h2 class="text-danger font-weight-bold">請重新選購商品!!</h2>
             <div class="d-flex justify-content-around mt-5">
               <a class="h3 cartin font-weight-bold" href="#/product"
-                ><i class="fas fa-arrow-circle-left"></i>前往購物</a
+                ><i class="fas fa-arrow-circle-left"></i>回首頁</a
               >
               <a class="h3 cartin font-weight-bold" href="#/"
-                ><i class="fas fa-arrow-circle-right"></i>回首頁</a
+                ><i class="fas fa-arrow-circle-right"></i>前往購物</a
               >
             </div>
           </div>
@@ -288,8 +288,8 @@
   border-bottom: 1px solid #e0e0e0;
 }
 .checkImg {
-  height: 80px;
-  width: 80px;
+  height: 70px;
+  width: 70px;
 }
 .totalTitle {
   cursor: pointer;
@@ -303,7 +303,11 @@
 }
 </style>
 <script>
+import CartLogo from "@/components/CARTLOGO";
 export default {
+  components: {
+    CartLogo,
+  },
   data() {
     return {
       isLoading: false,

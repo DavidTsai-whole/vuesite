@@ -22,33 +22,33 @@
           <table class="table table-borderless mt-5 bg-dark1 text-white">
             <tbody>
               <tr class="finalBorder">
-                <td colspan="5" class="text-center bg-dark">客戶資訊</td>
+                <td colspan="3" class="text-center bg-dark">客戶資訊</td>
               </tr>
               <tr class="finalBorder">
-                <td colspan="4" width="15%">姓名</td>
+                <td colspan="2">姓名</td>
                 <td>{{ order.user.name }}</td>
               </tr>
               <tr class="finalBorder">
-                <td colspan="4" width="15%">手機號碼</td>
+                <td colspan="2">手機號碼</td>
                 <td>{{ order.user.tel }}</td>
               </tr>
               <tr class="finalBorder">
-                <td colspan="4" width="15%">地址</td>
+                <td colspan="2">地址</td>
                 <td>{{ order.user.address }}</td>
               </tr>
               <tr class="finalBorder">
-                <td colspan="4" width="15%">電子信箱</td>
+                <td colspan="2">電子信箱</td>
                 <td>{{ order.user.email }}</td>
               </tr>
               <tr class="finalBorder">
-                <td colspan="4" width="15%">應付金額</td>
+                <td colspan="2">應付金額</td>
                 <td v-if="order.total + order.total * 0.8 < 1000">
                   NT$ {{ Math.round(order.total + 60) }}
                 </td>
                 <td v-else>NT$ {{ Math.round(order.total) }}</td>
               </tr>
               <tr class="finalBorder">
-                <td colspan="4" width="15%">付款狀態</td>
+                <td colspan="2">付款狀態</td>
                 <td v-if="!order.is_paid" class="text-danger">尚未付款</td>
                 <td v-else class="text-success">已付款</td>
               </tr>
@@ -110,5 +110,37 @@ export default {
 <style>
 .finalBorder {
   border: 1px solid #bebebe;
+}
+.topLogo1 {
+  font-size:25px;
+  height: 60px;
+  width: 200px;
+  border-radius: 15px;
+  color: #dcd9cb;
+  font-weight: bold;
+}
+.topLogo2 {
+  font-size:25px;
+  border: 3px solid #21232d;
+  height: 60px;
+  width: 200px;
+  border-radius: 15px;
+  font-weight: bold;
+}
+.fa-arrow-right{
+  font-size:50px;
+  padding-top:7px;
+}
+@media(max-width:768px){
+  .topLogo1 {
+  font-size:18px;
+}
+.topLogo2 {
+  font-size:18px;
+}
+.fa-arrow-right{
+  font-size:30px;
+  padding-top:17px;
+}
 }
 </style>

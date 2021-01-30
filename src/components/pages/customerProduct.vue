@@ -1,11 +1,12 @@
 <template>
 <div>
 <loading :active.sync="isLoading"></loading>
+<CartLogo></CartLogo>
 <div class="container">
 
 
 <div class="row ">
-<div class="col-md-2">
+<div class="col-md-3">
 <ul class="list-group list-unstyled ">
   <li><a href="#" class="list-group-item  text-center " :class="{'active':visibilty == 'all'}" @click.prevent="visibilty = 'all'">所有商品</a></li>
   <li><a href="#" class="list-group-item text-center" :class="{'active':visibilty == 'burger'}" @click.prevent="visibilty = 'burger'">漢堡</a></li>
@@ -14,7 +15,7 @@
 
 </ul>
 </div>
-<div class="col-md-10">
+<div class="col-md-9">
 
 <div class="row mb-5">
 <div class="sort col-md-6 col-sm-6 ">
@@ -41,15 +42,12 @@
 
 <div class="col-lg-4 mb-4 col-md-6  animate__animated animate__fadeInUp" v-for="item in filterTodo">
 
-<div class="card box-shadow ">
+<div class="card">
   <div class="toProuductDetail"
      :style="{backgroundImage:`url(${item.imageUrl})`}" @click="inputProductid(item)">
-     
-      
+     <h3 class="imgText font-weight-bold">more</h3>
     </div>
-    <div class="imgtext" @click="inputProductid(item)">
-     <h3>more</h3>
-     </div>
+    
     
    <div class="track">
    <a href="#" @click.prevent="sendlocal(item.id)"v-if="trackData.indexOf(item.id)===-1" ><i class="far fa-grin-hearts fa-2x text-white"></i></a>
@@ -105,37 +103,39 @@
 height: 150px;
  background-size: cover; 
  background-position: center;
+ position:relative;
 }
+.imgText{
+  position:absolute;
+ padding-top:62px;
+ color:white;
+ right:0;
+ left:0;
+ top:0;
+ opacity:0;
+ text-align:center;
+ bottom:-9px;
+ background: rgba(61,64,66,.49);
+
+ transition: all .2s;
+ 
+  
+}
+
   .sort select{
     border:2px solid #21232d;
 }
 .search input{
     border:2px solid #21232d;
 }
-.imgtext{
-    position:absolute;
-    color:white;
-    display:none;
-    z-index:1000;
-     top:16%;
-    left: 39%;
-  }
-.imgtext:hover{
-    cursor: pointer;
-  }
-  .box-shadow:hover{
+  .card:hover{
+    
     box-shadow:0 4px 10px rgba(0,0,0,0.46); 
     cursor: pointer;
+ }  
+ .card:hover .imgText{
+  opacity:1;
  }
- .box-shadow:hover .imgtext{
-      display:block;
- }
- 
-.box-shadow:hover .toProuductDetail{
-    -webkit-filter:brightness(.5);
- }
-    
-
 .track{
     position:absolute;
     right:0px;
@@ -158,10 +158,10 @@ height: 150px;
 <script>
 
 
-
+import CartLogo from '@/components/CARTLOGO'
 export default {
     components:{
-
+      CartLogo,
 
 
     },

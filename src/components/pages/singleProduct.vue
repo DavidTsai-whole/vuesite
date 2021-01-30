@@ -1,6 +1,7 @@
 <template>
 <div>   
 <loading :active.sync="isLoading"></loading>
+<CartLogo></CartLogo>
 <div class="container">
 
 <nav aria-label="breadcrumb ">
@@ -11,7 +12,7 @@
   </ol>
 </nav>
 <div class="row">
-<div class="singleImg col-lg-6 mb-3 ">
+<div class="singleImg col-lg-6 m-auto ">
 
 <img :src="singleProduct.imageUrl" class="singleImg img-fluid" alt="">
 
@@ -36,8 +37,9 @@
 
 
 <div class="mt-5">
-<button class="addCartBtn btn btn-dark1" @click="addcart(singleProduct)">加入購物車</button>
+
 <button class="backMenuBtn btn btn-outline-secondary" @click="gomenu">回菜單</button>
+<button class="addCartBtn btn btn-dark1" @click="addcart(singleProduct)">加入購物車</button>
 </div>
 
 </div>
@@ -46,7 +48,7 @@
 <h2 class="text-center mb-3 font-weight-bold">相關產品</h2>
 
       <div class="row">
-      <div class="col-md-3 mb-3 col-sm-6" v-for="item in filterTodo">
+      <div class="col-xl-3 col-md-4 col-sm-6 mb-4" v-for="item in filterTodo">
 
 <div class="releateCard" @click="inputProductid(item)">
 <div class="releateCardImg">
@@ -71,17 +73,17 @@
 </template>
 
 <script>
-
+import CartLogo from '@/components/CARTLOGO'
 export default {
- 
+  components:{
+   CartLogo
+  },
     data() {
         return {
             singleProduct:{},
             isLoading:false,
            cartData:JSON.parse(localStorage.getItem('cartData')) || [],
-            products:[],
-            
-            
+            products:[],     
         }
     },
     methods: {
@@ -96,15 +98,9 @@ export default {
             
              vm.isLoading = false;
             vm.singleProduct = response.data.product;
-            vm.singleProduct.num = 1;
-            
-            
-            
-            
-            
+            vm.singleProduct.num = 1;    
           });
-       
-
+      
         },
         addcart(data){
           const vm = this;
@@ -134,9 +130,7 @@ export default {
                  price:data.price,
                  imageUrl:data.imageUrl,
                };
-               vm.cartData.splice(keys,1);
-             
-              
+               vm.cartData.splice(keys,1);            
              }
            });
              vm.cartData.push(cache);
@@ -144,10 +138,7 @@ export default {
                
           }
           vm.$bus.$emit('number'); 
-          vm.$bus.$emit('message:push','已加入購物車','light');
-          
-         
-          
+          vm.$bus.$emit('message:push','已加入購物車','light');         
         },
         inputProductid(item){
        const vm = this;
@@ -162,19 +153,12 @@ export default {
                vm.$http.get(api).then((response) => {
             
             vm.isLoading = false;
-            vm.products = response.data.products;
-           
-            
-            
+            vm.products = response.data.products;          
           });
         },
         gomenu(){
             this.$router.push('/product');
-        },
-     
-    
-       
-        
+        },    
     },
     computed: {
       filterTodo(){
@@ -183,18 +167,14 @@ export default {
           var newTodo = [];
           vm.products.forEach(function (item){
               if(item.category==singleProductcategory && item.title!=vm.singleProduct.title)
-            newTodo.push(item);
-              
-          
-              
+            newTodo.push(item);          
           });
           return newTodo;
         },
     },
     created() {
       this.getProducts();
-        this.getSingleproduct();
-        
+        this.getSingleproduct();       
     },
 }
 </script>

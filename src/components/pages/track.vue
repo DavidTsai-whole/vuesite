@@ -1,6 +1,7 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
+    <CartLogo></CartLogo>
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-8" v-if="FollowProduct.length !== 0">
@@ -47,10 +48,10 @@
       <h2 class="text-center text-white p-3 bg-dark1 mt-5 mb-5 font-weight-bold">
         <i class="fas fa-utensils"></i>餐點介紹
       </h2>
-      <!--餐點介紹-->
+       <!--餐點介紹-->
       <div class="row">
         <!--漢堡-->
-        <div class="col-md-4 text-center mb-3">
+        <div class="meal col-md-4 text-center">
           <a href="#" @click.prevent="toCategory('burger')">
             <img
               src="https://upload.cc/i1/2020/12/16/bTHgpY.jpg"
@@ -59,15 +60,15 @@
             />
           </a>
           <h2 class="font-weight-bold">漢堡</h2>
-          <p class="hamP1">不可錯過的正宗美式漢堡!</p>
-          <p class="hamP2">會不定期的推出新口味，敬請期待</p>
-          <p class="hamP3">有豬肉、牛肉、雞肉、菇類等多樣選擇</p>
+          <p class="subTitle">不可錯過的正宗美式漢堡!</p>
+          <p class="subP">會不定期的推出新口味，敬請期待</p>
+          <p class="subP">有豬肉、牛肉、雞肉、菇類等多樣選擇</p>
           <button class="btn btn-outline-dark" @click.prevent="toCategory('burger')">
             查看更多
           </button>
         </div>
         <!--配菜-->
-        <div class="col-md-4 text-center mb-3">
+        <div class="meal col-md-4 text-center">
           <a href="#" @click.prevent="toCategory('dessert')">
             <img
               src="https://upload.cc/i1/2020/12/16/HtSnj8.jpg"
@@ -76,15 +77,15 @@
             />
           </a>
           <h2 class="font-weight-bold">配菜</h2>
-          <p class="dashP1">好看的劇一定是有好的配角!</p>
-          <p class="dashP2">配菜類的商品只要續點通通9折(限內用)</p>
-          <p class="dashP3">沙拉、炸物、烤類等多種配菜</p>
+          <p class="subTitle">好看的劇一定是有好的配角!</p>
+          <p class="subP">配菜類的商品只要續點通通9折(限內用)</p>
+          <p class="subP">沙拉、炸物、烤類等多種配菜</p>
           <button class="btn btn-outline-dark" @click.prevent="toCategory('dessert')">
             查看更多
           </button>
         </div>
         <!--飲品-->
-        <div class="col-md-4 text-center mb-3">
+        <div class="col-md-4 text-center mb-2">
           <a href="#" @click.prevent="toCategory('drink')">
             <img
               src="https://upload.cc/i1/2020/12/16/eiLXZl.jpg"
@@ -93,9 +94,9 @@
             />
           </a>
           <h2 class="font-weight-bold">飲品</h2>
-          <p class="drinkP1">無論此刻甚麼心情我們都能滿足!</p>
-          <p class="drinkP2">Bottomless Beverages 無限續杯飲料 (限內用)</p>
-          <p class="drinkP3">百事可樂、柳橙汁、咖啡、湯品類</p>
+          <p class="subTitle">無論甚麼心情我們都能滿足!</p>
+          <p class="subP">Bottomless Beverages 無限續杯飲料 (限內用)</p>
+          <p class="subP">百事可樂、柳橙汁、咖啡、湯品類</p>
           <button class="btn btn-outline-dark" @click.prevent="toCategory('drink')">
             查看更多
           </button>
@@ -106,7 +107,11 @@
 </template>
 
 <script>
+import CartLogo from '@/components/CARTLOGO'
 export default {
+  components:{
+   CartLogo
+  },
   data() {
     return {
       trackData: JSON.parse(localStorage.getItem("tableData")) || [],
@@ -193,14 +198,32 @@ export default {
 .table {
   color: #dcd9cb;
 }
+.subTitle {
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 20px;
+  border-bottom: 2px solid #01814a;
+  color: #01814a;
+}
+.subP {
+  margin-top: 8px;
+}
+.menu a {
+  font-weight: bold;
+}
+.tips ul {
+  font-size: 15px;
+  line-height: 1.6;
+}
+.tips p {
+  line-height: 1.8;
+  font-size: 15px;
+}
 .circle {
   border-radius: 50%;
   height: 300px;
   width: 300px;
   object-fit: cover;
-}
-.menu a {
-  font-weight: bold;
 }
 .circle:hover {
   cursor: pointer;
@@ -216,5 +239,36 @@ export default {
 }
 .cartin:hover {
   border-bottom: 4px solid black;
+}
+@media (max-width: 1200px) {
+  .circle {
+    height: 280px;
+    width: 280px;
+  }
+}
+@media (max-width: 992px) {
+  .circle {
+    height: 220px;
+    width: 220px;
+  }
+  .subTitle {
+    font-size: 15px;
+  }
+  .subP {
+    font-size: 13px;
+  }
+
+}
+@media (max-width: 768px) {
+  .subTitle {
+    font-size: 23px;
+  }
+  .subP {
+    font-size: 16px;
+  }
+  .circle {
+    height: 300px;
+    width: 300px;
+  }
 }
 </style>

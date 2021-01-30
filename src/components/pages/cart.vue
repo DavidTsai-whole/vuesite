@@ -1,22 +1,23 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
+    <CartLogo></CartLogo>
     <div class="container">
       <div class="row justify-content-center mt-2">
         <div class="col-md-8">
           <ul class="list-unstyled d-flex justify-content-around">
             <li
-              class="topLogo1 d-flex align-items-center justify-content-center h3 bg-dark1"
+              class="topLogo1 d-flex align-items-center justify-content-center  bg-dark1"
             >
               購物車
             </li>
-            <li><i class="fas fa-arrow-right fa-4x text-danger ml-2 mr-2"></i></li>
-            <li class="topLogo2 d-flex align-items-center justify-content-center h3">
+            <li><i class="fas fa-arrow-right  text-danger ml-2 mr-2"></i></li>
+            <li class="topLogo2 d-flex align-items-center justify-content-center ">
               結帳
             </li>
-            <li><i class="fas fa-arrow-right fa-4x text-danger ml-2 mr-2"></i></li>
-            <li class="topLogo2 d-flex align-items-center justify-content-center h3">
-              完成
+            <li><i class="fas fa-arrow-right  text-danger ml-2 mr-2"></i></li>
+            <li class="topLogo2 d-flex align-items-center justify-content-center ">
+              訂單完成
             </li>
           </ul>
           <table
@@ -24,11 +25,11 @@
             v-if="cartData.length > 0"
           >
             <thead class="bg-dark">
-              <th class="text-center">品名</th>
+              <th class="text-center"width="30%" >品名</th>
               <th class="text-center">圖片</th>
               <th class="text-center">數量</th>
-              <th class="text-center">價錢</th>
-              <th class="text-center">刪除</th>
+              <th class="text-center" width="12%">價錢</th>
+              <th class="text-center" width="20%">刪除</th>
             </thead>
 
             <tbody>
@@ -41,13 +42,13 @@
                   <div class="btn-group" role="group" aria-label="Basic example">
                     <button
                       type="button"
-                      class="btn btn-light"
+                      class="btn btn-light btn-sm"
                       @click.prevent="lessQty(item)"
                     >
                       -
                     </button>
-                    <button class="btn btn-outline-light" disabled>{{ item.qty }}</button>
-                    <button type="button" class="btn btn-light" @click="addQty(item)">
+                    <button class="btn btn-outline-light btn-sm" disabled>{{ item.qty }}</button>
+                    <button type="button" class="btn btn-light btn-sm" @click="addQty(item)">
                       +
                     </button>
                   </div>
@@ -70,21 +71,21 @@
 
               <tr>
                 <td colspan="4" class="text-right">小計:</td>
-                <td class="text-right">${{ totoaPrice }}元</td>
+                <td class="text-right">${{ totoaPrice }}</td>
               </tr>
 
               <tr class="tableBorder">
                 <td colspan="4" class="text-right">運費:</td>
-                <td v-if="totoaPrice >= 1000" class="text-right">$0元</td>
-                <td v-else class="text-right">$60元</td>
+                <td v-if="totoaPrice >= 1000" class="text-right">$0</td>
+                <td v-else class="text-right">$60</td>
               </tr>
 
               <tr>
                 <td colspan="4" class="text-right h3">總計:</td>
                 <td v-if="totoaPrice >= 1000" class="h3 text-right">
-                  ${{ totoaPrice }}元
+                  ${{ totoaPrice }}
                 </td>
-                <td v-else class="h3 text-right">${{ totoaPrice + 60 }}元</td>
+                <td v-else class="h3 text-right">${{ totoaPrice + 60 }}</td>
               </tr>
             </tfoot>
           </table>
@@ -133,6 +134,7 @@
   margin-top: 100px;
 }
 .topLogo1 {
+  font-size:25px;
   height: 60px;
   width: 200px;
   border-radius: 15px;
@@ -140,15 +142,20 @@
   font-weight: bold;
 }
 .topLogo2 {
+  font-size:25px;
   border: 3px solid #21232d;
   height: 60px;
   width: 200px;
   border-radius: 15px;
   font-weight: bold;
 }
+.fa-arrow-right{
+  font-size:50px;
+  padding-top:7px;
+}
 .cartImg {
-  height: 80px;
-  width: 80px;
+  height: 70px;
+  width: 70px;
 }
 .tableBorder {
   border-bottom: 2px solid #dcd9cb;
@@ -163,9 +170,25 @@
 .cartin:hover {
   border-bottom: 3px solid black;
 }
+@media(max-width:768px){
+  .topLogo1 {
+  font-size:18px;
+}
+.topLogo2 {
+  font-size:18px;
+}
+.fa-arrow-right{
+  font-size:30px;
+  padding-top:17px;
+}
+}
 </style>
 <script>
+import CartLogo from '@/components/CARTLOGO'
 export default {
+  components:{
+   CartLogo
+  },
   data() {
     return {
       isLoading: false,

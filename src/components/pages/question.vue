@@ -1,5 +1,6 @@
 <template>
   <div>
+  <CartLogo></CartLogo>
     <div class="container pb-5">
       <h2 class="text-center pb-3 font-weight-bold">
         <i class="fas fa-cog text-danger"></i>常見問題
@@ -57,7 +58,11 @@
 </template>
 
 <script>
+import CartLogo from '@/components/CARTLOGO'
 export default {
+  components:{
+CartLogo
+  },
   data() {
     return {
       hide: true,

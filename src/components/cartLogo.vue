@@ -23,8 +23,8 @@
   cursor: pointer;
 }
 .logocart {
-  width: 60px;
-  height: 60px;
+  width: 64px;
+  height: 64px;
 
   border-radius: 50%;
   background: #21232d;

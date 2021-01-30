@@ -1,5 +1,6 @@
 <template>
   <div>
+  <CartLogo></CartLogo>
     <div class="container">
       <!--banner區塊-->
       <div class="main">
@@ -7,8 +8,10 @@
           <h1>全台最正宗的美式餐廳，你不可錯過的唯一選擇。</h1>
 
           <div>
-            <button class="btn btn-dark1" @click="goProdut">來去逛逛</button>
-            <button class="btn btn-outline-dark1 " @click="openModal">查看優惠</button>
+            <button class="btn btn-outline-dark1 btn-sm" @click="openModal">
+              查看優惠
+            </button>
+            <button class="btn btn-dark1 btn-sm" @click="goProdut">來去逛逛</button>
           </div>
         </div>
       </div>
@@ -19,7 +22,7 @@
       <!--餐點介紹-->
       <div class="row">
         <!--漢堡-->
-        <div class="col-md-4 text-center mb-3">
+        <div class="meal col-md-4 text-center">
           <a href="#" @click.prevent="toCategory('burger')">
             <img
               src="https://upload.cc/i1/2020/12/16/bTHgpY.jpg"
@@ -28,15 +31,15 @@
             />
           </a>
           <h2 class="font-weight-bold">漢堡</h2>
-          <p class="hamP1">不可錯過的正宗美式漢堡!</p>
-          <p class="hamP2">會不定期的推出新口味，敬請期待</p>
-          <p class="hamP3">有豬肉、牛肉、雞肉、菇類等多樣選擇</p>
+          <p class="subTitle">不可錯過的正宗美式漢堡!</p>
+          <p class="subP">會不定期的推出新口味，敬請期待</p>
+          <p class="subP">有豬肉、牛肉、雞肉、菇類等多樣選擇</p>
           <button class="btn btn-outline-dark" @click.prevent="toCategory('burger')">
             查看更多
           </button>
         </div>
         <!--配菜-->
-        <div class="col-md-4 text-center mb-3">
+        <div class="meal col-md-4 text-center">
           <a href="#" @click.prevent="toCategory('dessert')">
             <img
               src="https://upload.cc/i1/2020/12/16/HtSnj8.jpg"
@@ -45,15 +48,15 @@
             />
           </a>
           <h2 class="font-weight-bold">配菜</h2>
-          <p class="dashP1">好看的劇一定是有好的配角!</p>
-          <p class="dashP2">配菜類的商品只要續點通通9折(限內用)</p>
-          <p class="dashP3">沙拉、炸物、烤類等多種配菜</p>
+          <p class="subTitle">好看的劇一定是有好的配角!</p>
+          <p class="subP">配菜類的商品只要續點通通9折(限內用)</p>
+          <p class="subP">沙拉、炸物、烤類等多種配菜</p>
           <button class="btn btn-outline-dark" @click.prevent="toCategory('dessert')">
             查看更多
           </button>
         </div>
         <!--飲品-->
-        <div class="col-md-4 text-center mb-3">
+        <div class="col-md-4 text-center mb-2">
           <a href="#" @click.prevent="toCategory('drink')">
             <img
               src="https://upload.cc/i1/2020/12/16/eiLXZl.jpg"
@@ -62,9 +65,9 @@
             />
           </a>
           <h2 class="font-weight-bold">飲品</h2>
-          <p class="drinkP1">無論此刻甚麼心情我們都能滿足!</p>
-          <p class="drinkP2">Bottomless Beverages 無限續杯飲料 (限內用)</p>
-          <p class="drinlP3">百事可樂、柳橙汁、咖啡、湯品類</p>
+          <p class="subTitle">無論甚麼心情我們都能滿足!</p>
+          <p class="subP">Bottomless Beverages 無限續杯飲料 (限內用)</p>
+          <p class="subP">百事可樂、柳橙汁、咖啡、湯品類</p>
           <button class="btn btn-outline-dark" @click.prevent="toCategory('drink')">
             查看更多
           </button>
@@ -85,7 +88,7 @@
             alt=""
           />
         </div>
-        <div class="col-md-6 d-flex flex-column justify-content-center mt-2">
+        <div class="tips col-md-6 d-flex flex-column justify-content-center">
           <h4 class="text-center font-weight-bold">
             <i class="far fa-check-circle text-success"></i>用心開發
           </h4>
@@ -103,7 +106,7 @@
             class="img-fluid"
           />
         </div>
-        <div class="quality col-md-6 d-flex flex-column justify-content-center mt-2">
+        <div class="tips col-md-6 d-flex flex-column justify-content-center">
           <h4 class="text-center font-weight-bold">
             <i class="far fa-check-circle text-success"></i>嚴選品質
           </h4>
@@ -132,7 +135,7 @@
             class="img-fluid"
           />
         </div>
-        <div class="idea col-md-6 d-flex flex-column justify-content-center mt-2">
+        <div class="tips col-md-6 d-flex flex-column justify-content-center">
           <h4 class="text-center font-weight-bold">
             <i class="far fa-check-circle text-success"></i>經營理念
           </h4>
@@ -145,9 +148,10 @@
       <!--營業時間-->
       <div class="mt-3 openTime">
         <div class="openHour">
-          <h2 class="text-white pt-3 font-weight-bold">營業時間</h2>
-          <p class="text-white">禮拜一~禮拜六</p>
-          <p class="text-white">AM:9:00~PM11:00</p>
+          <h5 class="text-white">
+            營業時間: <span class="day">一 ~ 六</span
+            ><span class="day"> 9:00 ~ 23:00</span>
+          </h5>
         </div>
       </div>
     </div>
@@ -211,54 +215,26 @@
   color: #21232d;
   font-weight: bold;
 }
-.hamP1 {
+.subTitle {
   font-weight: bold;
   margin-top: 10px;
   font-size: 20px;
   border-bottom: 2px solid #01814a;
   color: #01814a;
 }
-.hamP2 {
-  margin-top: 20px;
+.subP {
+  margin-top: 8px;
 }
-.hamP3 {
-  margin-top: 20px;
-}
-.dashP1 {
-  font-weight: bold;
-  margin-top: 10px;
-  font-size: 20px;
-  border-bottom: 2px solid#01814A;
-  color: #01814a;
-}
-.dashP2 {
-  margin-top: 20px;
-}
-.dashP3 {
-  margin-top: 20px;
-}
-.drinkP1 {
-  font-weight: bold;
-  margin-top: 10px;
-  font-size: 20px;
-  border-bottom: 2px solid#01814A;
-  color: #01814a;
-}
-.drinkP2 {
-  margin-top: 20px;
-}
-.drinkP3 {
-  margin-top: 20px;
-}
+
 .develop p {
   line-height: 1.8;
   font-size: 15px;
 }
-.quality ul {
+.tips ul {
   font-size: 15px;
   line-height: 1.6;
 }
-.idea p {
+.tips p {
   line-height: 1.8;
   font-size: 15px;
 }
@@ -283,39 +259,115 @@
 }
 .openHour {
   position: absolute;
-  top: 47%;
-  left: 65%;
+  top: 90%;
+  left: 60%;
 }
 .modal-body h5 {
   border: 2px dashed black;
 }
-
-@media (max-width: 992px) {
-  .banner {
-    margin-top: 20%;
+.day {
+  font-size: 15px;
+}
+@media (max-width: 1200px) {
+  .main {
+    height: 480px;
   }
   .banner h1 {
     font-size: 30px;
   }
   .circle {
+    height: 280px;
+    width: 280px;
+  }
+}
+@media (max-width: 992px) {
+  .main {
+    height: 400px;
+  }
+  .banner {
+    margin-top: 20%;
+  }
+  .banner h1 {
+    font-size: 25px;
+  }
+  .circle {
     height: 220px;
     width: 220px;
   }
+  .subTitle {
+    font-size: 15px;
+  }
+  .subP {
+    font-size: 13px;
+  }
+  .openHour {
+    position: absolute;
+    top: 90%;
+    left: 60%;
+  }
+  .openHour h5 {
+    font-size: 19px;
+  }
+  .openHour span {
+    font-size: 13px;
+  }
 }
 @media (max-width: 768px) {
+  .main {
+    height: 400px;
+  }
   .banner {
-    left: 0;
-    right: 0;
+    left: 15%;
+    right: 15%;
+    margin-top: 16%;
+  }
+  .banner h1 {
+    font-size: 20px;
+  }
+  .subTitle {
+    font-size: 23px;
+  }
+  .subP {
+    font-size: 16px;
   }
   .circle {
-    height: 400px;
-    width: 400px;
+    height: 300px;
+    width: 300px;
+  }
+  .openHour h5 {
+    font-size: 15px;
+  }
+  .openHour span {
+    font-size: 12px;
+  }
+  .meal {
+    margin-bottom: 70px;
+  }
+  .tips{
+    margin-top:30px;
+    margin-bottom:30px;
+  }
+}
+@media (max-width: 567px) {
+  .main {
+    height: 350px;
+  }
+  .banner {
+    left: 15%;
+    right: 15%;
+  }
+  .banner h1 {
+    font-size: 18px;
   }
 }
 </style>
 <script>
 import $ from "jquery";
+import CartLogo from '@/components/CARTLOGO'
 export default {
+  components:{
+   CartLogo
+  },
   data() {
     return {};
   },
