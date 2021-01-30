@@ -22,8 +22,10 @@
 
 <style>
     .footer{
-    padding-top: 13px;
-    margin-top: 20px;
+      position:relative;
+      margin-top:-200px;
+      height:220px;
+      
   }
 .footer h2{
     color:#dcd9cb;

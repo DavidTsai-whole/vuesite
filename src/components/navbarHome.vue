@@ -1,19 +1,19 @@
 <template>
-  <div class="header bg-dark1 mb-5">
+  <div class="header bg-dark1">
     <div class="container d-flex justify-content-between align-items-center">
-      <h1 class="h1Title pt-3" @click="goHome">ChillBurger</h1>
-      <ul class="menu list-unstyled d-flex pt-4">
-        <li>
+      <h1 class="h1Title p-3" @click="goHome">ChillBurger</h1>
+      <ul class="menu list-unstyled d-flex pt-2">
+        <li @click="showmenu">
           <a href="#/product"><i class="fas fa-book-open"></i>美味菜單</a>
         </li>
-        <li>
+        <li @click="showmenu">
           <a href="#/track"><i class="far fa-grin-hearts"></i>我的收藏</a>
         </li>
-        <li>
+        <li @click="showmenu">
           <a href="#/login"><i class="fas fa-sign-in-alt"></i>後台管理</a>
         </li>
       </ul>
-      <a href="#" class="rwdMenu pt-3" @click.prevent="showmenu"
+      <a href="#" class="rwdMenu pt-2" @click.prevent="showmenu"
         ><i class="fas fa-bars fa-3x"></i
       ></a>
     </div>
@@ -23,8 +23,7 @@
 .header {
   position: fixed;
   width: 100%;
-  z-index: 10000000;
-  height: 90px;
+  z-index: 100000;
 }
 
 .h1Title {
@@ -37,7 +36,7 @@
 }
 .menu a {
   display: block;
-  padding: 6px;
+  padding: 10px;
   color: #dcd9cb;
   font-size: 20px;
 }
@@ -53,20 +52,15 @@
 @media (max-width: 768px) {
   .menu {
     flex-direction: column;
-
     max-height: 0px;
     overflow: hidden;
     position: absolute;
-    z-index: 10000000000;
-    transition: 1.5s;
-    top: 73px;
+    z-index: 100000;
+    transition: 0.3s;
+    top: 72px;
     left: 0;
     right: 0;
     background: #21232d;
-  }
-  .h1Title {
-    font-size: 35px;
-    margin-top: 10px;
   }
   .menu li {
     border-bottom: 2px dashed white;
@@ -102,6 +96,5 @@ export default {
       $("body").toggleClass("menu-show");
     },
   },
-  created() {},
 };
 </script>
