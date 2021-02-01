@@ -2,7 +2,7 @@
   <div class="header bg-dark1">
     <div class="container d-flex justify-content-between align-items-center">
       <h1 class="h1Title p-3" @click="goHome">ChillBurger</h1>
-      <ul class="menu list-unstyled d-flex pt-2">
+      <ul class="menu list-unstyled d-flex">
         <li @click="showmenu">
           <a href="#/product"><i class="fas fa-book-open"></i>美味菜單</a>
         </li>
@@ -13,7 +13,7 @@
           <a href="#/login"><i class="fas fa-sign-in-alt"></i>後台管理</a>
         </li>
       </ul>
-      <a href="#" class="rwdMenu pt-2" @click.prevent="showmenu"
+      <a href="#" class="rwdMenu" @click.prevent="showmenu"
         ><i class="fas fa-bars fa-3x"></i
       ></a>
     </div>
@@ -33,6 +33,9 @@
 }
 .h1Title:hover {
   cursor: pointer;
+}
+.menu {
+  margin-bottom: 0;
 }
 .menu a {
   display: block;
